@@ -121,21 +121,25 @@
     
     
       <div class="col-12 col-md-4 m-auto">
-        <a href="/2019/11/09/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2%E5%90%A7/" target="_blank">
-          <img src="img/5.jpg" srcset="/img/loading.gif" alt="第二篇博客吧" class="img-fluid rounded z-depth-3 index-thumbnails">
+        <a href="/2019/11/09/02/" target="_blank">
+          <img src="img/5.jpg" srcset="/img/loading.gif" alt="Web-文件上传漏洞" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
       </div>
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/11/09/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2%E5%90%A7/">
-        <p class="h4 index-header">第二篇博客吧</p>
+      <a href="/2019/11/09/02/">
+        <p class="h4 index-header">Web-文件上传漏洞</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">什么东西阿斯顿发送到发送到方法是大三的方式的
-</div>
+          <div class="index-text mb-1">Web-文件上传漏洞漏洞描述：Web应用程序通常会有文件上传的功能，比如：我们上传自己的头像，在招聘网站上传自己附件简历，只有Web程序允许上传文件就有可能存在文件上传漏洞，有些网站存在文件上传功能，但是对上传的文件没有进行验证，从而形成文件上传漏洞，另一种情况就是对上传的文件检验不严格，上传者可以进行绕过，形成文件上传漏洞。
+漏洞危害：文件上传漏洞与SQL注入相比，其危害更大，如果Web存在文件上传漏洞，我们可以直接上传WebShell到服务器上面，大部分情况下，我们是上传一句话木马，然后利用菜刀或者蚁剑进行连接，然后再进行提权等操作，所以说文件上传漏洞的危害非常大。
+文件上传漏洞一般是配合解析漏洞一起利用，我们这里主要利用一些CTF比赛的题目来进行进一步了解，Upload-labs是一个帮你总结所有类型的上传漏洞的靶场，包括常见的文件上传漏洞，我们会在这十九关中挑选几关来为大家讲解。
+第二关我们可以先看一下源代码：
+真实环境中是需要靠经验猜的
+12345678910111213141516171819$is_upload = false;$msg = null;if (isset(</div>
         </div>
       </a>
 
@@ -144,6 +148,11 @@
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-11-09&nbsp;&nbsp;
         
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AE%89%E5%85%A8">安全</a>&nbsp;
+          
         
       </div>
     </div>
