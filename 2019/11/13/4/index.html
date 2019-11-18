@@ -157,7 +157,7 @@
 <p>如果我们SQL语句猜测是正确的话，这样会使原来的页面报错。</p>
 <p>然后我们在原来的URL后面加and 1=1 、and 1=2测试页面</p>
 <p><a href="http://www.xxxx.com/test.php?id=8" target="_blank" rel="noopener">http://www.xxxx.com/test.php?id=8</a> and 1=1页面返回正常(SQL语句为：select * from table where id=8 and 1=1 永远为真)</p>
-<p><a href="http://www.xxxx.com/test.php?id=8" target="_blank" rel="noopener">http://www.xxxx.com/test.php?id=8</a> and 1=2页面返回不正常(SQL语句为：select * from table where id=8 and 1=1 永远为假)</p>
+<p><a href="http://www.xxxx.com/test.php?id=8" target="_blank" rel="noopener">http://www.xxxx.com/test.php?id=8</a> and 1=2页面返回不正常(SQL语句为：select * from table where id=8 and 1=2 永远为假)</p>
 <p>如果满足上述的条件可能就存在SQL注入</p>
 <p>字符型</p>
 <p>当我们输入的参数是字符串时，我们称为字符型</p>
