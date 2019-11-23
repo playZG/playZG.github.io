@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>HTML基础笔记(下)</title>
+    <link href="undefined2019/11/22/HTML-%E4%B8%8B/"/>
+    <url>2019/11/22/HTML-%E4%B8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="HTML基础笔记（下）"><a href="#HTML基础笔记（下）" class="headerlink" title="HTML基础笔记（下）"></a>HTML基础笔记（下）</h1><h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><p>１．表单用于获取不同类型的用户输入</p><p>２．常用表单标签</p><table><thead><tr><th>&lt;form&gt;</th><th>表单</th></tr></thead><tbody><tr><td>&lt;input&gt;</td><td>输入域</td></tr><tr><td>&lt;textarea&gt;</td><td>文本域</td></tr><tr><td>&lt;label&gt;</td><td>控制标签</td></tr><tr><td>&lt;fieldset&gt;</td><td>定义域</td></tr><tr><td>&lt;legend&gt;</td><td>域的标题</td></tr><tr><td>&lt;select&gt;</td><td>选择列表</td></tr><tr><td>&lt;optgroup&gt;</td><td>选项组</td></tr><tr><td>&lt;option&gt;</td><td>下拉列表中的选项</td></tr><tr><td>&lt;button&gt;</td><td>按钮</td></tr></tbody></table><p>集中常用的表单：</p><ol><li><p>复选框</p><img src="/2019/11/22/HTML-%E4%B8%8B/1.png" srcset="/img/loading.gif" class=""></li><li><p>单选按钮</p><img src="/2019/11/22/HTML-%E4%B8%8B/2.png" srcset="/img/loading.gif" class=""></li><li><p>下拉列表</p><img src="/2019/11/22/HTML-%E4%B8%8B/3.png" srcset="/img/loading.gif" class=""><img src="/2019/11/22/HTML-%E4%B8%8B/4.png" srcset="/img/loading.gif" class=""></li><li><p>文本域</p><img src="/2019/11/22/HTML-%E4%B8%8B/5.png" srcset="/img/loading.gif" class=""></li><li><p>创建按钮</p></li></ol><img src="/2019/11/22/HTML-%E4%B8%8B/6.png" srcset="/img/loading.gif" class="">]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>HTML</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HTML基础笔记（上）</title>
     <link href="undefined2019/11/19/HTML%E5%9F%BA%E7%A1%80/"/>
     <url>2019/11/19/HTML%E5%9F%BA%E7%A1%80/</url>
@@ -14,7 +33,7 @@
     
     <tags>
       
-      <tag>开发</tag>
+      <tag>HTML</tag>
       
     </tags>
     
