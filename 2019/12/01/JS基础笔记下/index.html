@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/5.jpg">
+  <link rel="icon" type="image/png" href="/img/5.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Javascript基础笔记(下) ~ PlayZG blog</title>
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+  <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+  <link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  
+  <link rel="stylesheet" href="/css/main.css"  >
+
+  
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlayZG</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2"
+         style="background: url('/img/6.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p>Sunday, December 1st 2019, 5:12 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto">
+          <div class="markdown-body">
+            <h1 id="Javascript基础笔记"><a href="#Javascript基础笔记" class="headerlink" title="Javascript基础笔记"></a>Javascript基础笔记</h1><h2 id="Javascript-DOM对象"><a href="#Javascript-DOM对象" class="headerlink" title="Javascript DOM对象"></a>Javascript DOM对象</h2><h3 id="DOM简介"><a href="#DOM简介" class="headerlink" title="DOM简介"></a>DOM简介</h3><p>1．HTML DOM:</p>
+<p>&ensp;&ensp;当网页被加载时，浏览器会创建页面的文档对象模型</p>
+<p>&ensp;&ensp;<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/1.png" srcset="/img/loading.gif" class=""></p>
+<h3 id="DOM操作HTML"><a href="#DOM操作HTML" class="headerlink" title="DOM操作HTML"></a>DOM操作HTML</h3><p>１．Javascript能够改变页面中的所有HTML元素</p>
+<p>２．Javascript能够改变页面中的所有HTML属性</p>
+<p>３．Javascript能够改变页面中的所有CSS样式</p>
+<p>４．Javascript能够改变页面中的所有事情做出反应</p>
+<p>１．改变HTML输出流：</p>
+<p>&ensp;&ensp;注意：绝对不要在文档加载完成之后使用document.write().这会覆盖该文档</p>
+<p>２．寻找元素：</p>
+<p>&ensp;&ensp;通过id找到HTML元素</p>
+<p>&ensp;&ensp;通过标签名找到HTML元素</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/2.png" srcset="/img/loading.gif" class="">
+
+<p>３．改变HTML内容：</p>
+<p>&ensp;&ensp;使用属性：innerHTML</p>
+<p>４．改变HTML属性 </p>
+<p>&ensp;&ensp;使用属性：attribute</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/3.png" srcset="/img/loading.gif" class="">
+
+<p>直接点链接会跳转到百度，当先点击一下按钮再点击链接就会跳ｂ站，效果图就不放了，有兴趣可以自己试一下</p>
+<h3 id="DOM操作CSS"><a href="#DOM操作CSS" class="headerlink" title="DOM操作CSS"></a>DOM操作CSS</h3><p>通过DOM对象改变CSS</p>
+<p>&ensp;&ensp;语法：document.getElementByld(id).style.property=new style</p>
+<p>我们先设计一下，通过CSS得到一个效果</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/4.png" srcset="/img/loading.gif" class="">
+
+<p>然后我们通过JS去控制CSS，让其红色背景变成蓝色，通过按钮调用函数</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/5.png" srcset="/img/loading.gif" class="">
+
+<h3 id="DOMEventListener"><a href="#DOMEventListener" class="headerlink" title="DOMEventListener"></a>DOMEventListener</h3><p>有两个方法：</p>
+<p>&ensp;&ensp;&ensp;addEventListener();&ensp;&ensp;&ensp;用于向指定元素添加事件句柄</p>
+<p>&ensp;&ensp;&ensp;removeEventListener();&ensp;&ensp;&ensp;移除方法添加的事件句柄</p>
+<p>句柄可以减少后期修改代码的工作量和降低应该修改代码而产生错误的概率，并且句柄之间不会覆盖</p>
+<p>可以看到先弹hello再弹world</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/6.png" srcset="/img/loading.gif" class="">
+
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/7.png" srcset="/img/loading.gif" class="">
+
+<p>我们用removeEventListener()移除弹hello的句柄</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/8.png" srcset="/img/loading.gif" class="">
+
+<p>可以看到不弹hello了，直接弹world。如果说是看图效果不明显的话，建议大家自己动手操作一下。</p>
+<h2 id="事件详解"><a href="#事件详解" class="headerlink" title="事件详解"></a>事件详解</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>事件流：描述的是在页面中接受事件的顺序</p>
+<p>事件冒泡：由最具有的元素接收，然后逐级向上传递至最不具体的元素的支点（文档）</p>
+<p>这里先&lt;button&gt;先接收，然后再&lt;div&gt;接收</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/9.png" srcset="/img/loading.gif" class="">
+
+<p>事件捕获：最不具体的节点先接收事件，而最具体的节点应该是最后接收事件</p>
+<p>先&lt;div&gt;接收，再&lt;button&gt;先接收。</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/9.png" srcset="/img/loading.gif" class="">
+
+<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><p>１．HTML事件处理</p>
+<p>&ensp;&ensp;&ensp;直接添加到HTML结构中</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/10.png" srcset="/img/loading.gif" class="">
+
+<p>２．DOM0级事件处理</p>
+<p>&ensp;&ensp;&ensp;把一个函数赋值给一个事件处理程序属性</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/11.png" srcset="/img/loading.gif" class="">
+
+<p>它也是有缺点的，比如会覆盖</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/12.png" srcset="/img/loading.gif" class="">
+
+<p>３．DOM2级事件处理</p>
+<p>&ensp;&ensp;&ensp;addEventListener(“事件名”，”事件处理函数”，”布尔值”)；</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/13.png" srcset="/img/loading.gif" class="">
+
+<p>&ensp;&ensp;&ensp;&ensp;DOM2级事件并不会像DOM0级事件一样覆盖</p>
+<p>&ensp;&ensp;&ensp;true：事件捕获</p>
+<p>&ensp;&ensp;&ensp;false：事件冒泡</p>
+<p>&ensp;&ensp;&ensp;removeEventListener();</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/14.png" srcset="/img/loading.gif" class="">
+
+
+
+<p>４．IE事件处理程序</p>
+<p>&ensp;&ensp;&ensp;&ensp;attachEvent</p>
+<p>&ensp;&ensp;&ensp;&ensp;detachEvent</p>
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3>
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/Javascript">Javascript</a>
+              
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Javascript基础笔记(下)&nbsp;",
+      ],
+      cursorChar: "",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+</body>
+</html>
