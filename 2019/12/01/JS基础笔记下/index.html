@@ -188,12 +188,56 @@
 <p>&ensp;&ensp;&ensp;removeEventListener();</p>
 <img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/14.png" srcset="/img/loading.gif" class="">
 
-
-
 <p>４．IE事件处理程序</p>
-<p>&ensp;&ensp;&ensp;&ensp;attachEvent</p>
-<p>&ensp;&ensp;&ensp;&ensp;detachEvent</p>
-<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3>
+<p>&ensp;&ensp;&ensp;&ensp;attachEvent：添加一个事件</p>
+<p>&ensp;&ensp;&ensp;&ensp;detachEvent：移除一个事件</p>
+<p>这个的使用方法跟addEventListener、removeEventListener差不多</p>
+<p>一般情况下我们会用DOM2级事件，因为DOM0级事件会被覆盖掉，但是DOM0级事件写法可能会比DOM2级事件简单</p>
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>１．事件对象：</p>
+<p>&ensp;&ensp;&ensp;&ensp;再触发DOM事件的时候都会产生一个对象</p>
+<p>２．事件对象event：</p>
+<p>&ensp;&ensp;&ensp;&ensp;1）type:获取事件类型</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/15.png" srcset="/img/loading.gif" class="">
+
+<p>&ensp;&ensp;&ensp;&ensp;2）target:获取事件类型</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/16.png" srcset="/img/loading.gif" class="">
+
+<p>&ensp;&ensp;&ensp;&ensp;3）stopPropagation():阻止事件冒泡</p>
+<p>先用代码解释一下事件冒泡，我们点击的是button但是包含button的div也执行了并且弹出了对话框，这就属于事件冒泡</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/18.png" srcset="/img/loading.gif" class=""><img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/17.png" srcset="/img/loading.gif" class="">
+
+<p>有时我们并不需要事件的冒泡，这就需要阻止事件冒泡</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/19.png" srcset="/img/loading.gif" class="">
+
+<p>&ensp;&ensp;&ensp;&ensp;4）preventDefault():组织事件默认行为</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/20.png" srcset="/img/loading.gif" class="">
+
+<p>正常情况下，我们点击a链接会跳转到哔哩哔哩，我们用preventDefault()处理，即使我们点击a链接也不会跳转</p>
+<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><h3 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h3><p>JavaScript中的所有事物都是对象：字符串、数值、数组、函数</p>
+<p>每个对象带有属性和方法</p>
+<p>JavaScript允许自定义对象</p>
+<h3 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h3><p>定义并创建对象实例</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/21.png" srcset="/img/loading.gif" class="">
+
+<p>使用函数来定义对象，然后创建新的对象实现</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/22.png" srcset="/img/loading.gif" class="">
+
+<h3 id="String字符串对象"><a href="#String字符串对象" class="headerlink" title="String字符串对象"></a>String字符串对象</h3><h4 id="String对象："><a href="#String对象：" class="headerlink" title="String对象："></a>String对象：</h4><p>&ensp;&ensp;&ensp;String对象用于处理已有的字符串，字符串可以使用单引号或双引号</p>
+<h4 id="在字符串中查找字符串：indexOf"><a href="#在字符串中查找字符串：indexOf" class="headerlink" title="在字符串中查找字符串：indexOf()"></a>在字符串中查找字符串：indexOf()</h4><p>存在返回位置，不存在返回-1;</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/23.png" srcset="/img/loading.gif" class="">
+
+<h4 id="内容匹配：match"><a href="#内容匹配：match" class="headerlink" title="内容匹配：match()"></a>内容匹配：match()</h4><img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/28.png" srcset="/img/loading.gif" class="">
+
+<h4 id="替换内容：replace"><a href="#替换内容：replace" class="headerlink" title="替换内容：replace()"></a>替换内容：replace()</h4><img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/25.png" srcset="/img/loading.gif" class="">
+
+<h4 id="字符串大小写转换：toUpperCase-toLowerCase"><a href="#字符串大小写转换：toUpperCase-toLowerCase" class="headerlink" title="字符串大小写转换：toUpperCase()/toLowerCase()"></a>字符串大小写转换：toUpperCase()/toLowerCase()</h4><img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/26.png" srcset="/img/loading.gif" class="">
+
+<h4 id="字符串转为数组：strong-gt-split"><a href="#字符串转为数组：strong-gt-split" class="headerlink" title="字符串转为数组：strong&gt;split()"></a>字符串转为数组：strong&gt;split()</h4><img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/27.png" srcset="/img/loading.gif" class="">
+
+<p>这里只介绍常用的一部分，还有一部分需要大家自己多多练习</p>
+<img src="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/24.png" srcset="/img/loading.gif" class="">
+
+<h3 id="Date日期对象"><a href="#Date日期对象" class="headerlink" title="Date日期对象"></a>Date日期对象</h3><h3 id="Array数组对象"><a href="#Array数组对象" class="headerlink" title="Array数组对象"></a>Array数组对象</h3><h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3>
             <hr>
           </div>
           <br>

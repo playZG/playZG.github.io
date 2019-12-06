@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Archive ~ PlayZG blog</title>
+  <title>CSS基础 ~ PlayZG blog</title>
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
   <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
   <link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
@@ -29,7 +29,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -83,7 +83,7 @@
 </nav>
 
     <div class="view intro-2"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/6.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -93,6 +93,9 @@
               
             </span>
 
+            
+              <br>
+              <p>Thursday, December 5th 2019, 9:45 am</p>
             
           </div>
 
@@ -104,41 +107,90 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">9 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CSS基础</span>
-      <span style="float: right;">12-05</span>
-    </a>
-  
-    
-    <a href="/2019/12/01/JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0%E4%B8%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Javascript基础笔记(下)</span>
-      <span style="float: right;">12-01</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto">
+          <div class="markdown-body">
+            <h1 id="CSS基础"><a href="#CSS基础" class="headerlink" title="CSS基础"></a>CSS基础</h1><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32009001&auto=1&height=66"></iframe>
+我最喜欢的一首歌，Rap那版因为版权问题不能生成外链，大家就听这版吧！
 
-              </div>
-            </div>
+<h2 id="CSS概述"><a href="#CSS概述" class="headerlink" title="CSS概述"></a>CSS概述</h2><p>&ensp;&ensp;&ensp;CSS指层叠样式表</p>
+<p>&ensp;&ensp;&ensp;CSS样式表极大地提高了工作效率</p>
+<p>&ensp;&ensp;&ensp;作用：美化页面</p>
+<p>&ensp;&ensp;&ensp;注释：/*注释内容*/</p>
+<h2 id="CSS使用"><a href="#CSS使用" class="headerlink" title="CSS使用"></a>CSS使用</h2><h3 id="内联式或内嵌式"><a href="#内联式或内嵌式" class="headerlink" title="内联式或内嵌式"></a>内联式或内嵌式</h3><p>用法：在标签中使用style属性来引入对应的css属性</p>
+<p>注意：style属性属于公有属性，任何标签都可以设置style属性</p>
+<img src="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/4.png" srcset="/img/loading.gif" class="">
+
+<h3 id="嵌入式"><a href="#嵌入式" class="headerlink" title="嵌入式"></a>嵌入式</h3><p>当页面当中借助style标签来引入css属性，可以放置在head头中也可以放置在body体中</p>
+<img src="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/5.png" srcset="/img/loading.gif" class="">
+
+<h3 id="导入式"><a href="#导入式" class="headerlink" title="导入式"></a>导入式</h3><p>在style标签中借助@import url(css 地址)从而来引入相应的css样式</p>
+<h3 id="外链式"><a href="#外链式" class="headerlink" title="外链式"></a>外链式</h3><p>借助link标签href属性用来引入外部css地址，rel属性引入外部的css文件和当前html页面的关系stylesheet还需要使用type来指定引入文件的类型text/css</p>
+<img src="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/6.png" srcset="/img/loading.gif" class="">
+
+<h3 id="取舍"><a href="#取舍" class="headerlink" title="取舍"></a>取舍</h3><p>１．内联式对单个标签有用，在设置js特效时经常使用</p>
+<p>２．嵌入式可以作用于多个标签，在页面布局发生混乱时经常使用</p>
+<p>３．导入式几乎不用</p>
+<p>４．外链式几乎都在用</p>
+<h2 id="CSS基础语法"><a href="#CSS基础语法" class="headerlink" title="CSS基础语法"></a>CSS基础语法</h2><h3 id="属性选择器｛"><a href="#属性选择器｛" class="headerlink" title="属性选择器｛"></a>属性选择器｛</h3><p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;属性：属性值</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;｝</p>
+<img src="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/1.png" srcset="/img/loading.gif" class="">
+
+<p>属性大于１个之后，属性之间用分号隔开</p>
+<p>如果值大于１个单词，则需要加上引号</p>
+<h3 id="选择器分组"><a href="#选择器分组" class="headerlink" title="选择器分组"></a>选择器分组</h3><p>给多个元素加上同一个样式</p>
+<p>h1,h2,h3,h4,h5{color:red}</p>
+<img src="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/2.png" srcset="/img/loading.gif" class="">
+
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><img src="/2019/12/05/CSS%E5%9F%BA%E7%A1%80/3.png" srcset="/img/loading.gif" class="">
+
+<p>我们定义了body的样式，在body中没有如果没有自己的样式，那么就会继承body的样式，如果有自己的样式，先按照自己的样式执行。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/CSS">CSS</a>
+              
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -192,6 +244,11 @@
   <script src="/js/lazyload.js" ></script>
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/typed/typed.min.js" ></script>
@@ -199,7 +256,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "CSS基础&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 70,
