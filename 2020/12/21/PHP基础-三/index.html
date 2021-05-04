@@ -1,0 +1,1446 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="PHP基础(三), Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>PHP基础(三) | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">PHP基础(三)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-12-21
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.6k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>我非常不喜欢2020</p>
+</blockquote>
+<h1 id="PHP基w础知识"><a href="#PHP基w础知识" class="headerlink" title="PHP基w础知识"></a>PHP基w础知识</h1><h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><h3 id="COOKIE"><a href="#COOKIE" class="headerlink" title="COOKIE"></a>COOKIE</h3><p>COOKIE技术：服务器将数据通过HTTP响应存储到浏览器，浏览器可以在以后携带对应的COOKIE数据访问服务器</p>
+<p>COOKIE(会话技术)：能够实现跨脚本共享数据</p>
+<p>原理</p>
+<p><a href="https://sm.ms/image/QbeMWcFEYVJdHCT" target="_blank"><img src="https://i.loli.net/2020/02/02/QbeMWcFEYVJdHCT.png" ></a></p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p>setcookie函数来设定COOKIE信息</p>
+<p>setcookie(名字,值)</p>
+<p>cookie名的设置：字符串　第一个参数</p>
+<p>cookie值的类型要求：必须是简单类型中的整数或者字符串</p>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>COOKIE生命周期：COOKIE在浏览器生存时间（浏览器在下次访问服务器时是否携带对应COOKIE）</p>
+<p>１．默认(不设定)时间生命周期，不设定周期默认是关闭浏览器</p>
+<p>２．设定为一个常规日期戳的周期，通过setcookie第三个参数限定生命周期，是用时间戳来管理，从格林尼治时间开始</p>
+<p>３．设定一个为０的周期，在第三个参数设定生命周期的时候，用０代替时间戳，表示默认设置，会话结束过期</p>
+<p>４．删除一个cookie的做法，服务器没有权限去操作浏览器上的内容(不可以删除)，可以通过设置生命周期让浏览器自动判定COOKIE是否有效，无效就删除。比如：setcookie(‘a’,’’,time()-1)</p>
+<h4 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h4><p>setcookie(名称，值，生命周期，作用范围)</p>
+<p>作用范围：不同的文件夹层级中，设定的COOKIE默认是在不同的文件夹下有访问限制，上层文件夹中设定的COOKIE可以在下层(子文件夹)中访问，而子文件夹中设定的COOKIE不能在上层文件夹中访问。</p>
+<p>１．默认(不设定)的范围：就是使用COOKIE默认的作用范围</p>
+<p>２．设定为“/”的含义：告知浏览器当前COOKIE的作用范围是网站根目录</p>
+<h4 id="跨子域"><a href="#跨子域" class="headerlink" title="跨子域"></a>跨子域</h4><p>setcookie(名称，值，生命周期，作用范围，有效域名)</p>
+<p>跨子域：在同一级别域名下，myifcast.com(一级域名)，可以有多个子域名(www.myifcast.com和gz.myifcast.com)，他们之间是搭建在不同的服务器上(不同的文件夹)，但是可以通过COOKIE设置实现对应的COOKIE共享访问，但是默认是不允许跨域名访问的</p>
+<p>１．设定COOKIE的有效域名，不同的域名(包含主机)之间不能共享COOKIE，可以通过setcookie的第五个参数来控制</p>
+<p>２．不设定时的默认有效域名，当不给第五个参数时，默认当前域名</p>
+<p>３．跨子域的设定方法：在设定域名访问的时候用设定上级域名即可。</p>
+<p><a href="https://sm.ms/image/lGqZIQgFydp6Ttn" target="_blank"><img src="https://i.loli.net/2020/02/02/lGqZIQgFydp6Ttn.png" ></a></p>
+<h4 id="数组数据"><a href="#数组数据" class="headerlink" title="数组数据"></a>数组数据</h4><p>COOKIE本身只支持简单数据(数字或者字符串)，能够保留的数组本身有限，也不成体系。如果需要使用COOKIE来保留一组数据的话，想办法凑成数组。(COOKIE不支持数组)</p>
+<p>１．设置形式：setcookie(‘play[1]’,1)</p>
+<p>２．读取形式：$_COOKIE[‘plzyzg’][1]</p>
+<p><a href="https://sm.ms/image/Y2zceFHNiPXSjwR" target="_blank"><img src="https://i.loli.net/2020/02/02/Y2zceFHNiPXSjwR.png" ></a></p>
+<h4 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h4><p>利用COOKIE写一个登录功能，COOKIE是保存在客户端的，这里是最基础最简单的</p>
+<p>这是登录页面</p>
+<p><a href="https://sm.ms/image/OZypvYhwEQuHePf" target="_blank"><img src="https://i.loli.net/2020/02/02/OZypvYhwEQuHePf.png" ></a></p>
+<p>判断是否存在该用户，如果存在则创建COOKIE</p>
+<p><a href="https://sm.ms/image/vToJlEYpXjOg4es" target="_blank"><img src="https://i.loli.net/2020/02/02/vToJlEYpXjOg4es.png" ></a></p>
+<p>如果COOKIE不为空，则显示正常页面，为空则跳转登录页面</p>
+<p><a href="https://sm.ms/image/qf5ymDXt3pGVFzK" target="_blank"><img src="https://i.loli.net/2020/02/02/qf5ymDXt3pGVFzK.png" ></a></p>
+<p>退出界面，销毁COOKIE</p>
+<p><a href="https://sm.ms/image/eybGnkmct2p9TCl" target="_blank"><img src="https://i.loli.net/2020/02/02/eybGnkmct2p9TCl.png" ></a></p>
+<h3 id="SESSION"><a href="#SESSION" class="headerlink" title="SESSION"></a>SESSION</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>Session与浏览器无关，但是与Cookie有关</p>
+<p>１．PHP碰到session_start()时开启session会话，会自动检测sessionID</p>
+<p>&ensp;&ensp;&ensp;&ensp;a ）如果Cookie中存在，使用现成的</p>
+<p>&ensp;&ensp;&ensp;&ensp;b ）如果Cookie中不存在，创建一个sessionID，并通过响应头以Cookie形式保存到浏览器上</p>
+<p>２．初始化超全局变量$_SESSION为一个空数组</p>
+<p>３．PHP通过sessionID去指定位置(session文件存储位置)匹配对应的文件</p>
+<p>&ensp;&ensp;&ensp;&ensp;a ）不存在该文件，创建一个sessionID命名文件</p>
+<p>&ensp;&ensp;&ensp;&ensp;b ）存在该文件，读取文件内容(反序列化)，将数据存储到$_SESSION中</p>
+<p>４．脚本执行结束，将$_SESSION中保存的所有数据序列化存储到sessionID对应的文件中</p>
+<p><a href="https://sm.ms/image/jBnOr4qSdkmGRs3" target="_blank"><img src="https://i.loli.net/2020/02/03/jBnOr4qSdkmGRs3.png" ></a></p>
+<h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><h5 id="启用Session"><a href="#启用Session" class="headerlink" title="启用Session"></a>启用Session</h5><p>任何时候都需要开启Session(脚本使用到$_SESSION就开启一次)</p>
+<p>$_SESSION是通过session_start()函数的调用才会定义的，没有直接意义</p>
+<h5 id="设置SESSION信息"><a href="#设置SESSION信息" class="headerlink" title="设置SESSION信息"></a>设置SESSION信息</h5><p>如果想存储数据到seeeion中，那么只要不断给$_SESSION数组添加元素即可</p>
+<p><a href="https://sm.ms/image/X7fRUwA9KIEpz5y" target="_blank"><img src="https://i.loli.net/2020/02/03/X7fRUwA9KIEpz5y.png" ></a></p>
+<h5 id="读取SESSION信息"><a href="#读取SESSION信息" class="headerlink" title="读取SESSION信息"></a>读取SESSION信息</h5><p>$_SESSION就是一个数组，存储什么数据，什么方式存的，就是可以通过什么方式访问什么数据</p>
+<p><a href="https://sm.ms/image/duQMRFhlfZqrgaG" target="_blank"><img src="https://i.loli.net/2020/02/03/duQMRFhlfZqrgaG.png" ></a></p>
+<p>会话技术的本质是为了实现跨脚本共享数据，在一个脚本中定义数据，在另一个脚本中保存数据</p>
+<h5 id="删除SESSION信息"><a href="#删除SESSION信息" class="headerlink" title="删除SESSION信息"></a>删除SESSION信息</h5><p>删除一个SESSION信息：unset($_SESSION[元素下标])删除指定session数据</p>
+<p>删除全部SESSION信息：删除全部数据就是让$_SESSION变成一个空数组，$_SESSION[]=array()</p>
+<h5 id="销毁SESSION"><a href="#销毁SESSION" class="headerlink" title="销毁SESSION"></a>销毁SESSION</h5><p>Session删除是指删除session数据，$_SESSION中看不到而已，销毁session是指删除session对应的session文件</p>
+<p>销毁Session：系统提供一个函数：session_destroy(),会自动根据session_start得到的SessionID去找到指定的session文件，并把其删除</p>
+<h4 id="SESSION相关配置"><a href="#SESSION相关配置" class="headerlink" title="SESSION相关配置"></a>SESSION相关配置</h4><p>这些配置项都是在PHP的配置文件php.ini中，如果修改，还要重启服务才能生效</p>
+<h5 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h5><p>session.name：session名字，保存到COOKIE中sessionID对应的名字</p>
+<p>session.auto_start：是否自动开启session(无需手动session_start())，默认是关闭的</p>
+<p>session.save_handler：session数据的保存方式，默认是文件形式</p>
+<p>session.save_path：session文件默认存储的位置。使用系统的文件夹存储不安全，需要指定对应存储路径</p>
+<h5 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h5><p>session.cookie_lifetime：PHPsessionID在浏览器对应COOKIE的生命周期，默认是会话结束</p>
+<p>session.cookie_path：sessionID在浏览器存储之后允许服务器访问的路径（COOKIE的作用范围）</p>
+<p>session.cookie_domain：COOKIE允许访问的子域（COOKIE允许跨子域），默认PHPsessionID只能当前主机访问</p>
+<h5 id="配置的两种形式"><a href="#配置的两种形式" class="headerlink" title="配置的两种形式"></a>配置的两种形式</h5><p>１．php.ini中的配置：全局配置，修改php.ini中的配置项</p>
+<p>２．脚本中配置：PHP可以通过int_set函数来在运行中设定某些配置项(只对当前运行脚本有效)，把这种配置称为项目级</p>
+<h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><h5 id="垃圾回收机制原理"><a href="#垃圾回收机制原理" class="headerlink" title="垃圾回收机制原理"></a>垃圾回收机制原理</h5><p>Session会话技术后，session文件并不会自动清除，如果每天都有大量session文件产生但是有都是失效的，会增加服务器的压力和影响session效率</p>
+<p>垃圾回收：是指session机制提供了一种解决垃圾session文件的方式，给session文件<code>制定周期</code>，通过session文件<code>最后修改时间</code>与<code>生命周期</code>进行结合判断，如果已经过期则删除对应的session文件，如果没有过期则保留。这样就可以及时清理无效的僵尸文件，从而提升空间利用率和session工作效率</p>
+<p>１．任何一次session开启(session_start)，session都会尝试去读取session文件</p>
+<p>２．读取session文件后，有可能触发垃圾回收机制(在session系统中也是一个函数，自己有一定几率调用)</p>
+<p>３．垃圾回收机制会自动读取所有session文件的最后编辑时间，然后加上生命周期(配置文件)与当前时间进行比较(所有session文件)</p>
+<p>&ensp;&ensp;&ensp;&ensp;a ）过期－&gt;删除</p>
+<p>&ensp;&ensp;&ensp;&ensp;b ）有效－&gt;保留</p>
+<h5 id="垃圾回收参数设置"><a href="#垃圾回收参数设置" class="headerlink" title="垃圾回收参数设置"></a>垃圾回收参数设置</h5><p>session.gc_maxlifetime=1440 ；规定的session文件最大的声明周期是1440秒＝24分钟</p>
+<p>session.gc_probability＝1 ；垃圾回收概率因子(分子)</p>
+<p>session.gc_divisor＝1000 ；垃圾回收概率分母</p>
+<h4 id="禁用COOKIE使用Session"><a href="#禁用COOKIE使用Session" class="headerlink" title="禁用COOKIE使用Session"></a>禁用COOKIE使用Session</h4><h5 id="禁用COOKIE不能使用Session的原因"><a href="#禁用COOKIE不能使用Session的原因" class="headerlink" title="禁用COOKIE不能使用Session的原因"></a>禁用COOKIE不能使用Session的原因</h5><p>Session技术需要利用COOKIE技术来保存sessionID,从而使得PHP能够在跨脚本的时候得到相同的sessionID，从而访问同一个session文件</p>
+<h5 id="实现无COOKIE使用Session的原因"><a href="#实现无COOKIE使用Session的原因" class="headerlink" title="实现无COOKIE使用Session的原因"></a>实现无COOKIE使用Session的原因</h5><p>在PHP中，想要解决没有COOKIE也实现session技术的方式有两种</p>
+<p>１．可以利用PHP提供的session函数：session_id()和session_name()来获得和设置sessionID或者name从而解决session_start()产生新的sessionID的情况</p>
+<p>在session保存数据的脚本中获取sessionID和name</p>
+<p><a href="https://sm.ms/image/eiJYpkFGb812LBy" target="_blank"><img src="https://i.loli.net/2020/02/03/eiJYpkFGb812LBy.png" ></a></p>
+<p>这是我们已经获取到了sessionID和名字，可以用URL或者表单传递</p>
+<p><a href="https://sm.ms/image/pzDh3lXtf9JN6Fs" target="_blank"><img src="https://i.loli.net/2020/02/03/pzDh3lXtf9JN6Fs.png" ></a></p>
+<p>我们这里用session_id()设置sessionID，避免因为不知道而再去创建</p>
+<p>２．可以利用session集中已经提供的解决方案自动操作</p>
+<p>原因１：默认session配置只允许使用COOKIE保存SessionID</p>
+<p>原因２：默认关闭了其他能够传递数据的方式，只保留COOKIE</p>
+<p>修改PHP配置文件，开启其他方式传输sessionID，关闭只允许使用COOKIE传输功能</p>
+<p>session.use_only_cookie=1；需要关闭，从1变成0；关闭只允许COOKIE传输功能</p>
+<p>session.use_trans_sid＝0 ；开启其他保存方式sid，从0变成1；允许其他方式传输sessionID</p>
+<p><a href="https://sm.ms/image/iXQ1B9DEPyZU5v7" target="_blank"><img src="https://i.loli.net/2020/02/03/iXQ1B9DEPyZU5v7.png" ></a></p>
+<h4 id="简单应用-1"><a href="#简单应用-1" class="headerlink" title="简单应用"></a>简单应用</h4><p>同样我们用SESSION写一遍，SESSION是保存在服务器端的，但客户端会存在一个SESSION的id。</p>
+<p>登录界面一样就不放图了，其实只是把COOKIE的地方换成SESSION,注意一下他们不同的地方</p>
+<p><a href="https://sm.ms/image/7W9LzwDmZH8ujX2" target="_blank"><img src="https://i.loli.net/2020/02/02/7W9LzwDmZH8ujX2.png" ></a></p>
+<p><a href="https://sm.ms/image/SKYOGtBkxWoz3AH" target="_blank"><img src="https://i.loli.net/2020/02/02/SKYOGtBkxWoz3AH.png" ></a></p>
+<h2 id="GD图象处理"><a href="#GD图象处理" class="headerlink" title="GD图象处理"></a>GD图象处理</h2><h3 id="画布"><a href="#画布" class="headerlink" title="画布"></a>画布</h3><p>API：外部提供的应用接口，已经准备好一套处理某些功能的机制，用户只需要按照指定的数据要求，调用指定的函数或者方法(类)就可以实现某个功能</p>
+<p>１．GD库的概念：Graphic Device图象处理扩展(外部提供的API)，能够允许PHP在脚本中使用对应的函数来实现某些图像制作功能</p>
+<p>２．GD库的引入：GD库是外部提供的API，已经被集成到PHP扩展库中(不需要下载)，但是需要在PHP的配置文件中开启对应的扩展。GD扩展(GD2)。</p>
+<p>在php.ini中找到配置项：extension=php_gd2.dll，然后重启服务才能生效</p>
+<h4 id="GD图象处理技术"><a href="#GD图象处理技术" class="headerlink" title="GD图象处理技术"></a>GD图象处理技术</h4><p>画图本质是在内存开辟一块很大的内存区域用于图片制作</p>
+<p>创建画布资源</p>
+<p>１．imagecreate(宽，高)：创建一个空白画布(背景色是白色的)</p>
+<p><a href="https://sm.ms/image/5OYWVIQsy3tnK6l" target="_blank"><img src="https://i.loli.net/2020/02/05/5OYWVIQsy3tnK6l.png" ></a></p>
+<p>２．imagecreatetruecolor(宽，高)：创建一个真彩画布(背景色是黑色，需要填充)</p>
+<p>３．imagecreatefromjpeg(图片文件路劲)：打开一个jpeg格式的图片资源</p>
+<p>４．imagecreatefromgif(图片文件路劲)：打开一个gif格式图片资源(PHP中无法实现动态)</p>
+<p>５．imagecreatefrompng(图片文件路劲)：打开一个png图片资源</p>
+<p><a href="https://sm.ms/image/qVEFlWZaHo6DTkv" target="_blank"><img src="https://i.loli.net/2020/02/05/qVEFlWZaHo6DTkv.png" ></a></p>
+<h4 id="操作画布资源"><a href="#操作画布资源" class="headerlink" title="操作画布资源"></a>操作画布资源</h4><p>说明：所有的画布资源操作都是需要指定画布资源，而且都是第一个参数</p>
+<p>１．分配颜色：imagecolorallocate(画布资源，红色，绿色，蓝色)，根据RGB三色组给指定画步资源分配一组颜色，会返回一个颜色句柄(一组整数)，每一个色组都是从0到255<img src="https://i.loli.net/2020/02/05/eMkHEcfCBSDWGRq.png" ></a></p>
+<p>在真彩图片资源中，所有分配的颜色都不会自动给图片资源上色，是用来后续操作图片资源的时候，指定着色的，但是如果当前使用的imagecreate创建的图片资源，那么第一个分配的颜色，会自动被着色为图片背景色</p>
+<p>注意：凡是给图片上增加内容，基本都需要分配颜色(每一个操作图片的函数之前，都需要先调用分配颜色的函数得到一个颜色)</p>
+<p>２．填充区域：imagefill(画布颜色，起始X坐标，起始Y坐标)：指定位置开始填充指定颜色</p>
+<p><a href="https://sm.ms/image/7DfWLTjXo41hxlO" target="_blank"><img src="https://i.loli.net/2020/02/05/7DfWLTjXo41hxlO.png" ></a></p>
+<p>imagefill的填充逻辑，从指定点开始，自动匹配相邻点，如果颜色一致，自动渲染，扩展到全图</p>
+<p>３．画直线：imageline(图片资源，起始点X，起始点Y，终点X，终点Y，颜色)，制作一条直线</p>
+<p><a href="https://sm.ms/image/FIyJgDM6ZQtAWpo" target="_blank"><img src="https://i.loli.net/2020/02/05/FIyJgDM6ZQtAWpo.png" ></a></p>
+<p>４．画矩形：imagerectangle(图片资源，左上角X，坐上角Y，右下角X，右下角Y，颜色)：制作一个矩形</p>
+<p><a href="https://sm.ms/image/MOBDFJfZLkuQdyv" target="_blank"><img src="https://i.loli.net/2020/02/05/MOBDFJfZLkuQdyv.png" ></a></p>
+<p>５．画圆弧：imagearc(图像资源，轴点X，轴点Y，宽度，高度，弧度起点，弧度终点，颜色)：制作弧度图像</p>
+<p><a href="https://sm.ms/image/q1YObZ5lNCoD42S" target="_blank"><img src="https://i.loli.net/2020/02/05/q1YObZ5lNCoD42S.png" ></a></p>
+<p>６．在画布上写字：imagestring(),imagettftext()</p>
+<p>imagestring(图片资源，文字大小，起始X，起始Y，内容，颜色)：用来书写ASCII对应的字符(英文)</p>
+<p><a href="https://sm.ms/image/7WVpyezgiMNPxa5" target="_blank"><img src="https://i.loli.net/2020/02/05/7WVpyezgiMNPxa5.png" ></a></p>
+<p>imagettftext(图片资源，文字大小，旋转角度，起始X，起始Y，颜色，字体，内容)：可以书写任意文字(中文)需要指定字体路径(ttf文件：默认是windows/fonts)</p>
+<p><a href="https://sm.ms/image/owqGWy6I9Vxjr7E" target="_blank"><img src="https://i.loli.net/2020/02/05/owqGWy6I9Vxjr7E.png" ></a></p>
+<h4 id="输出画布资源"><a href="#输出画布资源" class="headerlink" title="输出画布资源"></a>输出画布资源</h4><p>１．输出为图片文件：以图片文件形式保存到本地文件夹</p>
+<p>２．输出为网页图片：将图片展示给HTML(用户)：服务器需要告知服务器当前内容是图片(修改响应头)</p>
+<p><a href="https://sm.ms/image/UX4KGsukhbLCr2Q" target="_blank"><img src="https://i.loli.net/2020/02/05/UX4KGsukhbLCr2Q.png" ></a></p>
+<p>image+图片格式</p>
+<p>imagejpeg()：保存成jpeg格式图片</p>
+<p>imagepng()：保存成png格式图片</p>
+<p>imagegif()：保存gif格式图片</p>
+<p>如果图片只是提供了图片资源，不指定保存的文件位置，那么系统认为是输出给浏览器，如果制定了位置，那么系统认为是保存到本地(第二个参数)</p>
+<h4 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h4><p>１．如果图片输出或者保存出错，浏览器看到的永远是告诉图片出错了，但是不会告诉你错误原因在哪，休要关闭header图片输出，再看问题</p>
+<p>２．如果图片输出之后没有成功，但是关闭header也看不到错误，最大的问题可能是图片输出之前输出了额外的内容，应该查看网页源码，看看图片输出之前是否有任何输出，尤其是空格空行</p>
+<h4 id="销毁画布资源"><a href="#销毁画布资源" class="headerlink" title="销毁画布资源"></a>销毁画布资源</h4><p>从内存中将画布资源清理掉，释放内容</p>
+<p>imagedestory(画布资源)</p>
+<p><a href="https://sm.ms/image/1nyCw38tKZ24ehQ" target="_blank"><img src="https://i.loli.net/2020/02/05/1nyCw38tKZ24ehQ.png" ></a></p>
+<h4 id="获取图片信息"><a href="#获取图片信息" class="headerlink" title="获取图片信息"></a>获取图片信息</h4><p>１．获取画布尺寸：imagese(),imagesy()</p>
+<p>２．获取图片尺寸：getimagesize()</p>
+<p><a href="https://sm.ms/image/d7DpUn3KNAyC9Sm" target="_blank"><img src="https://i.loli.net/2020/02/06/d7DpUn3KNAyC9Sm.png" ></a></p>
+<p>获取图片尺寸：getimagesize()</p>
+<p><a href="https://sm.ms/image/78uvgYQR1KJAXjx" target="_blank"><img src="https://i.loli.net/2020/02/06/78uvgYQR1KJAXjx.png" ></a></p>
+<p>查一下手册看返回值代表什么</p>
+<p><a href="https://sm.ms/image/3yUOdniY2LlQtPW" target="_blank"><img src="https://i.loli.net/2020/02/06/3yUOdniY2LlQtPW.png" ></a></p>
+<h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><p>验证码：全自动区分计算机和人类的图灵测试，是一种区分用户是计算机还是人的公共全自动化程序，可以防止：恶意破解密码、刷票，有效防止某个黑客对某一个特定注册用户用特定程序暴力破解方式进行不端登录尝试这个问题可以由计算机生成并评判，但是必须只有人类才能解答</p>
+<p>图片验证码：计算机将拿到的验证码存放到图片中，然后用户看到然后识别，然后提交服务器，服务器再根据用户提交的和服务器之前生成的进行比较</p>
+<h4 id="验证码图片"><a href="#验证码图片" class="headerlink" title="验证码图片"></a>验证码图片</h4><h5 id="１．实现验证码图片的展示"><a href="#１．实现验证码图片的展示" class="headerlink" title="１．实现验证码图片的展示"></a>１．实现验证码图片的展示</h5><p>步骤：生成图片资源：背景颜色、写入文字、输出图片给浏览器、关闭</p>
+<p><a href="https://sm.ms/image/OzXEg5xhMntFJiy" target="_blank"><img src="https://i.loli.net/2020/02/06/OzXEg5xhMntFJiy.png" ></a></p>
+<h5 id="２．实现验证码文字的随机变化"><a href="#２．实现验证码文字的随机变化" class="headerlink" title="２．实现验证码文字的随机变化"></a>２．实现验证码文字的随机变化</h5><p>有一串文字可以随机变化</p>
+<p>步骤：制作目标字符串集、如何随机从字符串中取出对应的汉字、随机取出对应的字符、将取出的字符放到指定图片位置即可</p>
+<p><a href="https://sm.ms/image/CUfVcaFtvSRYGAK" target="_blank"><img src="https://i.loli.net/2020/02/06/CUfVcaFtvSRYGAK.png" ></a></p>
+<h5 id="３．实现验证码文字颜色的随机变化"><a href="#３．实现验证码文字颜色的随机变化" class="headerlink" title="３．实现验证码文字颜色的随机变化"></a>３．实现验证码文字颜色的随机变化</h5><p><a href="https://sm.ms/image/KhPjpMYVIF9Xi1o" target="_blank"><img src="https://i.loli.net/2020/02/06/KhPjpMYVIF9Xi1o.png" ></a></p>
+<h5 id="４．实现验证码背景或干扰噪点"><a href="#４．实现验证码背景或干扰噪点" class="headerlink" title="４．实现验证码背景或干扰噪点"></a>４．实现验证码背景或干扰噪点</h5><p>增加一些额外的不影响用户看但是会产生模糊效果的内容(点或者直线)，相关的两个函数：imagestring()/imageline()</p>
+<p><a href="https://sm.ms/image/6F3IcRnAPrbo7yK" target="_blank"><img src="https://i.loli.net/2020/02/06/6F3IcRnAPrbo7yK.png" ></a></p>
+<p>干扰点和干扰线的次数都是循环出来的，根据实际情况改变，还可以改变文字的大小和位置，以及其他可变的一些东西</p>
+<h5 id="５．实现点击刷新验证码功能"><a href="#５．实现点击刷新验证码功能" class="headerlink" title="５．实现点击刷新验证码功能"></a>５．实现点击刷新验证码功能</h5><p>需要我们写一个表单页面</p>
+<p>实现点击更换验证码：让src重新请求PHP脚本，产生一张新的图片，因此需要给img标签增加一个点击事件：img的src是否重新发起请求，取决于浏览器，浏览器是否重新发起请求取决于src是否改变，我们给个参数，参数值随机</p>
+<p><a href="https://sm.ms/image/pbylU53X27wfSI1" target="_blank"><img src="https://i.loli.net/2020/02/06/pbylU53X27wfSI1.png" ></a></p>
+<p>Math.random()：返回介于0(包含)～１(不包含)之间的一个随机数</p>
+<h3 id="缩略图实现"><a href="#缩略图实现" class="headerlink" title="缩略图实现"></a>缩略图实现</h3><p>缩略图：将原图得到一个较小的图(尺寸上)</p>
+<p>原理：将原图打开，然后放到另一个较小的图片资源中，最后进行保存</p>
+<h4 id="固定大小"><a href="#固定大小" class="headerlink" title="固定大小"></a>固定大小</h4><p>制作固定尺寸的缩略图，按照缩略图要求的大小制作，不管原图比例最后可能会失真</p>
+<p>步骤：得到原图资源、得到一个缩略图资源(较小)、图片采样复制:GD提供了一个函数、保存缩略图、销毁所有资源(原图和缩略图)</p>
+<p>介绍一个函数：imagecopyresamepled(缩略图资源，原图资源，缩略图开始放X，放Y，原图采样起始X，起始Y，缩略图存放宽，存放高，原图采样宽，采样高)</p>
+<p><a href="https://sm.ms/image/moesJMwEGIlWT7P" target="_blank"><img src="https://i.loli.net/2020/02/07/moesJMwEGIlWT7P.png" ></a></p>
+<p>效果图</p>
+<p><a href="https://sm.ms/image/pntXmKxkUPjgrJ2" target="_blank"><img src="https://i.loli.net/2020/02/07/pntXmKxkUPjgrJ2.png" ></a></p>
+<h4 id="等比例"><a href="#等比例" class="headerlink" title="等比例"></a>等比例</h4><p>优点：图片不会失真　缺点：缩略图有些部分需要进行额外填充(白色填充：补白)</p>
+<p>等比例缩略图与固定缩略图的制作区别：在于需要通过计算来得出缩略图的宽和高</p>
+<p>算法原理：</p>
+<p>１．计算缩略图高度比</p>
+<p>２．计算原图高度比</p>
+<p>３．比较：</p>
+<p>&ensp;&ensp;&ensp;&ensp;如果缩略图宽高比大于原图宽高比，将缩略图中用原图的高尽可能填满，缩略图的高是完整的，宽度不够(补白)</p>
+<p>&ensp;&ensp;&ensp;&ensp;如果缩略图宽高比小于原图宽高比，将缩略图中用原图的宽尽可能填满，缩略图的宽是完整的，高度不够(补白)</p>
+<p><a href="https://sm.ms/image/fD4YuQj2UAtqzBe" target="_blank"><img src="https://i.loli.net/2020/02/07/fD4YuQj2UAtqzBe.png" ></a></p>
+<p>最主要的部分就是中间计算缩略图和原图的宽高比例</p>
+<p>效果图</p>
+<p><a href="https://sm.ms/image/YTK2m8adDk3Ssfu" target="_blank"><img src="https://i.loli.net/2020/02/07/YTK2m8adDk3Ssfu.png" ></a></p>
+<p>我们也可以清楚的看到补白的部分</p>
+<h3 id="水印图"><a href="#水印图" class="headerlink" title="水印图"></a>水印图</h3><p>水印图：watermark，在某个图片上增加一个透明的印记。用途：版权操作</p>
+<p>制作图片原理：将一个带有明显标志的图片放到另外一张需要处理的图片之上</p>
+<p>步骤：获取原图资源、获取水印资源、合并图片、保存输出、清楚资源</p>
+<p>合并图片需要一个函数：imagecopymerge(目标资源，水印资源，目标起始X，起始Y，水印起始X，起始Y，目标宽，目标高，透明度)</p>
+<p>效果图</p>
+<p><a href="https://sm.ms/image/OgMjGEiry5l1kUK" target="_blank"><img src="https://i.loli.net/2020/02/08/OgMjGEiry5l1kUK.png" ></a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">PlayZG</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2020/12/21/PHP%E5%9F%BA%E7%A1%80-%E4%B8%89/">http://example.com/2020/12/21/PHP%E5%9F%BA%E7%A1%80-%E4%B8%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">PlayZG</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PHP/">
+                                    <span class="chip bg-color">PHP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/12/21/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Mysql数据库基本命令">
+                        
+                        <span class="card-title">Mysql数据库基本命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Mysql/">
+                        <span class="chip bg-color">Mysql</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/12/21/PHP%E5%9F%BA%E7%A1%80-%E4%BA%8C/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP基础(二)">
+                        
+                        <span class="card-title">PHP基础(二)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: John Doe<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">152.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/playZG" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:playzg@aliyun.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1351802079" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1351802079" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

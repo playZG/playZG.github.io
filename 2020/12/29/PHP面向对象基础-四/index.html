@@ -1,0 +1,2288 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="PHP面向对象基础(四), Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>PHP面向对象基础(四) | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">PHP面向对象基础(四)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-12-29
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.7k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="模板技术"><a href="#模板技术" class="headerlink" title="模板技术"></a>模板技术</h1><blockquote>
+<p>引入：HTML文档实际上可以看成是一个字符串文件，那么也就可以将文档内容读入到PHP里面。因此，除了在HTML中直接写对应的PHP标签代码可以解析，我们也可以让PHP去尝试以其他的方式来实现数据在HTML里的插入，这个就得用到替换</p>
+</blockquote>
+<h2 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h2><p>定义：模板技术，即利用特定的占位符放到一个文档中的某个部位，然后利用相应的方式找到对应的占位符，并将数据实现占位符替换。</p>
+<p>１．原来要在HTML中显示数据的方式：在PHP文件中准备好数据，然后在HTML中写一个echo指令，利用PHP文件包含HTML文件即可</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//PHP文件，获取数据，然后加载HTML文档$var = 'hello world';</span>
+<span class="token comment" spellcheck="true">//包含HTML文件include_once 'hello,html';</span>
+<span class="token markup"><span class="token comment" spellcheck="true">&lt;!--hello.html--></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token variable">$var</span><span class="token delimiter">?></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>２．以上方式会让HTML中嵌入很多PHP标签，从而影响文档的整体性，此时我们可以换一种思路，在HTML中显示的数据使用一个类似HTML的标记，而并非PHP输出语句</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token comment" spellcheck="true">&lt;!--hello.html--></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$hello&amp;#125;     </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>在PHP中也不再进行文件的加载，而是采取读取的形式</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$hello</span> <span class="token operator">=</span> <span class="token string">'hello world'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//读取文件</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//对$str中的&amp;#123;$hello&amp;#125;进行替换，替换成$hello中的数据</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">'&amp;#123;hello&amp;#125;'</span><span class="token punctuation">,</span><span class="token variable">$hello</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//输出替换后的结果</span>
+<span class="token keyword">echo</span> <span class="token variable">$str</span><span class="token punctuation">;</span></code></pre>
+<p>３．以上就是一种直接替换成成品的模板技术原理，但是实际上模板技术是要为项目服务的，以上方式虽然能解决问题，但是太过简单。比如说一个数组传入，以上方式就合适了，所以真正的模板就是算法是比较复杂的。而且考虑到项目的效率，通常模板技术会经历一下几层方式</p>
+<ul>
+<li>编译：对原始的PHP文件提供的内容，和HTML提供的模板进行编译，编译的结果就是形成一个可执行的PHP编辑文件</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token comment" spellcheck="true">&lt;!--模板文件--></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$hello&amp;#125;    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token comment" spellcheck="true">&lt;!--编译后的文件--></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token variable">$hello</span><span class="token punctuation">;</span><span class="token delimiter">?></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<ul>
+<li>执行：编译后的文件就可以直接被PHP引擎解释执行了</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$hello</span> <span class="token operator">=</span> <span class="token string">'hello world'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//包含文件include '模板技术编译后的PHP文件'</span>
+</code></pre>
+<p><code>总结</code></p>
+<p>１．模板技术原理的本质是在HTML中设置相对简洁的标签，然后利用PHP实现内容的替换(这个过程由程序实现，开发人员不需要管理，只需要在需要显示数据的位置使用特定的标签即可)</p>
+<p>２．模板技术是需要考虑项目实现和效率的，所以通常会产生中间产物(编译文件)来提升效率(后期不用再进行编译了)</p>
+<h3 id="Smarty模板"><a href="#Smarty模板" class="headerlink" title="Smarty模板"></a>Smarty模板</h3><blockquote>
+<p>引入：小项目的话其实不用模板引擎也是可以的，毕竟任何内容的引入都会产生额外的开销(运行层)。而如果是大型项目的话，肯定是需要用到模板技术来进行管理的，一般情况下我们不需要自己开发模板引擎，可以用市场上现有的成熟的模板引擎，比如<code>Smarty</code></p>
+</blockquote>
+<p>定义：Smarty是一个使用PHP写出来的模板引擎，是非常著名的PHP模板引擎之一，他提供了逻辑与外在内容的分离，简单的讲，目的就是要使用PHP程序员与美工分离，使用的程序员改变程序的逻辑内容不会影响到美工的页面设计，美工重新修改页面不会影响到程序的程序逻辑，这在多人合作的项目中显的尤为重要。</p>
+<p>多说一句：Smarty现在几乎很少有人用了，但本着学习，我还是看了一下</p>
+<p>１．Smarty是一款专门用于PHP与HTML分离的模板技术，通常不会独立工作，而是在PHP项目中需要使用的时候引入使用，我们可以从<a target="_blank" rel="noopener" href="https://www.smarty.net/">Smarty官网下载</a></p>
+<p><strong>注意</strong>：Smarty从2.6.31版本开始已经是基于PHP7.2版本，所以要根据实际PHP版本来选择对应的Smarty版本</p>
+<p>２．对于Smarty的学习，从操作手册入手，Smarty有完整的操作手册，</p>
+<p>３．使用Smarty的优缺点</p>
+<ul>
+<li>优点<ul>
+<li>效率高，这是Smarty模板引擎特有的，可以让我们的网站访问效率提升</li>
+<li>编译型，Smarty并非简单的替换，而是对模板先进行编译，从而达到效率高(二次访问不再编译)</li>
+<li>缓存，Smarty可以直接缓存，在编译的基础上生成访问效率更高的静态业</li>
+<li>插件，允许开发人员自定义插件</li>
+<li>灵活，内置函数可以方便开发人员高效率实现数据显示</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>数据实时效率低，如果访问数据是实时的，那么Smarty会降低访问效率</li>
+<li>不适合小项目，会让项目开难度增加，丧失PHP敏捷开发的特点</li>
+</ul>
+</li>
+</ul>
+<p><code>总结</code></p>
+<p>１．Smarty是一款致力于解决PHP和HTML分离的模板引擎</p>
+<p>２．Smarty能够很好的提升大项目的访问效率，但是也会增加开发成本，不适合小项目和数据实时性要求高的项目</p>
+<h3 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h3><p>定义：Smarty使用，就是将Smarty加入到项目中并且引入到项目中实现模板替换功能</p>
+<p>１．Smarty作为一款插件，可以直接放到项目的根目录，也可以根据实际项目需求，放到相应的插件目录(Vendor)。当前作为学习，我们可以直接将Smarty放到网站根目录：从官网下载，然后解压，将解压后文件夹中的libs文件夹放到网站根目录，为了方便管理可以改名为Smarty文件夹</p>
+<p>２．Smarty被引入项目之后，我们要做的就是去包含Smarty.class.php文件，然后进行实例化</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//加载smarty类文件，实例化</span>
+<span class="token keyword">include_once</span> <span class="token string">'smarty/Smarty.class.php'</span><span class="token punctuation">;</span>
+<span class="token variable">$smarty</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Smarty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>３．Smarty的目标是将用户要显示的数据通过Smarty在模板合适的位置显示出来，这里要实现该功能一共分为三步</p>
+<ul>
+<li>在模板中使用Smarty规则来定义数据存放占位符：默认规则是｛+$+变量名+｝</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token comment" spellcheck="true">&lt;!--smarty.html模板文件--></span></span>
+<span class="token markup"><span class="token doctype">&lt;!Doctype html></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$hello&amp;#125;    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<ul>
+<li>使用Smarty::assign(‘模板中变量名’,’数据’)方法将要显示的数据传递给模板</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//使用Smarty实例化对象后</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>使用Smarty::display(‘模板文件’)方法将要显示数据的模板加载显示：默认加载路径是网站根目录或者根目录下的templates文件夹</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//接smarty的assign方法后</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">display</span><span class="token punctuation">(</span><span class="token string">'smarty.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><code>总结</code></p>
+<p>１．Smarty可以直接从官网获取版本，版本使用参照对应的PHP版本</p>
+<p>２．Smarty虽然强大，但是使用步骤非常简单</p>
+<ul>
+<li>引入Smarty.class.php文件</li>
+<li>实例化Smarty对象</li>
+<li>利用Smarty::assign()方法分配要给模板显示的数据</li>
+<li>在模板中利用Smarty标记来占位数据(注意名字与assign方法分配的名字要一致，否则匹配不上)</li>
+</ul>
+<h3 id="Smarty配置"><a href="#Smarty配置" class="headerlink" title="Smarty配置"></a>Smarty配置</h3><blockquote>
+<p>定义：Smarty配置，即根据项目具体需求，来选择smarty应该怎么样去工作</p>
+</blockquote>
+<p>１．Smarty提供了很多配置，可以通过其Smarty对象的属性来设置</p>
+<ul>
+<li>$smarty-&gt;debugging = false;    //是否开启debug调试，默认是关闭</li>
+<li>$smarty-&gt;template_dir = “templates”    //模板目录</li>
+<li>$smarty-&gt;compile_dir = “templates_c/“      //编译目录(Smarty自动创建)</li>
+<li>$smarty-&gt;config_dir = “configs/“              //配置项目录</li>
+<li>$smarty-&gt;caching = false                //是否开启缓存</li>
+<li>$smarty-&gt;cache_dir = “cache/“        //缓存目录(开启缓存后自动创建)</li>
+<li>$smarty-&gt;cache_lifetime = 3600        //缓存生命周期，单位是s</li>
+<li>$smarty-&gt;left_delimiter = “{“             //左定界符</li>
+<li>$smarty-&gt;right_delimiter = “}”             //右定界符</li>
+</ul>
+<p>２．最简单的使用是只需要配置一下对应的template_dir属性即可</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$smarty</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Smarty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">template_dir</span> <span class="token operator">=</span> <span class="token string">'templates'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//实际模板所在目录</span></code></pre>
+<p>３．如果需要开启缓存，那么需要配置三项内容</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">caching</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache_dir</span> <span class="token operator">=</span> <span class="token string">"cache/"</span>   <span class="token comment" spellcheck="true">//后两项可以默认</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache_lifetime</span> <span class="token operator">=</span> <span class="token number">24</span> <span class="token operator">+</span> <span class="token number">60</span> <span class="token operator">*</span><span class="token number">60</span><span class="token punctuation">;</span></code></pre>
+<p>４．</p>
+<p>如果考虑到{}作为模板分隔符会与js冲突的话，可以修改一下</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">left_delimiter</span> <span class="token operator">=</span> <span class="token string">"&lt;&amp;#123;"</span>            
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">right_delimiter</span> <span class="token operator">=</span> <span class="token string">"&amp;#125;>"</span></code></pre>
+<h3 id="模板变量"><a href="#模板变量" class="headerlink" title="模板变量"></a>模板变量</h3><blockquote>
+<p>引入：Smarty针对模板中的解析变量，做了自己的解析规则，默认的处理方式的确是行不通的，需要参照Smarty定制的变量规则</p>
+</blockquote>
+<p>定义：模板变量，即在模板中被分配的变量，以及如何使用Smarty规则在模板中解析变量</p>
+<p>１．在Smarty模板中，我们将模板中的变量分为三类</p>
+<ul>
+<li>PHP分配变量，即利用assign方法分配的变量</li>
+<li>smarty保留变量，包括超全局预定义变量和smarty的内置变量</li>
+<li>自定义变量，用户在模板中去定义变量(通常不用)</li>
+</ul>
+<p>２．PHP分配变量，理论上PHP可以分配任意数据类型给模板进行解析，通常数据其实也是三种</p>
+<ul>
+<li>标量数据：直接使用标记输出的数据</li>
+<li>数组数据：在smarty模板中可以使用下标或者通过”.”+下标来实现</li>
+<li>对象数据：在smarty模板中也是通过对象访问符来实现访问</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//PHP给模板分配数据</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'arr1'</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//索引数组</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'arr2'</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'a1'</span><span class="token punctuation">,</span><span class="token string">'aa'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'aa1'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//关联数组</span>
+<span class="token keyword">class</span> <span class="token class-name">P</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;    </span>
+        <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string">'zg'</span><span class="token punctuation">;</span>    
+        <span class="token keyword">public</span> <span class="token variable">$nickname</span> <span class="token operator">=</span><span class="token string">'playzg'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'person'</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//对象$smarty->display('index.html');</span>
+<span class="token markup"><span class="token comment" spellcheck="true">&lt;!--index.html模板--></span></span>
+<span class="token markup"><span class="token doctype">&lt;!DOCTYPE html></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span></span>    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span></span>Title<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>    
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*smarty的注释：标量数据,直接显示即可*&amp;#125;    </span>
+        字符串<span class="token punctuation">:</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$hello&amp;#125;    </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*数组数据：两种下标访问方式都可以*&amp;#125;    </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$arr1[1]&amp;#125;-----&amp;#123;$arr1.2&amp;#125;    &amp;#123;$arr2.a&amp;#125;------&amp;#123;$arr2[aa]&amp;#125;        </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*对象数据：直接按照对象访问方式访问即可*&amp;#125;    </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$person->name&amp;#125;----&amp;#123;$person->nickname&amp;#125;</span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>３．Smarty保留变量：是smarty考虑到用户会需要经常使用的系统变量，或者内部变量。这类变量通常以$smarty开始，然后是各类关键字，多次访问</p>
+<ul>
+<li>GET数据：{$smarty.get.名字}</li>
+<li>POST数据：{$smarty.post.名字}</li>
+<li>session数据：{$smarty.session.名字}</li>
+<li>cookie数据：{$smarty.cookies.名字}</li>
+<li>REQUEST数据：{$smarty.request.名字}</li>
+<li>server数据：{$smarty.server.大写名字}</li>
+<li>时间戳：{$smarty.now}</li>
+<li>模板路径：{$smarty.current_dir}</li>
+<li>模板名字：{$smarty.template}</li>
+<li>配置文件：{$smarty.config.配置名}</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>    
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*表单传递了数据：有get和post提交，开启了session，还有携带cookie*&amp;#125;    </span>
+    <span class="token constant">GET</span>数据：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.get.name&amp;#125;    </span>
+    <span class="token constant">POST</span>数据：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.post.name&amp;#125;    </span>
+    session数据：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.session.username&amp;#125;    </span>
+    cookie数据：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.cookies.username&amp;#125;    </span>
+    <span class="token constant">REQUEST</span>数据：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.request.name&amp;#125;    </span>
+    server数据：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.server.SERVER_NAME&amp;#125;    </span>
+    时间戳：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.now&amp;#125;    </span>
+    模板路径：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.current_dir&amp;#125;    </span>
+    模板名字：<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.template&amp;#125;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span></code></pre>
+<p>４．自定义变量：Smarty为了在模板中可以灵活的对数据进行处理，允许设置变量：{assgin var=’变量名’ value=’变量值’}</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;assign var=</span><span class="token string">'hello'</span> value<span class="token operator">=</span><span class="token string">'world'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;        </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$hello&amp;#125;    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>５．配置文件：在smarty中，提供了一种独立为Smarty提供个性化服务的配置文件。既然是模板技术，配置内容自然是为了改变模板效果</p>
+<p>配置文件格式：smarty的配置文件与PHP的配置文件不一样，通常可以直接使用txt格式文件。文件配置项的格式是名字=值，可以配置多个，＃号代表注释，[局部]代表局部访问</p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment">#注释：默认的，所有的配置项都是全局的：</span>
+smarty_config<span class="token punctuation">.</span>phpbodyBgColor <span class="token operator">=</span> <span class="token shell-comment comment">#000000    #局部配置</span>
+<span class="token punctuation">[</span>customer<span class="token punctuation">]</span>
+pageTitle <span class="token operator">=</span> <span class="token string">'Customer Info'</span><span class="token punctuation">;</span></code></pre>
+<p>加载配置文件：当配置文件配置好之后，在模板中需要事先加载配置文件才能使用，使用{config_load file=’配置文件路径’ [section=’局部区间’]}</p>
+<pre class=" language-php"><code class="language-php"><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;config_load file=</span><span class="token string">'smarty_config.php'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>使用配置文件：当配置文件加载之后，smarty通过在标签内部使用一对“＃”号来区分是配置文件，或者使用保留变量{$smarty.config.配置项名字}访问</p>
+<pre class=" language-php"><code class="language-php"><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*全局配置文件使用*&amp;#125;&amp;#123;config_load file=</span><span class="token string">'smarty_config.php'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token attr-name">bgcolor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>&amp;#123;#bodyBgColor#&amp;#125;<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*局部配置文件访问*&amp;#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;config_load file=</span><span class="token string">'smarty_config.php'</span> section<span class="token operator">=</span><span class="token string">'customer'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span></span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.config.pageTitle&amp;#125;</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p><code>总结</code></p>
+<p>１．Smarty提供了多种在模板中显示数据的方式</p>
+<ul>
+<li>PHP分配变量，在PHP中通过assign方法分配对的变量，在模板中直接使用</li>
+<li>内置变量，Smarty将各类系统超全局变量的内部实现，通过<code>$smarty.超全局变量名[小写].数组元素下标</code>访问</li>
+<li>自定义变量，在模板中可以通过{assign var=’变量名’ value=’值’}设定变量，并进行访问</li>
+<li>Smarty允许对模板进行配置，可以通过smarty配置文件，{config_load file=”文件名” [section=’具体配置部分’]}的形式将配置文件引入到模板中，然后使用配置标签(#配置项#)或者保留变量{$smarty.config.配置项}来实现访问</li>
+</ul>
+<h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><blockquote>
+<p>引入：数据动态化的显示是PHP作为动态网站开发语言的最典型的特征，为了保证PHP的数据能够在HTML中尽可能方便的显示，Smarty提供了一套内置函数用来实现数据的复杂化处理</p>
+</blockquote>
+<p>定义：Smarty内置函数，是Smarty针对分支、循环等数据处理语句封装的一套便于在模板中显示和操作数据的语法格式</p>
+<p>１．分支处理：Smarty中提供了一套if分支用于简单逻辑判定，语法格式为{if}{elseif}{else}{/if}</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;if isset($smarty.post.username)&amp;#125;            </span>
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$smarty.post.username&amp;#125;        </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;else&amp;#125;            </span>
+            没有用户名        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/if&amp;#125;    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>２．循环处理：PHP最核心的一点就是数组的批量输出，在Smarty中提供了多种遍历输出数组数据的方式</p>
+<ul>
+<li>foreach：遍历所有类型数组，主要用户PHP分配的数据的输出显示</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;形式1：采用foreach固有形式&amp;#125;    </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;foreach $arr as $val&amp;#125;            </span>
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*显示$val的数据*&amp;#125;    </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/foreach&amp;#125;        </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*形式2：采用smarty专属形式*&amp;#125;        </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;foreach from=$arr key=</span><span class="token string">'键名字'</span> item<span class="token operator">=</span><span class="token string">'值名字'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;            </span>
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;*可以访问键名字和值*&amp;#125;            </span>
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$键名字&amp;#125;&amp;#123;$值名字&amp;#125;            </span>
+        <span class="token markup"><span class="token comment" spellcheck="true">&lt;!--以下方式也能取得键名--></span></span>            
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$值名字@key&amp;#125;        </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/foreach&amp;#125;    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p><strong>注意</strong>：在Smarty中，为foreach提供了很多可访问属性，通过{$smarty.foreach.foreach名字.属性}或者{$循环值@属性}来实现访问</p>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index</td>
+<td>当前数组索引(循环内部)</td>
+</tr>
+<tr>
+<td>iteration</td>
+<td>当前循环的次数(循环内部)</td>
+</tr>
+<tr>
+<td>first</td>
+<td>首次循环(循环内部)</td>
+</tr>
+<tr>
+<td>last</td>
+<td>最后一次循环(循环内部)</td>
+</tr>
+<tr>
+<td>show</td>
+<td>循环是否执行判定：true表示循环有数据，false表示没有数据(未执行)</td>
+</tr>
+<tr>
+<td>total</td>
+<td>foreach执行的总次数(循环内外都可以使用)</td>
+</tr>
+</tbody></table>
+<pre class=" language-php"><code class="language-php">    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;assign var=</span><span class="token string">'user'</span> value<span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">,</span><span class="token string">'age'</span><span class="token punctuation">,</span><span class="token string">'gender'</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;    </span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>        
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;foreach $user as $value&amp;#125;            </span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;if $value@first&amp;#125;第一次执行循环:                </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span></span>                    
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span></span>下标<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span></span>                    
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span></span>循环次数<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span></span>                    
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span></span>值<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span></span>                
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span></span>            
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/if&amp;#125;            </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span></span>                
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span></span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$value@index&amp;#125;</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span></span>                
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span></span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$value@iteration&amp;#125;</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span></span>                
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span></span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$value&amp;#125;</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span></span>            
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span></span>        
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/foreach&amp;#125;        </span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;if $value@show&amp;#125; 循环有数据，一共循环了&amp;#123;$value@total&amp;#125;次&amp;#123;/if&amp;#125;    </span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></span></code></pre>
+<p><strong>注意</strong>：foreach还允许使用一种特定方式来处理foreach遍历的数组不存在的情况，使用{foreachelse}</p>
+<pre class=" language-php"><code class="language-php"><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;foreach from=$arr item=</span><span class="token string">'val'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;    </span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$val&amp;#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;foreachelse&amp;#125;    </span>
+    没有数据
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/foreach&amp;#125;</span></code></pre>
+<ul>
+<li>section：遍历索引数组，通常更多的是用于没有分配数据的循环</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;section name=任意名字 loop=传递数组｜指定循环次数 [step=步长] [max=最大循环次数]&amp;#125;    </span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$传递数组[section名字].遍历的元素下标&amp;#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/section&amp;#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;assign var=</span><span class="token string">'arr'</span> value<span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;section name=</span><span class="token string">'id'</span> loop<span class="token operator">=</span><span class="token variable">$arr</span> max<span class="token operator">=</span><span class="token number">4</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;    </span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$arr[id]&amp;#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/section&amp;#125;</span></code></pre>
+<p><strong>注意</strong>：与foreach一样，section也有很多属性，访问方式是{$smarty.section.section名字.属性}</p>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index</td>
+<td>当前数组索引(循环内部，受start和step影响)</td>
+</tr>
+<tr>
+<td>index_prev</td>
+<td>当前数组索引的前一个索引(受start和step影响)</td>
+</tr>
+<tr>
+<td>index_next</td>
+<td>当前数组索引的后一个索引(受start和step影响)</td>
+</tr>
+<tr>
+<td>iteration</td>
+<td>当前循环的次数，不受section的start和step影响，代表循环次数</td>
+</tr>
+<tr>
+<td>first</td>
+<td>首次循环，布尔值(循环内部)</td>
+</tr>
+<tr>
+<td>last</td>
+<td>最后一次循环，布尔值(循环内部)</td>
+</tr>
+<tr>
+<td>rownum</td>
+<td>iteration别名</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>最后一次循环的下标(循环内外都可以使用)</td>
+</tr>
+<tr>
+<td>show</td>
+<td>循环是否执行判定：true表示循环有数据，false表示没有数据(未执行)</td>
+</tr>
+<tr>
+<td>total</td>
+<td>section执行的总次数(循环内外都可以使用)</td>
+</tr>
+</tbody></table>
+<p>３．文件包含：PHP实际开发中，为了维护的方便，会将模板或者其他文件拆分成多个，此时就需要用到文件的包含来使得最终模板完整。{include file=‘模板文件’},将另外一个模板文件包含进来(通常是一部分)</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>order<span class="token punctuation">'</span></span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token comment" spellcheck="true">&lt;!--菜单部分--></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;include file=</span><span class="token string">'order.html'</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;        </span>
+        <span class="token markup"><span class="token comment" spellcheck="true">&lt;!--菜单部分--></span></span>        
+        <span class="token markup"><span class="token comment" spellcheck="true">&lt;!--菜单部分--></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>４．前端语法保护：smarty用到的标签很有可能与css样式和js冲突，此时smarty会错误的认为js或者css是smarty语法，而尝试去解析，这个时候就会报错，因此smarty提供了一种语法保护的方式，将可能冲突的部分包含起来，从而smarty不解析：{literal}{/literal}</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>javascript:show()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>点我<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;literal&amp;#125;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span></span>    
+    funtion <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;        </span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;/literal&amp;#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．Smarty内置函数是指在模板中可以直接使用标签代替的形式去达到对应的效果</p>
+<p>２．Smarty中内置的函数有很多，常用的有以下几个：</p>
+<ul>
+<li>分支处理：{if}{elseif}{/if}</li>
+<li>循环处理：{foreach from=数据源 item=值变量}{/foreach}</li>
+<li>循环处理：{section name=名字 loop=数据源/循环次数}{/section}</li>
+<li>文件包含：{include file=’路径’}</li>
+<li>语法保护：{literal}{/literal}</li>
+</ul>
+<p>３．Smarty内置函数循环处理有很多的属性，可以方便我们在进行表格处理、数据统计时作为数据支持</p>
+<h3 id="外部函数使用"><a href="#外部函数使用" class="headerlink" title="外部函数使用"></a>外部函数使用</h3><p>定义：所谓外部函数使用，是指Smarty没有内置相应的函数，或者用户在PHP中自定义了一些函数，此时需要在模板中使用到</p>
+<p>１．系统函数使用：在模板中如果想要使用PHP系统函数，因为smarty的加工处理，所以需要对函数使用一个相应的边界符{}来包裹</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        字符串abcdef一共有<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;strlen(</span><span class="token string">'abcdef'</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;个字节    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>２．自定义函数使用：用户自定义的函数使用，与系统函数一样</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//实例化Smarty</span>
+<span class="token keyword">include</span> <span class="token string">'smarty/Smarty.class.php'</span><span class="token punctuation">;</span>
+<span class="token variable">$smarty</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Smarty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//自定义函数：也可以定义在smarty实例化之前，只需保证smarty加载模板之前已经进入内存即可</span>
+<span class="token keyword">function</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;    </span>
+    <span class="token keyword">echo</span> <span class="token constant">__FUNCTION__</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">display</span><span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span></span>    
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></span>        
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;show()&amp;#125;    </span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span>
+</code></pre>
+<p><code>总结</code></p>
+<p>Smarty中允许在模板中使用相应的系统函数和用户自定义函数，使用对应的smarty边界符标记好即可</p>
+<h1 id="MVC自定义框架"><a href="#MVC自定义框架" class="headerlink" title="MVC自定义框架"></a>MVC自定义框架</h1><blockquote>
+<p>引入：编程早期时，确实如此，所有的功能都是从无到有慢慢写出来的。因为那时候即便是完全相同的功能，在不同电脑上就得有不同代码。而随着时间推移，随着项目需求越多，项目实现越来越大，就诞生了这样一种技术：框架技术</p>
+</blockquote>
+<p>定义：框架技术，是指利用某种编程语言设计出来的，一种能够约束后续代码书写规范，同时还能对功能开发具有一定支撑性的代码结构</p>
+<p>１．框架说明：通俗的理解，就是框架会将很多底层的代码写好，然后规范开发者具体要做的事情(通常围绕业务展开)</p>
+<ul>
+<li>利于实现代码复用(大量代码会复用)</li>
+<li>提升开发效率</li>
+<li>开发人员可以更多关注当前要实现的功能，而不需要关注底层实现</li>
+<li>规范开发人员在限定的区域里展开自己的业务代码实现</li>
+</ul>
+<p>２．框架规范：框架基本都是基于面向对象的编程语言才有，目前PHP的框架也都是基于MVC思想设计，核心的方式都是封装好相应的安全、权限以及底层实现，开发人员只需要将业务模块按需填充代码即可</p>
+<ul>
+<li>已完成部分：底层框架已经完全实现<ul>
+<li>路由设计：用户访问URL</li>
+<li>MVC底层：DAO设计、公共模型设计、公共控制器设计、视图设计、模板技术实现</li>
+<li>安全设计：权限管理设计</li>
+<li>插件设计：各类插件设计(验证码、文件上传、验证规则等)</li>
+</ul>
+</li>
+<li>待完成部分：业务功能需求开发者自己完成<ul>
+<li>数据库设计</li>
+<li>视图设计(前端人员)</li>
+<li>控制器设计</li>
+<li>模型设计</li>
+<li>按需配置(利用框架提供的配置，选择性配置)</li>
+</ul>
+</li>
+</ul>
+<p>３．PHP成熟的框架有很多，项目可以根据实际的需求来选择对应的框架，目前最常见的PHP框架有几个：</p>
+<ul>
+<li>ThinkPHP：目前到6版本，中文操作手册，非常受欢迎</li>
+<li>Laravel：组件型框架，设计思想先进，但是比较笨重，使用也非常广</li>
+<li>CI：轻量型框架，非常简单</li>
+<li>YII：重量级框架，也是基于组件</li>
+</ul>
+<p><code>总结</code></p>
+<p>１．框架开发是一种快速开发模式</p>
+<p>２．框架会提供成熟的设计模式，优良的结构，完整的底层设计，开发人员只需要针对业务开展设计即可</p>
+<p>３．常见的框架有很多，但是都是基于MVC思想实现</p>
+<h3 id="MVC自定义框架分析"><a href="#MVC自定义框架分析" class="headerlink" title="MVC自定义框架分析"></a>MVC自定义框架分析</h3><blockquote>
+<p>引入：一个底层框架的实现，自然是有一套设计逻辑。学习一个框架首先是要知道怎么去使用框架解决问题，然后在深入框架是如何实现，学习其设计思路。这里，我们可以先模拟一个简单的框架底层实现，这样对后续框架学习和使用就很有帮助了</p>
+</blockquote>
+<p>定义：MVC自定义框架，是基于MVC设计思想下，实现项目单一入口为基准的简单框架，有了该框架，我们就可以在后续的项目中，使用事先设计的框架进行快速开发了</p>
+<p>１．框架结构设计</p>
+<ul>
+<li>框架是基于MVC设计</li>
+<li>框架是项目单一入口，即所有浏览器发起的请求(无论是用户主动还是被动)都是请求入口文件</li>
+<li>数据库操作部分DAO使用PDO的二次封装实现</li>
+<li>视图操作借助于Smarty现实</li>
+<li>公共控制器处理公共业务代码</li>
+<li>整个框架自动加载</li>
+</ul>
+<p><code>总结</code></p>
+<p>１．项目单一入口是基于MVC设计思想存在</p>
+<p>２．核心内容依然是MVC设计思想</p>
+<p>３．入口部分强制规定只能是一个入口文件，所有请求都必须请求同一个入口文件，入口文件可以将功能进行分类管理</p>
+<p>４．理论上讲：所有文件的相对路径都是入口文件所在目录，所有PHP文件都是被index.php入口文件所包含使用的(言外之意，前面所定义的所包含的内容，在后面的文件里都可以使用，但要注意顺序)</p>
+<h3 id="MVC自定义框架设计"><a href="#MVC自定义框架设计" class="headerlink" title="MVC自定义框架设计"></a>MVC自定义框架设计</h3><blockquote>
+<p>引入：其实一个软件的设计实现还是有很多方式的，最基本也是最简单的一种方式，就是从代码的运行轨迹开始去设计，这样的思路就比较清晰，也方便随时进行测试验证</p>
+</blockquote>
+<p>定义：MVC自定义框架设计就是按照设计思路，顺着代码的执行顺序去逐步编码，先实现简单的、必须的逻辑代码，后期发现有新的需求，可以回头增加对应的功能(不是修改)。具体的思路我们可以按照根据设计的结构性来划分成多个部分</p>
+<ul>
+<li>项目目录结构</li>
+<li>入口＋初始化部分</li>
+<li>控制器部分</li>
+<li>模型部分</li>
+<li>DAO重用部分</li>
+<li>Smarty插件部分</li>
+<li>代码测试</li>
+</ul>
+<h3 id="项目目录结构设计"><a href="#项目目录结构设计" class="headerlink" title="项目目录结构设计"></a>项目目录结构设计</h3><p>定义：项目目录结构是代码开始前最先设计的部分，规定代码的工作和存储位置，也代表未来访问路径</p>
+<p>１．通常一个基于MVC的项目单一入口有以下目录结构</p>
+<ul>
+<li><p>/：网站设计根目录</p>
+<ul>
+<li><p>public：公共资源目录(网站访问根目录)，包括入口文件，静态资源(CSS/Javascript/image)</p>
+</li>
+<li><p>app：应用目录，存放MVC代码</p>
+<ul>
+<li><p>admin：后台部分</p>
+<ul>
+<li><p>controller：存放业务控制器，带admin\controller命名空间</p>
+</li>
+<li><p>model：存放业务模型，带admin\model命名空间</p>
+</li>
+<li><p>view：存放视图模板</p>
+</li>
+</ul>
+</li>
+<li><p>home：前台部分</p>
+<ul>
+<li>controller：存放业务控制器，带home\controller命名空间</li>
+<li>model：存放业务模型，带home\model命名空间</li>
+<li>view：存放视图模板</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>config：配置目录，存放各类配置文件</p>
+</li>
+<li><p>core：核心目录，存放核心目录，如初始化文件、公共控制器、公共模型等，带core命名空间</p>
+</li>
+<li><p>vendor：第三方应用目录，如smarty等</p>
+</li>
+</ul>
+<p><code>总结</code></p>
+<p>１．网站根目录是指设计的结构根目录，而网站对外的站点可以设置为根目录下的public文件夹(实际网站根目录)，这样可以从服务器角度防止用户访问其他PHP文件</p>
+<p>２．app目录作为开发者最核心的目录，框架完成后，开发者只要做的就是在app各个目录中写入代码</p>
+<p>３．如果前后台能够共用的模型代码很多(理论上都是操作同样的表，只要数据操作方式一样即可)，可以合并放到app目录下</p>
+<h3 id="入口文件设计"><a href="#入口文件设计" class="headerlink" title="入口文件设计"></a>入口文件设计</h3><p>定义：入口文件，包含两个部分，第一个是用户访问的入口，以及入口进入MVC之前所要做的初始化工作</p>
+<p>１．增加入口文件：在public目录(对外网站根目录)下增加一个入口index.php文件</p>
+<p>２．思考：如何区分用户是访问的index.php然后再由index.php去访问其他文件的呢，可以在index.php中增加一个记号，如果是index.php包含的其他文件，那么可以判定记号是否存在即可</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//index.php</span>
+<span class="token comment" spellcheck="true">//增加入口记号：定义常量，以后其他文件判定是否有该常量</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ACCESS'</span><span class="token punctuation">,</span><span class="token constant">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>３．入口文件通常不做其他事情，只是定义一个入口文件，以及调用初始化文件即可：初始化文件是一个非常核心的文件，会被放到core目录下，可以直接叫App.php(注意：是个类文件，只是现在很多地方已经不再明确使用class后缀了)</p>
+<pre class=" language-php"><code class="language-php"><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ACCESS'</span><span class="token punctuation">,</span><span class="token constant">TRUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//定义上级目录常量</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ROOT_PATH'</span><span class="token punctuation">,</span><span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">'\\'</span><span class="token punctuation">,</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token function">dirname</span><span class="token punctuation">(</span><span class="token constant">__DIR__</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">require</span> <span class="token constant">ROOT_PATH</span><span class="token punctuation">.</span><span class="token string">'core/App.php'</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//激活初始化文件：因为App.php在core目录下，带core命名空间，所以使用完全限定名称访问</span>
+\<span class="token package">core<span class="token punctuation">\</span>App</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//APP类下有静态方法start()</span></code></pre>
+<p>入口文件就做完了，以后应该不会再去改变了</p>
+<p>４．增加/core/App.php初始化文件</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//增加命名空间</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span></code></pre>
+<p>５．如何确认来访问App.php文件的是index.php？通过index.php的记号来判定</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//确认访问正确</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">defined</span><span class="token punctuation">(</span><span class="token string">'ACCESS'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//没有定义ACCESS常量：非正常访问</span>
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">'localtion:../public/index.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    exit<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>６．创建初始化类App,增加入口方法start()</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//初始化类</span>
+<span class="token keyword">class</span> <span class="token class-name">App</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>７．由于站点对外根目录和实际开发文件所在目录并非同一目录，也因为文件在不同文件夹，相对目录的包含存在不确定性，所以需要很多文件的包含使用绝对路径，因此，需要为后续需要进行文件包含的文件夹建立绝对路径，通常以常量保存。路径常量设定属于一类独立的功能，因此要创建一个独立的方法来设定</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//路径常量</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//定义不同路径常量：核心目录、App目录、控制器目录、模型目录、视图目录、扩展目录</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'CORE_PATH'</span><span class="token punctuation">,</span><span class="token constant">ROOT_PATH</span><span class="token punctuation">.</span><span class="token string">'core/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'APP_PATH'</span><span class="token punctuation">,</span><span class="token constant">ROOT_PATH</span><span class="token punctuation">.</span><span class="token string">'app/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'HOME_PATH'</span><span class="token punctuation">,</span><span class="token constant">APP_PATH</span><span class="token punctuation">.</span><span class="token string">'home/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ADMIN_PATH'</span><span class="token punctuation">,</span><span class="token constant">APP_PATH</span><span class="token punctuation">.</span><span class="token string">'admin/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ADMIN_CONT'</span><span class="token punctuation">,</span><span class="token constant">ADMIN_PATH</span><span class="token punctuation">.</span><span class="token string">'controller/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ADMIN_MODEL'</span><span class="token punctuation">,</span><span class="token constant">ADMIN_PATH</span><span class="token punctuation">.</span><span class="token string">'model/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'ADMIN_VIEW'</span><span class="token punctuation">,</span><span class="token constant">ADMIN_PATH</span><span class="token punctuation">.</span><span class="token string">'view/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'HOME_CONT'</span><span class="token punctuation">,</span><span class="token constant">HOME_PATH</span><span class="token punctuation">.</span><span class="token string">'controller/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'HOME_MODEL'</span><span class="token punctuation">,</span><span class="token constant">HOME_PATH</span><span class="token punctuation">.</span><span class="token string">'model/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'HOME_VIEW'</span><span class="token punctuation">,</span><span class="token constant">HOME_PATH</span><span class="token punctuation">.</span><span class="token string">'view/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'VENDOR_PATH'</span>，<span class="token constant">ROOT_PATH</span><span class="token punctuation">.</span><span class="token string">'vendor/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'CONFIG_PATH'</span><span class="token punctuation">,</span><span class="token constant">ROOT_PATH</span><span class="token punctuation">.</span><span class="token string">'config'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'URL'</span><span class="token punctuation">,</span>'http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//www.playzg.cn/');</span>
+    <span class="token comment" spellcheck="true">//如果框架设计够全够大，还有一些目录常量需要配置</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//在start()入口方法中调用该方法</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//定义目录常量</span>
+    self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">set_path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>８．很多公司有多个项目，生产环境和开发环境在一台服务器上，此时生产环境需要屏蔽错误，而开发环境需要暴露错误，通过修改php.ini配置文件显然不合适，所以通常会在项目中进行当前项目的系统错误控制，利用ini_set(‘配置项’,’值’)来实现。既然是要做框架，就要考虑这些，而控制这块作为一个独立的方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//增加错误控制方法</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//错误类型和错误处理方法</span>
+    @<span class="token function">int_set</span><span class="token punctuation">(</span><span class="token string">'error_reporting'</span><span class="token punctuation">,</span><span class="token constant">E_ALL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//E_ALL为系统常量，表示所有错误</span>
+    @<span class="token function">int_set</span><span class="token punctuation">(</span><span class="token string">'displary_errors'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//显示错误信息</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>９．在实际开发中，肯定有很多的东西是不确定的或者可以外部更改的(理论上讲，目录结构、系统控制也是允许外部修改的)，此时就需要配置成相应的配置文件来实现。然后我们在初始化的时候读取配置文件，以供后续使用</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//读取配置文件</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//配置文件不是在当前方法中使用，也未必是在当前类中使用，所以需要涉及成全局的</span>
+    <span class="token keyword">global</span> <span class="token variable">$config</span><span class="token punctuation">;</span>
+    <span class="token variable">$config</span> <span class="token operator">=</span> <span class="token keyword">include</span> <span class="token constant">CONFIG_PATH</span><span class="token punctuation">.</span><span class="token string">'config.php'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><b>注意</b>：为了让代码能够正确跑起来，我们需要在/config/config.php中创建对应文件并进行相关配置(暂时可以不配置)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//config.php</span>
+<span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token comment" spellcheck="true">//数据库配置</span>
+    <span class="token string">'database'</span><span class="token operator">=</span><span class="token operator">></span><span class="token keyword">array</span><span class="token punctuation">(</span>
+        <span class="token string">'type'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'mysql'</span><span class="token punctuation">,</span>
+        <span class="token string">'host'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'localhost'</span><span class="token punctuation">,</span>
+        <span class="token string">'port'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'3306'</span><span class="token punctuation">,</span>
+        <span class="token string">'user'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'root'</span><span class="token punctuation">,</span>
+        <span class="token string">'pass'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'root'</span><span class="token punctuation">,</span>
+        <span class="token string">'charset'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'utf8'</span><span class="token punctuation">,</span>
+        <span class="token string">'dbname'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'test'</span><span class="token punctuation">,</span>
+        <span class="token string">'prefix'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'play'</span>    <span class="token comment" spellcheck="true">//表前缀</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//数据库产品</span>
+
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>10．初始化文件成功初始化功能后，最重要的一件事就是将URL解析，并且找到合适的控制器以及对应的控制器方法：此时，我们就规定浏览器在进行服务器访问的时候，就必须携带具体的控制器名字和相应的方法名字(如果有分组，那么还需要分组信息)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//解析URL</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_url</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//获取前后台、控制器名字和方法名字：规定浏览器参数中携带p参数、c参数和a参数(p代表platform平台，c代表controller,a代表action)</span>
+    <span class="token variable">$p</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'p'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'home'</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//默认前台</span>
+    <span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'c'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'Index'</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//默认IndexController</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'index'</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//默认index方法</span>
+
+    <span class="token comment" spellcheck="true">//暂时只是解析，不分发，考虑到后续还要使用，设定为常量</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span><span class="token variable">$c</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>11．所有的类文件都在控制器、模型和核心文件夹中，所以应该定义多个类来实现类的自动加载。但是所有的类文件都有命名空间，所以要考虑到命名空间的影响，利用spl_autoload_register()方法实现注册</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//四种不同文件夹的类加载方法</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_autoload_function</span><span class="token punctuation">(</span><span class="token variable">$class</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//此时$class代表内存中不存在的类(如果项目有命名空间，那么此时带着空间路径)\home\controller\IndexController;</span>
+    <span class="token variable">$class</span> <span class="token operator">=</span> <span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//对应文件夹是否存在:存在包含</span>
+    <span class="token variable">$core_file</span> <span class="token operator">=</span> <span class="token constant">CORE_PATH</span> <span class="token punctuation">.</span> <span class="token variable">$class</span> <span class="token class-name"><span class="token punctuation">.</span></span> <span class="token string">'php'</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//核心类全路径</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$core_file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">include_once</span> <span class="token variable">$core_file</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token comment" spellcheck="true">//判定控制器是否存在，包括前后台的</span>
+    <span class="token variable">$cont_file</span> <span class="token operator">=</span> <span class="token constant">APP_PATH</span> <span class="token punctuation">.</span> P <span class="token punctuation">.</span> <span class="token string">'/controller/'</span> <span class="token punctuation">.</span> <span class="token variable">$class</span> <span class="token class-name"><span class="token punctuation">.</span></span> <span class="token string">'.php'</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$cont_file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">include_once</span> <span class="token variable">$cont_file</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token comment" spellcheck="true">//判定模型是否存在</span>
+    <span class="token variable">$model_file</span> <span class="token operator">=</span> <span class="token constant">APP_PATH</span> <span class="token punctuation">.</span> P <span class="token punctuation">.</span> <span class="token string">'/model/'</span> <span class="token punctuation">.</span> <span class="token variable">$class</span> <span class="token class-name"><span class="token punctuation">.</span></span> <span class="token string">'.php'</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$model_file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">include_once</span> <span class="token variable">$model_file</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token comment" spellcheck="true">//插件加载</span>
+    <span class="token variable">$vendor_file</span> <span class="token operator">=</span> <span class="token constant">VENDOR_PATH</span> <span class="token punctuation">.</span> <span class="token variable">$class</span> <span class="token class-name"><span class="token punctuation">.</span></span> <span class="token string">'.php'</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$vendor_file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">include</span> <span class="token variable">$vendor_file</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//注册一个方法，让自动加载注册到自动加载机制</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_autoload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//利用spl_autoload_register进行注册</span>
+    <span class="token function">spl_autoload_register</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token constant">__CLASS__</span><span class="token punctuation">,</span><span class="token string">'set_autoload_function'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+</code></pre>
+<p>12．解析目的的是为了实现控制器的方法，因此需要进行控制器分发工作</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//分发控制器</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">set_dispath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//分发之前要找到对应的控制器名字和方法名字</span>
+    <span class="token comment" spellcheck="true">//找到前后台、控制器、方法：\home\controller\IndexController</span>
+    <span class="token variable">$p</span> <span class="token operator">=</span> P<span class="token punctuation">;</span>
+    <span class="token variable">$c</span> <span class="token operator">=</span> C<span class="token punctuation">;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> A<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//我们后面会规定控制器必须带Controller名字结尾，模型必须带Model结尾，即IndexController,所以需要补充名字</span>
+    <span class="token comment" spellcheck="true">//组织成合适的空间元素</span>
+    <span class="token variable">$controller</span> <span class="token operator">=</span> <span class="token string">"\\&amp;#123;$p&amp;#125;\\controller\&amp;#123;$c&amp;#125;Controller"</span><span class="token punctuation">;</span>
+    <span class="token variable">$c</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token variable">$controller</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//已经拿到对象：调用方法</span>
+    <span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token variable">$a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//可变方法</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>13．为了完成测试，需要在控制器文件夹/app/controller/下创建一个默认控制器和默认方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//命名空间</span>
+<span class="token keyword">namespace</span> <span class="token package">home<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">IndexController</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//默认方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'aa'</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．单一入口index.php，所有请求都要只能访问index.php文件，并且要携带控制器和方法信息</p>
+<p>２．初始化文件要实现较多功能(非MVC逻辑)</p>
+<ul>
+<li>目录常量</li>
+<li>系统设置</li>
+<li>配置文件</li>
+<li>自动加载</li>
+<li>URL解析</li>
+<li>分发控制器</li>
+</ul>
+<p>３．在复杂灵活的框架中，目录常量、系统设置都会添加到配置文件中，方便开发者管理；同时还会增加多种URL解析方式，并在配置文件中提供配置方式选择</p>
+<h3 id="公共控制器"><a href="#公共控制器" class="headerlink" title="公共控制器"></a>公共控制器</h3><p>定义：公共控制器，即所有控制器都会用到(或者大部分会用到)的方法，此时需要在公共控制器中存在，然后让普通控制器继承公共控制器即可</p>
+<p>１．定义公共控制器：公共控制器不属于具体业务控制器，属于一定会用到的控制器，因此要存放到/core/目录下</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//公共控制器</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//所有core文件夹下的类都属于core空间</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Controller</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>２．公共控制器是用来解决公共问题的方法，让子类直接调用。如果涉及到一些需要初始化才能访问的，那么就会在公共控制器中创建构造方法来实现(构造方法子类也可以继承，对象实例化自动调用，省去调用方法的麻烦)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//构造方法</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．控制器要使用smarty模板技术，这是所有控制器都要使用的，所以应该在公共控制器中实现，一上来就可以现实对smarty的实例化，同时要保证子类对象的可访问，就需要增加属性保存smarty对象</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//增加属性：只有子类内部访问</span>
+<span class="token keyword">protected</span> <span class="token variable">$smarty</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//构造方法实例化smarty</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//引入smarty:假设在vendor/smarty/smarty.class.php</span>
+    <span class="token keyword">include</span> <span class="token constant">VENDOR_PATH</span> <span class="token punctuation">.</span> <span class="token string">'smarty/Smarty.class.php'</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//实例化</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>Smarty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//设置smarty</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">template_dir</span> <span class="token operator">=</span> <span class="token constant">APP_PATH</span> <span class="token punctuation">.</span> P <span class="token punctuation">.</span> <span class="token string">'/view/'</span> <span class="token punctuation">.</span> C <span class="token punctuation">.</span> <span class="token string">'/'</span><span class="token punctuation">;</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">caching</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//开发阶段不缓存</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache_dir</span> <span class="token operator">=</span> <span class="token constant">APP_PATH</span><span class="token punctuation">.</span> P <span class="token punctuation">.</span> <span class="token string">'cache'</span><span class="token punctuation">;</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache_lifetime</span> <span class="token operator">=</span> <span class="token number">120</span><span class="token punctuation">;</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">compile_dir</span> <span class="token operator">=</span> <span class="token constant">APP_PATH</span><span class="token punctuation">.</span> P <span class="token punctuation">.</span> <span class="token string">'template_c'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>４．以上虽然实例化了smarty但是会发现要使用smarty必须$this-&gt;smarty-&gt;方法来进行访问，如果想让smarty的使用变得轻松，可以对控制器要访问的smarty的主要方法assign和display进行二次封装</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//smarty的二次封装</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">assign</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//调用smarty实现</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">display</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>５．为了保证smarty能够正常运行，需要将smarty下的libs文件夹移动到vendor目录下，并且改名为smarty。实际上，大型项目视图会有很多，如果统一放到view文件夹下，会让维护成本增加，所以一般会在view下创建对应控制器名字相同的文件夹，里面放对应的控制器视图</p>
+<p>所以：此时要在smarty加载模块板时，将对应控制器的路径加入(这一在子类控制器调用视图时，只要传入对应的名字即可)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//修改smarty的template_dir属性</span>
+<span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">template_dir</span> <span class="token operator">=</span> <span class="token constant">APP_PATH</span> <span class="token punctuation">.</span> P <span class="token punctuation">.</span> <span class="token string">'/view/'</span> <span class="token punctuation">.</span> C <span class="token punctuation">.</span><span class="token string">'/'</span><span class="token punctuation">;</span> </code></pre>
+<p>６．控制器中常见出现的公共方法：错误提示和成功提示</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//成功提示</span>
+<span class="token comment" spellcheck="true">/*
+@param1 string $msg  提示信息
+@param1 string $a　跳转的目标方法，默认是当前访问方法(A常量是在初始化过程中设定的：变化越多的在越靠前)
+@param1 string $c 跳转的目标控制器，默认是当前控制器(C常量与c常量同时定义的)
+@param1 string $p 跳转的前后台，默认是当前平台
+@param1 int $time 等待时间，默认3秒
+*/</span>
+
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token variable">$msg</span><span class="token punctuation">,</span><span class="token variable">$a</span> <span class="token operator">=</span> A<span class="token punctuation">,</span><span class="token variable">$c</span> <span class="token operator">=</span> C<span class="token punctuation">,</span><span class="token variable">$p</span> <span class="token operator">=</span> P<span class="token punctuation">,</span><span class="token variable">$time</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$refresh</span> <span class="token operator">=</span> <span class="token string">'Refresh:'</span> <span class="token punctuation">.</span> <span class="token variable">$time</span> <span class="token punctuation">.</span> <span class="token string">';url='</span> <span class="token punctuation">.</span> <span class="token constant">URL</span> <span class="token punctuation">.</span> <span class="token string">'?c='</span> <span class="token punctuation">.</span> <span class="token variable">$c</span> <span class="token punctuation">.</span> <span class="token string">'&amp;a= .$a'</span><span class="token punctuation">;</span>
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token variable">$refresh</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$msg</span><span class="token punctuation">;</span>
+    exit<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//如果有成功提示模板，那么可以调用模板</span>
+    <span class="token comment" spellcheck="true">/*
+    $this->assign('$msg',$msg);
+    $this->assign('c',$c);
+    $this->assign('a',$a);
+    $this->assign('time',$time);
+    $this->display(成功提示模板路径);
+    */</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//错误提示：如果没有成功和失败不同的模板，那么可以success和error是一个方法</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token variable">$msg</span><span class="token punctuation">,</span><span class="token variable">$a</span> <span class="token operator">=</span> A<span class="token punctuation">,</span><span class="token variable">$c</span> <span class="token operator">=</span> C<span class="token punctuation">,</span><span class="token variable">$p</span> <span class="token operator">=</span> P<span class="token punctuation">,</span><span class="token variable">$time</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$refresh</span> <span class="token operator">=</span> <span class="token string">'Refresh:'</span> <span class="token punctuation">.</span> <span class="token variable">$time</span> <span class="token punctuation">.</span> <span class="token string">';url='</span> <span class="token punctuation">.</span> <span class="token constant">URL</span> <span class="token punctuation">.</span> <span class="token string">'?c='</span> <span class="token punctuation">.</span> <span class="token variable">$c</span> <span class="token punctuation">.</span> <span class="token string">'&amp;a= .$a'</span><span class="token punctuation">;</span>
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token variable">$refresh</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$msg</span><span class="token punctuation">;</span>
+    exit<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>７．公共管理器需要被控制器继承，所以所有的控制器都必须引入公共控制器，并且继承在公共控制器</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//home/IndexController.php文件</span>
+<span class="token comment" spellcheck="true">//命名空间</span>
+<span class="token keyword">namespace</span> <span class="token package">home<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//引入公共控制器</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>core<span class="token punctuation">\</span>Controller</span>
+
+<span class="token keyword">class</span> <span class="token class-name">IndexController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//默认方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'欢迎来到MVC项目单一入口自定义框架'</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．公共控制器(基类控制器)是用来处理控制器的公共代码复用部分的，放在核心文件夹中</p>
+<p>２．公共控制器是在子类控制器初始化类分发之后再继承的，所以前面所有的定义的常量都是可以直接使用的</p>
+<p>３．Smarty作为一种公共控制器插件，应该在公共控制器中实现初始化调用，子类就可以直接使用</p>
+<p>４．Smarty如果要实现子类$this直接访问，那么就需要在公共控制器中进行二次封装，要不然就得使用属性保存Smarty对象，然后在子类中使用链式访问(连贯操作)$this-&gt;smarty-&gt;assign()</p>
+<p>５．复杂的公共控制器中会有很多公共方法，甚至还有多层</p>
+<h3 id="DAO设计"><a href="#DAO设计" class="headerlink" title="DAO设计"></a>DAO设计</h3><p>定义：DAO数据访问对象，是专门用来操作数据库的底层设计，就是负责数据库的连接认证以及SQL执行</p>
+<p>１．DAO属于数据库底层操作，几乎每次都要用到，属于核心类</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//DAO</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Dao</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>２．使用PDO作为二次封装对象实现数据库操作，因为PDO属于全局空间，因此要在此类开始之前引入PDO的三个类</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//DAO</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>PDO</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>PDOStatement</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>PDOException</span><span class="token punctuation">;</span></code></pre>
+<p>３．实现PDO的初始化，直接在构造方法中完成即可，但是需要增加一个属性用来保存PDO对象(跨方法使用)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//属性</span>
+<span class="token keyword">private</span> <span class="token variable">$pdo</span>
+
+<span class="token comment" spellcheck="true">//构造方法(传统模式，不走单例)</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$database_info</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$type</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'mysql'</span><span class="token punctuation">;</span>
+    <span class="token variable">$host</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'host'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'localhost'</span><span class="token punctuation">;</span>
+    <span class="token variable">$port</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'port'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'3306'</span><span class="token punctuation">;</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'root'</span><span class="token punctuation">;</span>
+    <span class="token variable">$pass</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'pass'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'root'</span><span class="token punctuation">;</span>
+    <span class="token variable">$dbname</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'dbname'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'playzg'</span><span class="token punctuation">;</span>
+    <span class="token variable">$charset</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'charset'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'utf8'</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//连接认证</span>
+    <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//增加错误抑制符防止意外</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span> <span class="token operator">=</span> @<span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">.</span><span class="token string">':host='</span><span class="token punctuation">.</span><span class="token variable">$host</span><span class="token punctuation">.</span><span class="token string">';port='</span><span class="token punctuation">.</span><span class="token variable">$port</span><span class="token punctuation">.</span><span class="token string">';dbname='</span><span class="token punctuation">.</span><span class="token variable">$dbname</span><span class="token punctuation">,</span><span class="token variable">$user</span><span class="token punctuation">,</span><span class="token variable">$pass</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//异常模式处理</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">,</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (PDOException $e)&amp;#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>４．接下来就是SQL执行了，所有的SQL执行都是有可能出错的，所以我们可以封装好SQL验证处理</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//SQL执行错误处理：捕捉PDOException的异常即可</span>
+<span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">dao_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    exit<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>５．字符集处理</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//字符集处理</span>
+<span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">dao_charset</span><span class="token punctuation">(</span><span class="token variable">$charset</span> <span class="token operator">=</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$charset</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch(PDOException $e)&amp;#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//然后在构造方法中，调用对应的方法即可</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$type</span> <span class="token operator">=</span> <span class="token string">'mysql'</span><span class="token punctuation">,</span><span class="token variable">$dbinfo</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//初始化置换后</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_charset</span><span class="token punctuation">(</span><span class="token variable">$charset</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>６．封装写方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//写操作</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">dao_exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//调用PDO::exec方法执行</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch(PDOException $e)&amp;#123;</span>
+        <span class="token comment" spellcheck="true">//调用自己封装的异常处理方法</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//附带自增长ID</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">dao_insert_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">lastInsertId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>７．封装读方法：分两种模式读取：一条和多条</p>
+<pre class=" language-php"><code class="language-php">    <span class="token comment" spellcheck="true">//写方法：按条件进行单行或者多行数据返回</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">dao_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">,</span><span class="token variable">$only</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+            <span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//数据解析</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$only</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+                <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+                <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (PDOException $e)&amp;#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>８．完成本地测试：暂时没有模型，无法实现整体测试，先简单测试</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//就在当前Dao.php类外</span>
+<span class="token variable">$dao</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$dao_query</span><span class="token punctuation">(</span><span class="token string">'select * from 表名'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$dao</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_exec</span><span class="token punctuation">(</span><span class="token string">'delete from 表名 limit 1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．DAO作为最底层的SQL执行者，存放到core文件夹中，使用二次封装PDO完成</p>
+<p>２．DAO的封装可以根据业务的需求进行复杂度提升，如预处理、事务处理等</p>
+<h3 id="公共模型"><a href="#公共模型" class="headerlink" title="公共模型"></a>公共模型</h3><p>定义：控制器是MVC中唯一一个必须被访问的文件，而模型和视图并非一定要存在(框架并不需要完成具体业务)，因此我们在搭建框架时，只需要把公共模型搭建好即可，所有的模型都继承自公共模型</p>
+<p>１．公共模型是所有模型必须使用的，也不带具体业务逻辑，所以属于核心文件</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//core/Model.php</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Model</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;&amp;#125;</span></code></pre>
+<p>２．公共模型要实现通过DAO操作数据库，所以在Model类中，要实现Dao的初始化</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//use \core\Model;    //注意Dao和Model类同属于core空间，所以不引入是OK的</span>
+<span class="token keyword">class</span> <span class="token class-name">Model</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//保存对象</span>
+    <span class="token keyword">protected</span> <span class="token variable">$dao</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//初始化Dao</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//实例化数据库操作：需要用到配置文件</span>
+        <span class="token keyword">global</span> <span class="token variable">$config</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">dao</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dao</span><span class="token punctuation">(</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string">'database'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．作为基础模型，自然是需要为子类提供最方便的访问，所以也可以对Dao的方法进行二次封装，即取名同名方法，然后让子类可以直接使用$this-&gt;方法名()方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//写方法</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">exec</span><span class="token punctuation">(</span>string <span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;    </span><span class="token comment" spellcheck="true">//这个是在子类模型中调用</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">dao</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//获取ID</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getLastId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;    </span><span class="token comment" spellcheck="true">//这个是可能控制器调用</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">dao</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_insert_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//读方法</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">query</span><span class="token punctuation">(</span>string <span class="token variable">$sql</span><span class="token punctuation">,</span><span class="token variable">$only</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">d</span> ao<span class="token operator">-</span><span class="token operator">></span><span class="token function">dao_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">,</span><span class="token variable">$only</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>４．作为公共控制器必要为子类模型提供一些共性的方法，如后无条件查询表中所有数据，根据ID查询数据，组装全表明等</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//构造表明：规定在子类中必须定义一个受保护的属性protected $table保存表明，不带前缀</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getTable</span><span class="token punctuation">(</span>string <span class="token variable">$table</span> <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;    </span><span class="token comment" spellcheck="true">//允许模型调用时传入不同的表名(多表查询)</span>
+    <span class="token comment" spellcheck="true">//构造前缀：$config</span>
+    <span class="token keyword">global</span> <span class="token variable">$config</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//确定表名字</span>
+    <span class="token variable">$table</span> <span class="token operator">=</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$table</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">table</span><span class="token punctuation">:</span><span class="token variable">$table</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//构造全名</span>
+    <span class="token keyword">return</span> <span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string">'database'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'prefix'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token variable">$table</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//若要能够根据主键查询数据，通常需要知道主键是什么，所以在一开始就需要定义对应的属性来保存</span>
+<span class="token keyword">protected</span> <span class="token variable">$fields</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//获取全部数据：当前表</span>
+<span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//组织SQL</span>
+    <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"select * from &amp;#123;$this->getTable()&amp;#125;"</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//执行</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//在构造方法实现表全部字段的获取(或者单独创建方法，在构造方法中调用，很有意义的)</span>
+<span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">getFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">'desc'</span> <span class="token punctuation">.</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//得到一个二维数组</span>
+
+    <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$res</span> <span class="token keyword">as</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">fileds</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">[</span><span class="token string">'Field'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//保留所有字段名字</span>
+
+        <span class="token comment" spellcheck="true">//判定主键</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">[</span><span class="token string">'Key'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'PRI'</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">fields</span><span class="token punctuation">[</span><span class="token string">'key'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">[</span><span class="token string">'Field'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//主键额外再存一个</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span><span class="token comment" spellcheck="true">//需要在构造方法中调用该方法(该方法私有，必须在父类里面访问)</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//在实现初始化之后</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//根据ID查询数据</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getById</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//组织SQL</span>
+    <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"select * from &amp;#123;$this->getTable()&amp;#125; where &amp;#123;$this->fields['key']&amp;#125; = &amp;#123;$id&amp;#125;"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．公共模型主要对接DAO和子类模型</p>
+<p>２．公共模型要实现Dao类的实例化操作，如果为了子类操作方便不需要使用链式操作$this-&gt;dao-&gt;方法名()，可以对Dao中的方法进行二次封装</p>
+<p>３．公共模型可以为了子类模型提供必要的公共方法(复杂的会有很多方法)</p>
+<ul>
+<li>组件完整表明</li>
+<li>获取表字段信息(包括主键)</li>
+<li>获取全部数据</li>
+<li>通过ID获取数据</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">PlayZG</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E5%9B%9B/">http://example.com/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E5%9B%9B/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">PlayZG</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PHP/">
+                                    <span class="chip bg-color">PHP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/12/29/ThinkPHP5-1%E5%85%A5%E9%97%A8-%E4%B8%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ThinkPHP5.1入门(一)">
+                        
+                        <span class="card-title">ThinkPHP5.1入门(一)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ThinkPHP5-1/">
+                        <span class="chip bg-color">ThinkPHP5.1</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E4%B8%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="PHP面向对象基础(三)">
+                        
+                        <span class="card-title">PHP面向对象基础(三)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: John Doe<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">152.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/playZG" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:playzg@aliyun.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1351802079" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1351802079" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

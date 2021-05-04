@@ -1,0 +1,2224 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="PHP面向对象基础(三), Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>PHP面向对象基础(三) | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">PHP面向对象基础(三)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-12-29
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    13.6k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="PHP面向对象高级"><a href="#PHP面向对象高级" class="headerlink" title="PHP面向对象高级"></a>PHP面向对象高级</h1><h2 id="PDO"><a href="#PDO" class="headerlink" title="PDO"></a>PDO</h2><blockquote>
+<p>引入：如果按照数据库支持的角度出发，的确针对不同的数据库需要封装不同的数据库操作类，而且为了保证使用者的操作方便，需要使用接口或者抽象类来进行规范数据库类的实现，但是PHP制作团队已经考虑到了用户的使用便捷性，提供了一种统一的数据库方式，那就是PDO</p>
+</blockquote>
+<ul>
+<li>PDO类：统一的数据库的初始化操作，包括连接认证和执行SQL指令</li>
+<li>PDOStatement类：数据解析操作，主要针对数据结果操作(有数据结果返回)</li>
+<li>PDOException类：异常处理操作，针对所有PDO操作可能出现的错误采用的异常模式处理</li>
+</ul>
+<h3 id="PDO操作"><a href="#PDO操作" class="headerlink" title="PDO操作"></a>PDO操作</h3><h4 id="PDO扩展"><a href="#PDO扩展" class="headerlink" title="PDO扩展"></a>PDO扩展</h4><blockquote>
+<p>引入：PDO扩展在进行开发的时候，考虑到不同的应用场景和PHP版本，为了让PDO扩展的使用更加简洁，所以分成了多个工具类</p>
+</blockquote>
+<p>定义：PDO扩展，即PDO提供了一套帮助用户实现多数据库操作的统一接口，通过使用PDO，开发人员不需要额外自定义数据库对应的操作类，从而简化开发过程</p>
+<p>１．PDO在PHP5以前，是需要手动加载扩展的，在php.ini配置文件中，会有这么一个扩展(在PHP5以后就自动加载了不需要手动再加载)</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">;</span>extension <span class="token operator">=</span> pdo    <span class="token comment" spellcheck="true">//在php.ini中找不到该配置项了</span></code></pre>
+<p>２．PDO是多种数据库的扩展，那就意味着PDO很庞大，所以为了保证PHP运行的效率(系统会自动在开始时加载扩展)，默认并没有开启对数据库产品的对应扩展，因此还需要在php.ini中开启目前项目所需要的PDO对应数据库产品的支持</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">;</span>extension<span class="token operator">=</span>pdo_firebird
+<span class="token punctuation">;</span>extension<span class="token operator">=</span>pdo_mysql
+<span class="token punctuation">;</span>extension<span class="token operator">=</span>pdo_oci
+<span class="token punctuation">;</span>extension<span class="token operator">=</span>pdo_odbc
+<span class="token punctuation">;</span>extension<span class="token operator">=</span>pdo_pgsql
+<span class="token punctuation">;</span>extension<span class="token operator">=</span>pdo_sqlite</code></pre>
+<p>３．加载PDO对mysql数据库产品的扩展，重启Apache,然后通过phpinfo()函数就可以查看PDO的加载情况了，至少有两个加载才算成功：PDO本身和PDO针对的数据库产品</p>
+<p><code>总结</code></p>
+<p>１．PDO是一种外部提供的扩展，PHP如果想直接调用，需要加载扩展</p>
+<p>２．PDO因为支持产品很多，所以分解成了PDO支持扩展和PDO对应数据库产品的支持，PDO扩展在PHP5以后自动开启，而数据库产品的支持需要开发者根据实际项目所有数据库来选择性开启</p>
+<h4 id="PDO类基本应用"><a href="#PDO类基本应用" class="headerlink" title="PDO类基本应用"></a>PDO类基本应用</h4><blockquote>
+<p>引入：PDO是一种纯面向对象方式实现的扩展，现在基本都是通用PDO来实现数据库操作</p>
+</blockquote>
+<p>定义：PDO是PHP  Data  Object的简称，代表PHP数据对象，是一种纯面向对象的方式实现的数据库操作扩展</p>
+<p>１．PDO类虽然提供了很多方法，但是常用的方法有以下几个</p>
+<ul>
+<li>PDO::__construct()：实例化PDO对象</li>
+<li>PDO::exec()：执行一个写操作SQL指令，返回受影响的行数</li>
+<li>PDO::query：执行一个读操作SQL指令，返回一个PDOStatement类对象(后者进行数据解析操作)</li>
+<li>PDO::errorCode()和PDO::errorInfo()：获取上次错误的信息(错误码和错误描述数组)</li>
+</ul>
+<p>２．PDO实例化对象：利用其构造方法__construct(string $dsn,string $user,string $pass[,array $drivers])实现，构造方法由４个参数组成，其中一般前三个为必须参数，第四个为可选参数</p>
+<ul>
+<li>$dsn：一个数据库基本信息字符串，包含数据库产品，主机地址等<ul>
+<li>驱动名字(数据库产品)，使用英文<code>:</code>分隔，如mysql:表示使用mysql数据库</li>
+<li>驱动选项(主机地址)，使用host=具体主机地址，跟在驱动名字之后，如‘mysql:host=localhost’</li>
+<li>驱动选项(端口)，使用port=端口号，默认为3306可以不写，拼凑在驱动名字后，不区分先后顺序。如‘mysql:host=localhost;port=3306’或者‘mysql:port=3306;host=localhost‘，使用分号和其他驱动分开</li>
+<li>驱动选项(数据库名字)，使用dbname=数据库名字(可以事先没有)</li>
+</ul>
+</li>
+<li>$user：用户名，如果数据库允许匿名用户出现，那么可以没有该参数($dsn)</li>
+<li>$pass：密码，和同户名一样</li>
+<li>$drivers：PDO属性设置，是关联数组，利用PDO内部的常量进行设置</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//方法一：直接写入数据进行数据库初始化</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=my_database'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//方法二：利用变量保存数据来实现数据库初始化(数据来源可以是其他配置文件：安全)</span>
+<span class="token variable">$dsn</span> <span class="token operator">=</span> <span class="token string">'mysql:host=localhost;dbname=my_database'</span><span class="token punctuation">;</span>
+<span class="token variable">$user</span> <span class="token operator">=</span> <span class="token string">'root'</span><span class="token punctuation">;</span>
+<span class="token variable">$pass</span> <span class="token operator">=</span> <span class="token string">'root'</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token variable">$dsn</span><span class="token punctuation">,</span><span class="token variable">$user</span><span class="token punctuation">,</span><span class="token variable">$pass</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>３．得到对象后，我们就可以利用PDO对象调用相关方法执行SQL操作：exec执行数据返回SQL，query执行有结果返回SQL</p>
+<pre class=" language-PHP"><code class="language-PHP">//实例化PDO对象
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname = my_database','root','root');
+
+//写操作
+$sql = "delete from student";   //模拟sql指令
+$rows = $pdo->exec($sql);       //得到受影响的行数：执行失败返回０
+
+//读操作
+$sql ＝ "select * from student";
+$stmt = $pdo->query($sql)       //成功返回PDOStatement类对象，失败得到false</code></pre>
+<p>４．如果PDO对象在执行SQL时出现错误，即SQL本身有错误，那么可以通过PDO类提供的errorCode()和errorinfo()</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//实例化PDO对象</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname = my_database'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//写操作</span>
+<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"delete fromstudent"</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//错误sql指令</span>
+<span class="token variable">$rows</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       
+<span class="token comment" spellcheck="true">//错误判定：exec方法执行结果成功也存在返回０的情况，错误会返回false,所以要判定是否是sql错误，需要判定结果为false</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$rows</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//取出错误细信息</span>
+    <span class="token keyword">echo</span> <span class="token string">'sql错误'</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误代码为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误原因为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//errorInfo返回数组，2下标代表错误具体信息</span>
+    exit<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//错误不需要继续执行代码</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．PDO是一种外部提供的扩展，可以通过操作手册来协助学习使用</p>
+<p>２．PDO类主要用来实现数据库的初始化操作和SQL指令的执行</p>
+<p>３．SQL执行的结果不论是写操作还是读操作都有可能出错，因此需要进行错误处理</p>
+<h4 id="PDO写操作"><a href="#PDO写操作" class="headerlink" title="PDO写操作"></a>PDO写操作</h4><blockquote>
+<p>引入：写操作，即利用PDO实现数据库增删改操作，操作过程中要考虑到SQL本身可能出现的错误处理，以及对结果的操作处理</p>
+</blockquote>
+<p>１．初始化PDO，每次操作都需要用到PDO实例化：封装执行</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//初始化PDO，每次操作都需要用到PDO实例化：封装执行</span>
+<span class="token keyword">function</span> <span class="token function">pdo_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname = my_database'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$pdo</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token string">'数据库连接失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'select set utf8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'sql错误'</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误代码为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误原因为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token comment" spellcheck="true">//返回得到的PDO对象</span>
+    <span class="token keyword">return</span> <span class="token variable">$pdo</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>２．SQL通常应该是外部传入，外部需要的只是结果，不考虑过程，所以在实际开发时要考虑二次封装。即外部传入SQL，内部执行并控制错误，最终返回结果</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//封装执行：函数封装需要传入PDO对象(也可以在函数内部实例化对象)</span>
+<span class="token keyword">function</span> <span class="token function">pdo_exec</span><span class="token punctuation">(</span><span class="token variable">$pdo</span><span class="token punctuation">,</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//调用PDO对象的方法执行写SQL</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'sql错误'</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误代码为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误原因为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．具体实现写操作</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//引入文件：封装PDO文件</span>
+<span class="token keyword">include</span> <span class="token string">'pdo_wirte.php'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//假设所有封装都放到了pdo_wirte.php中</span>
+<span class="token comment" spellcheck="true">//初始化</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token function">pdo_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//组织要执行的SQL</span>
+<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"delete from student"</span><span class="token punctuation">;</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">pdo_exec</span><span class="token punctuation">(</span><span class="token variable">$pdo</span><span class="token punctuation">,</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//结果使用</span>
+<span class="token keyword">echo</span> <span class="token string">'本次操作共实现数据库操作'</span><span class="token punctuation">.</span><span class="token variable">$res</span><span class="token punctuation">.</span><span class="token string">'条记录'</span>；</code></pre>
+<p><b>注意</b>：一般写操作都是受影响行数，但是如果是插入操作，有时候需要新增记录的增长ID，可以通过PDO::lastInsertId()来获取</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//获取新增的ID</span>
+<span class="token keyword">function</span> <span class="token function">insert_id</span><span class="token punctuation">(</span><span class="token variable">$pdo</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">return</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">lastInsertId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．实际使用PDO的时候，都会进行二次封装，因为PDO的操作有很多本身不够完善</p>
+<p>２．PDO类可以独立完成写操作功能，而不需要使用其他两个工具类</p>
+<p>３．PDO的写操作其实本质要注意的是执行SQL时可能出现的错误处理</p>
+<p>４．写操作中唯一不同的是插入操作，因为可能需要获取自增长ID，此时需要多一个步骤(功能)</p>
+<h4 id="PDO读操作"><a href="#PDO读操作" class="headerlink" title="PDO读操作"></a>PDO读操作</h4><blockquote>
+<p>引入：PDO类的本质目的是为了进行初始化和SQL执行，而数据库结果通常还需要额外的功能才能真正被PHP理解和访问，所以PDO查询之后得到的结果会自动转入到PDOStatement类对象中，我们可以再利用PDOStatement类的方法来实现数据的查询操作</p>
+</blockquote>
+<p>定义：查询操作：即通过执行SQL指令后从数据库获得相应的数据，然后对数据加工变成PHP可识别的格式</p>
+<p>１．查询是建立在连接之上，因此需要使用到前面封装的初始化功能</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//初始化PDO，每次操作都需要用到PDO实例化：封装执行</span>
+<span class="token keyword">function</span> <span class="token function">pdo_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname = my_database'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$pdo</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token string">'数据库连接失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'select set utf8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'sql错误'</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误代码为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误原因为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token comment" spellcheck="true">//返回得到的PDO对象</span>
+    <span class="token keyword">return</span> <span class="token variable">$pdo</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>２．查询的SQL也是可能出现问题的部分，因此同样需要进行错误检查：另外PDO查询使用的是PDO::query()方法实现</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">pdo_query</span><span class="token punctuation">(</span><span class="token variable">$pdo</span><span class="token punctuation">,</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'sql错误'</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误代码为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误原因为：'</span><span class="token punctuation">.</span><span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">errorInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token comment" spellcheck="true">//返回执行结果：PDOStatement类对象</span>
+    <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．此时查询出来的结果是一个对象，不能提供任何PHP可访问的数据结果，还需要对结果进行处理，而我们查询数据的时候通常是两种操作：根据具体条件获取一条记录或者多条记录，因此返回的数据是不同的。解决方案也有很多种：１创建多个函数来实现不同效果；２创建一个函数，但是通过参数来控制实现不同效果</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">pdo_get</span><span class="token punctuation">(</span><span class="token variable">$stmt</span><span class="token punctuation">,</span><span class="token variable">$only</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//$stmt是PDO查询得到的对象，$only代表默认只获取一条记录</span>
+
+    <span class="token comment" spellcheck="true">//PDOStatement类中提供了两种方法分别去获取一条和多条记录</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$only</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//获取一条记录PDOStatement::fetch():返回一维数组</span>
+        <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+        <span class="token comment" spellcheck="true">//获取多条记录PDOStatement::fetchAll():返回二维数组,一个维度代表一条记录</span>
+        <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>４．此时从功能上来讲，只要顺序调用以上几个方法即可完成</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token function">pdo_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//初始化</span>
+<span class="token comment" spellcheck="true">//查询</span>
+<span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"select * from student"</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token function">pdo_query</span><span class="token punctuation">(</span><span class="token variable">$pdo</span><span class="token punctuation">,</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//获取一条记录</span>
+<span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">pdo_get</span><span class="token punctuation">(</span><span class="token variable">$stmt</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//获取多条记录</span>
+<span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">pdo_get</span><span class="token punctuation">(</span><span class="token variable">$stmt</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>５．fetch系列方法默认返回的数据是重复的：数据的索引方式和关联方式各出现一次，而实际在进行开发数据展示时通常是通过数据表字段名字作为下标进行数据查看，所以此时可以通过设定fetch系列的条件fetch_style来实现</p>
+<p>可以根据系统提供的方式来修改pdo_get函数，在后面再增加一个默认参数即可</p>
+<pre class=" language-php"><code class="language-php">    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$only</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//获取一条记录PDOStatement::fetch():返回一维数组</span>
+        <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+        <span class="token comment" spellcheck="true">//获取多条记录PDOStatement::fetchAll():返回二维数组,一个维度代表一条记录</span>
+        <span class="token keyword">return</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．查询操作是通过PDO::query()执行查询SQL得到PDOStatement对象，然后PDOStatement对象下有一系列fetch方法可以实现数据查询，得到PHP可以识别的数组数据</p>
+<p>２．PDO实现查询通常也需要进行二次封装，保证SQL执行安全，也方便用户获取目标数据</p>
+<h4 id="PDO事务功能"><a href="#PDO事务功能" class="headerlink" title="PDO事务功能"></a>PDO事务功能</h4><blockquote>
+<p>引入：其实，事务操作本质是一种SQL操作，也就是说利用前面所说的写操作(事务都是写操作)就可以实现。而在PDO中，当然也提供了一定的封装来实现这个功能，从而避免了一些简单的固定SQL指令的操作</p>
+</blockquote>
+<p>定义：PDO事务操作，并非PDO额外多出了一项功能，而是将原来MySQL所支持的事务操作进行了一定的封装实现。注意：事务执行是否成功是由MySQL对应的存储引擎是否支持决定的</p>
+<p>１．事务功能回顾：事务是指改变默认的一次操作一次写入数据表的机制，而是通过事务日志记录操作，在最后通过一次性操作写入到数据表。事务过程如下：</p>
+<ul>
+<li>开启事务：start transaction，写操作停止直接写入数据表，而是记录到事务日志</li>
+<li>事务操作：具体的写操作，通常多个步骤多条指令</li>
+<li>提交事务：即事务操作结束<ul>
+<li>成功提交：commit，所有事务日志内容同步到数据表，并清空当前事务日志</li>
+<li>失败回滚：rollback，直接清空当前事务日志</li>
+</ul>
+</li>
+</ul>
+<p>２．PDO类中提供一套方案来实现事务操作</p>
+<ul>
+<li>PDO::beginTransaction()：开启事务</li>
+<li>PDO::exec()：执行事务(写操作)</li>
+<li>PDO::rollBack()：回滚所有事务</li>
+<li>PDO::commit()：成功提交所有事务</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//实例化PDO对象</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname = my_database'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//开启事务</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">beginTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'事务开启失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//执行事务</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"insert into student values()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//终止事务</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//成功提交</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//失败回滚</span></code></pre>
+<p>３．在事务操作中，有一种回滚点机制，在PDO中没有实现，如果有必要，可以通过SQL指令设置来实现</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//实例化PDO对象</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname = my_database'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//开启事务</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">beginTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'事务开启失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//执行事务</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"insert into student values()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//设置回滚点</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'savepoint sp1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//继续执行事务...</span>
+
+<span class="token comment" spellcheck="true">//回滚</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'rollback to sp1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//终止事务</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//成功提交</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//失败回滚</span>
+</code></pre>
+<p><code>总结</code></p>
+<p>１．事务的本质是由既定SQL指令完成，而事务具体操作内容一定是外部指定的SQL(写操作)来处理</p>
+<p>２．PDO提供了事务固定内容的封装，包括开启事务(PDO::beginTransaction())和事务终止(PDO::commit()和PDO::rollback())</p>
+<p>３．回滚点可以通过PDO::exec()方法来设定和回滚</p>
+<p>４．如果不采用PDO的事务机制，也可以完全利用PDO::exec()来实现</p>
+<ul>
+<li>PDO::exec(‘start transaction’)：开启事务</li>
+<li>PDO::exec(‘commit’)：提交事务</li>
+<li>PDO::exec(‘rollback’)：回滚事务</li>
+</ul>
+<h3 id="PDO异常"><a href="#PDO异常" class="headerlink" title="PDO异常"></a>PDO异常</h3><h4 id="PDO异常机制"><a href="#PDO异常机制" class="headerlink" title="PDO异常机制"></a>PDO异常机制</h4><blockquote>
+<p>引入：PHP因为是从面向过程发展而来，系统基本承担了所有编译层以及执行层出现的问题，即使现在到面向对象，系统也是直接报错(当然生产环境会通过错误设置或者php.ini配置抑制错误)。而开发的时候，我们希望我们能“抓住”某些错误，而且通过合适的方式保存或者提供给用户，此时就需要用到异常处理</p>
+</blockquote>
+<p>定义：异常机制Exception,是面向对象中一种错误捕捉机制，用来捕捉一些层面的问题(语法问题会在编译时就出现，开发可以避免)，通常是因为一些不确定的内容导致代码无法正常运行，然后我们可以按照设定的逻辑来处理这些问题</p>
+<p>１．异常定义：异常Exception是面向对象的一种错误处理机制，它允许开发人员将可能出现的错误被对象(Exception类)捕捉，然后在特定位置通过该对象来进行处理。如</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$res</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+<p>上述代码在编译时不存在问题，但是在运行的时候因为被除数为０，所以会出现错误而这个时候默认的，就是系统无法正确执行，立马给出错误(PHP默认的规则)。这种错误直接给出的方式不属于异常捕捉，异常捕捉需要用到异常类Exception类进行捕捉：使用throw</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//外部传入数据：不确定</span>
+<span class="token variable">$n1</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token variable">$n2</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//要求$n1 / $n2</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$n2</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//被除数为0,不能操作：抛出异常</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">'被除数不能为０'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//没有问题继续执行</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$n1</span> <span class="token operator">/</span><span class="token variable">$n2</span><span class="token punctuation">;</span></code></pre>
+<p>很明显，使用面向对象的方式会额外增加代码来实现错误处理。但是在面向对象中，异常机制通常很成熟，并不需要写额外很多的代码，而且绝大部分时间里，我们并不会去处理“不可能”出现问题的代码。</p>
+<p>２．面向对象异常处理机制：如果有代码可能会出现未知错误(通常是因为外部数据的不确定性)，我们可以将代码块放到一个会自动捕捉错误的代码块中来实现异常的处理。异常捕捉语法如下：</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$n1</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token variable">$n2</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//可能出现异常代码：使用try&amp;#123;&amp;#125;进行包裹捕捉</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//代码的执行具有未执行：但是代码没有语法错误</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$n1</span><span class="token operator">/</span><span class="token variable">$n2</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//产生错误就会产生一个Exception类对象，捕获错误</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (Exception $e)&amp;#123;</span>
+    <span class="token comment" spellcheck="true">//捕获后的处理代码：如果try中没有问题，不会进入到catch内部</span>
+    <span class="token comment" spellcheck="true">//$e中保存了$res = $n1 / $n2;会出现的错误</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'错误了'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．以上代码在PHP中运行即便出错也不会执行，原因是系统默认使用的警告模式，既有任何问题都是直接报错。如果要实现异常处理，必须借助于系统提供的set_error_handler(回调函数)来告知系统我们想采用的处理模式</p>
+<pre class=" language-php"><code class="language-php"><span class="token function">set_error_handler</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">'错误'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;)；</span></code></pre>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//上面的方式等价于先定义函数后注册</span>
+<span class="token keyword">function</span> <span class="token function">exception_handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">'错误'</span><span class="token punctuation">)</span>；
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token function">set_error_handler</span><span class="token punctuation">(</span><span class="token string">'exception_handler'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>４．有了上述代码在错误处理之前，那么系统碰到错误，就会调用我们定义的function来进行错误处理：处理也分两种模式：有try和没有try</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">exception_handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">'错误'</span><span class="token punctuation">)</span>；
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token function">set_error_handler</span><span class="token punctuation">(</span><span class="token string">'exception_handler'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//没有try</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//错误：直接报错，但是实际上已经调用了自定义错误处理函数，只是异常没有处理，系统处理了</span>
+
+<span class="token comment" spellcheck="true">//有try：try和catch不分家</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch(Exception $e)&amp;#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'错误：被除数不能为０'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>５．异常对象$e到目前为止没有产生任何作用，其实Exception类中有很多的方法和属性，可以帮助我们统一获取错误信息的</p>
+<p><a href="https://sm.ms/image/76onFhbsHxCgvRu" target="_blank"><img src="https://i.loli.net/2020/02/28/76onFhbsHxCgvRu.png" ></a></p>
+<p>具体使用</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//可能出现问题的代码块</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (Exception $e)&amp;#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>６．有的时候代码如果走到了一个“死胡同”,即代码执行没有任何问题，但是不符合我们的逻辑。以前我们是跳转提示，现在可以抛出异常，交给异常来处理:throw new Exception()</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$n</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">/</span> <span class="token variable">$n</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+        <span class="token comment" spellcheck="true">//业务没法发展，直接抛出异常</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">'被除数不能为０'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch(Exception $e)&amp;#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．异常是面向对象中处理错误的一种方式，能够让整体用一种统一的方式对外处理错误</p>
+<p>２．异常机制是利用try{}catch(Exception $e){}来进行捕捉和处理的，Exception类提供了很多方法可以方便获取各种错误相关信息</p>
+<p>３．PHP默认是警告模式，即直接系统给出错误，如果想使用异常处理，那么就需要设置错误异常模式set_error_handler(异常回调函数)来实现</p>
+<p>４．异常模式中，必须使用try{}catch(){}才会捕捉异常，否则只会系统系统(如果因为异常处理代码太麻烦，可以将异常处理代码封装成函数或者类来实现代码简化)</p>
+<h4 id="PDO错误机制"><a href="#PDO错误机制" class="headerlink" title="PDO错误机制"></a>PDO错误机制</h4><blockquote>
+<p>引入：PDO有自己的一套异常机制，但是为了结合PHP本身的特性，并没有直接使用。在PDO中，错误模式是多种的，需要我们去选择才会生效</p>
+</blockquote>
+<p>定义：PDO错误机制，是指PDO在使用过程中出现了错误(大多是SQL指令执行错误)的时候，PDO处理错误的方式</p>
+<p>１．PDO中提供了三种错误机制，是通过PDO的常量PDO::ATTR_ERRMODE来选择的</p>
+<ul>
+<li>PDO::ERRMODE_SILENT：静默模式，出错了不处理(默认的)</li>
+<li>PDO::ERRMODE_WARNING：警告模式，出错了立马给出错误提示</li>
+<li>PDO::ERRMODE_EXCEPTION：异常模式，出错了将错误交给异常PDOException对象</li>
+</ul>
+<p>PDO::ERRMODE_SILENT</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'insert into student values()'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//错误：但是不会报错</span></code></pre>
+<p>PDO::ERRMODE_WARNING</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//设定处理模式为警告模式</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">,</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_WARNING</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'insert into student values()'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//错误：直接报错</span></code></pre>
+<p>PDO::ERRMODE_EXCEPTION</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">,</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'insert into student values()'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//错误：被捕捉到</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch(PDOExcetion $e)&amp;#123;</span>
+    <span class="token comment" spellcheck="true">//进入到异常处理</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．PDO提供了多种错误处理机制：静默模式、警告模式和异常模式，默认是静默模式</p>
+<p>２．PDO可以通过PDO::setAttribute()方法来设定错误处理模式</p>
+<p>３．PDO异常模式是通过PDOException来捕捉异常</p>
+<h4 id="PDOException异常处理"><a href="#PDOException异常处理" class="headerlink" title="PDOException异常处理"></a>PDOException异常处理</h4><blockquote>
+<p>引入：其实PDO之所以提供了这么多模式，就是要使用人员根据实际情况来选择模式。如果一个项目中，需要我们去控制项目bug，那么就适合使用异常模式来进行处理</p>
+</blockquote>
+<p>定义：PDOException，是PDO从Exception继承的一个用于处理PDO错误的异常类，一般如果做一套扩展，都会从去继承Exception类来实现一套明确的错误机制(错误的来源)</p>
+<p>１．要使用PDOException异常处理，需要设定PDO的错误模式为异常模式。在PDO中可以通过两种模式来实现异常模式的设定</p>
+<ul>
+<li>在初始化PDO对象的时候，利用第四个参数来设定</li>
+<li>在初始化PDO之后，利用PDO::setAttribute()方法来修改错误模式</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//初始化PDO时设定错误模式</span>
+<span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+  <span class="token comment" spellcheck="true">//可以设置多种驱动(属性设置)</span>
+    <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//使用属性设置</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">,</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>２．当确定了我们要使用异常模式处理之后，我们就可以针对可能出错的位置使用异常来进行捕捉了(通常是进行SQL执行的时候)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//初始化PDO时设定错误模式</span>
+<span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+  <span class="token comment" spellcheck="true">//可以设置多种驱动(属性设置)</span>
+    <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//执行SQL</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'set names utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//错误</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (Exception $e)&amp;#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．从PDO执行来讲，因为PDO异常模式的设置是在PDO实例化之后，那么如果PDO实例化的时候错误，此时好像PDOException就无法工作了。事实上，PDO也考虑到了这点，所以PDO实例化的时候，本身是可以使用try{}catch(){}来捕捉的</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">//实例化PDO</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (Exception $e)&amp;#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>４．PDO执行过程中，如果碰到了意外(逻辑无法继续执行)，那么也可以主动抛出异常</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">//实例化PDO</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (Exception $e)&amp;#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//因为异常使用比较多，我们可以对异常处理进行封装</span>
+<span class="token keyword">function</span> <span class="token function">my_exception</span><span class="token punctuation">(</span>PDOException <span class="token variable">$e</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//抓异常</span>
+<span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'delect from student where id=1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">PDOException</span><span class="token punctuation">(</span><span class="token string">'删除失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (PDOException $e)&amp;#123;</span>
+    <span class="token function">my_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．PDOException是一种用来捕获异常PDO(PDOStatement)类使用过程中产生的错误的</p>
+<p>２．PDOException在使用之前需要开启PDO的异常模式(PDO的实例化除外，可以直接捕捉)</p>
+<p>３．PDOException一般是在SQL执行过程中出错，如果其他代码执行过程中，业务逻辑不符合要求(代码没问题)，那么也可以使用throw new PDOException()来实现抛出异常</p>
+<h3 id="PDO预处理"><a href="#PDO预处理" class="headerlink" title="PDO预处理"></a>PDO预处理</h3><blockquote>
+<p>引入：SQL的执行从数据库端来讲，都是一条一条执行的，SQL在MySQL服务器端执行的逻辑是先编译后执行的，意味着即便是同一条SQL，每次发送到服务器端，都会经历编译、执行的过程，如果SQL量特别大，那么效率就会打折扣，为此，MySQL提供了一套预处理机制，可以实现效率的提升</p>
+</blockquote>
+<h4 id="MySQL预处理"><a href="#MySQL预处理" class="headerlink" title="MySQL预处理"></a>MySQL预处理</h4><p>定义：预处理prepare，是指客户端将要执行的SQL先发送给服务器，服务器先进行编译，不执行，等到客户端需要服务器端执行的时候，发送一条执行指令，让服务器再执行已经提前处理好(预处理)的SQL指令</p>
+<p>１．预处理流程：预处理流程是相对普通SQL执行流程的，普通的是客户端与服务端一对一　一次性的服务，而预处理可能是一对一但是多次服务</p>
+<p>普通SQL执行流程</p>
+<pre class=" language-sequence"><code class="language-sequence">MySQL客户端->MySQL服务端:发送SQL指令
+note right of MySQL服务端:接受指令->编译->执行
+MySQL服务端->MySQL客户端:返回执行结果
+note left of MySQL客户端:接收执行结果->解析结果
+MySQL客户端->MySQL服务端:再次发送SQL指令(可能相同)
+note right of MySQL服务端:接收指令->编译->执行
+MySQL服务端->MySQL客户端:返回执行结果
+note left of MySQL客户端:接收执行结果->解析结果</code></pre>
+<p>预处理SQL执行流程</p>
+<pre class=" language-sequence"><code class="language-sequence">MySQL客户端->MySQL服务端:发送SQL指令(预处理包装)
+note right of MySQL服务端:接受指令->编译
+MySQL服务端->MySQL客户端:返回预处理编译结果
+note left of MySQL客户端:接收编译结果->解析结果
+MySQL客户端->MySQL服务端:发送预处理执行指令
+note right of MySQL服务端:接受指令->执行编译后的预处理指令
+MySQL服务端->MySQL客户端:返回执行结果
+note left of MySQL客户端:接收执行结果->解析结果
+note over MySQL客户端,MySQL服务端:只能通过预处理执行，服务器端都不需要\n在进行额外编译，直接执行编译好的内容即可</code></pre>
+<p>２．实现预处理：预处理的步骤最开始会比普通SQL执行多一步，但是后续会节省服务器端的响应时间，提升服务端的服务效率。预处理操作步骤如下</p>
+<ul>
+<li>发送预处理：prepare预处理名字 from 要重复执行的SQL指令</li>
+<li>预处理执行语句：execute预处理名字</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//要执行重复的语句：从学生表中查询所有的数据</span>
+prepare student_select from <span class="token string">'select * from student'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//预处理执行语句</span>
+execute student_select<span class="token punctuation">;</span></code></pre>
+<p>３．预处理占位：如果一条SQL本身就是重复多次，那么还不见得预处理有什么优势，毕竟这样的固定操作特别多，更多的时候需要条件变化的，因此预处理可以进行预处理占位，在执行的时候把数据填入即可实现不同SQL查询结果</p>
+<ul>
+<li>预处理占位符：在预处理指令中要执行的SQL指令，使用<code>?</code>来代替未知数据部分</li>
+<li>预处理执行(using)：在执行预处理的时候将对应的数据携带到预处理指令中</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//要执行重复的语句：从学生表中按学生ID查询学生信息：ID不确定，所以使用?占位</span>
+prepare student_select_id from <span class="token string">'select * from student where id=?'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//执行预处理：预处理数据不能直接使用数据常量代入，需要通过变量传入</span>
+set @id <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//设置变量</span>
+execute student_select_id using @id<span class="token punctuation">;</span></code></pre>
+<p>４．预处理可以同时设定多个占位符，在执行预处理的时候传入对应的参数即可(顺序匹配)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//查询年龄区间的学生信息</span>
+prepare student_select_id from <span class="token string">'select * from student where age between ? and ?'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//执行预处理，提供两个参数</span>
+set @min <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+set @max <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+execute student_select_id using @min，@max<span class="token punctuation">;</span></code></pre>
+<p>５．预处理在MySQL中，针对一个客户端不能出现同名预处理，如果预处理使用完毕，我们可以把预处理给删掉，以保证后续使用的方便。语法：drop prepare 预处理名字;</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//删除预处理</span>
+drop prepare student_select_age<span class="token punctuation">;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．预处理prepare是MySQL提供的一套可以优化服务器重复执行SQL的方法，可以提升服务器的性能</p>
+<p>２．预处理是一套提前让服务器编译的机制，一次编译多次执行，节省后续编译的成本</p>
+<p>３．预处理分为两个步骤：发送预处理指令prepare预处理名字 from ‘预处理SQL’ ; 执行预处理执行execute预处理名字</p>
+<p>４．预处理可以进行数据更换执行，利用预处理指令的占位符“?“和执行时携带数据using</p>
+<p>５．同一个客户端不允许设定同名预处理，因此在执行预处理的时候，如果不用了应该删掉</p>
+<p>６．预处理不只是针对查询操作，增删改查操作都可以使用预处理</p>
+<h4 id="PDO预处理-1"><a href="#PDO预处理-1" class="headerlink" title="PDO预处理"></a>PDO预处理</h4><blockquote>
+<p>引入：其实所有的SQL指令，理论上都可以通过PDO::exec()和PDO::query()来执行。PDO中为了用户使用方便，制作了一套预处理流程</p>
+</blockquote>
+<p>定义：PDO预处理，是PDO封装一套特定的方法，在方法中做了一些优化操作，使得开发人员可以便捷的用来实现预处理</p>
+<p>１．PDO中预处理提供了一套方法机制，主要由以下几个方法组成</p>
+<ul>
+<li>PDO::prepare()：发送预处理指令，只需要提供要执行的指令即可，不需要prepare 名字 from。成功得到一个PDOStatement类对象，失败得到一个false(或者异常错误)</li>
+<li>PDOStatement::bindParam()：绑定预处理所需要的参数，只能绑定变量(引用传递)</li>
+<li>PDOStatement::bindValue()：绑定预处理所需要的参数，可以绑定值(值传递)</li>
+<li>PDOStatement::execute()：执行预处理，成功返回true，失败返回false</li>
+</ul>
+<p>２．PDO发送预处理指令：即利用PDO::prepare()方法将要执行的SQL指令先发送给服务器编译</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//实例化PDO对象</span>
+<span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//发送预处理指令</span>
+<span class="token variable">$pre</span> <span class="token operator">=</span> <span class="token string">"select * from student"</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//无参数预处理指令</span>
+<span class="token variable">$pre</span> <span class="token operator">=</span> <span class="token string">"select * from student where id=?"</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//有参数预处理指令</span>
+<span class="token variable">$pre</span> <span class="token operator">=</span> <span class="token string">"select * from student where id= :id"</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//PDO特定预处理参数指令(:+字符串)，更明确</span>
+
+<span class="token comment" spellcheck="true">//执行最后一条预处理指令：即使:id作为参数的</span>
+<span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token variable">$pre</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$stmt</span><span class="token punctuation">)</span><span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'预处理指令执行失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>３．绑定预处理参数：如果预处理本身是需要携带参数的，那么可以使用PDOStatement::bindParam()/bindValue()进行参数绑定</p>
+<p>PDOStatement::bindValue()</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindValue</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//直接绑定数值</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindValue</span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token punctuation">,</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//绑定变量数据</span></code></pre>
+<p><b>注意</b>：如果在发送预处理指令的时候，使用的是”?”作为占位符，那么我们在进行绑定数据的时候，是按照顺序进行绑定的，起始位置的占位符序号为１，如果有多个占位符，以此类推</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//预处理指令：select * from student where id=?</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>PDOStatement::bindParam()</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$id</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindValue</span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token punctuation">,</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//必须是传递变量，不能绑定值</span></code></pre>
+<p>４．执行预处理：利用PDOStatement::execute()方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//实例化PDO对象</span>
+<span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token string">'mysql:host=localhost;port=3306;dbname=project'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//发送预处理指令</span>
+
+<span class="token variable">$pre</span> <span class="token operator">=</span> <span class="token string">"select * from student where id= :id"</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//PDO特定预处理参数指令(:+字符串)，更明确</span>
+<span class="token comment" spellcheck="true">//执行最后一条预处理指令：即使:id作为参数的</span>
+<span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token variable">$pre</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindValue</span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token punctuation">,</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'预处理执行失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//如果是查询，想要得到预处理执行的结果，还需要使用PDOStatement::fetch()方法进行数据解析</span>
+<span class="token variable">$row</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．PDO预处理除了本身实现了MySQL的预处理，还额外优化了占位符：使用：+名字作为占位符</p>
+<p>２．PDO利用了PDO::prepare()方法发送预处理SQL指令，成功得到PDOStatement对象</p>
+<p>３．PDO利用PDOStatement::bindValue()/bindParam()来实现预处理数据绑定</p>
+<p>４．PDO利用PDOStatement::execute()来实现调用预处理</p>
+<p>５．如果利用PDO预处理来实现数据查询，那么在执行完成预处理之后，还需要调用PDOStatement::fetch()方法获取预处理得到的数据</p>
+<h4 id="PDO预处理数据绑定"><a href="#PDO预处理数据绑定" class="headerlink" title="PDO预处理数据绑定"></a>PDO预处理数据绑定</h4><blockquote>
+<p>引入：从单个数据的绑定来讲，两者都是可以达到同样的效果，但是bindValue()是绑定值，而bindParam()是必须绑定变量，所以彼此是有区别的</p>
+</blockquote>
+<p>定义：数据绑定，是指在进行预处理指令定义时使用了占位符，为了保证后续执行预处理时能够正确执行，将实际数据替换占位符的过程</p>
+<p>１．在PDO中，execute本身是可以直接进行数据绑定的，即在参数中增加对应的占位符数据，以数组形式传入</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//预处理形式使用原始占位符</span>
+<span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token string">'select * from student where id=?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//array代表是数组，10代表是替换值，如果有多个元素，顺序放入即可</span>
+<span class="token comment" spellcheck="true">//预处理形式使用PDO占位符：+名字</span>
+<span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token string">'select * from student where id=:id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token operator">=</span><span class="token operator">></span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//使用占位符作为数组元素下标</span></code></pre>
+<p>２．PDOStatement::bindValue()和PDOStatement::bindParam()区别</p>
+<ul>
+<li>二者都可以实现占位符的数据绑定</li>
+<li>bindValue()绑定数据的方式灵活，可以是变量也可以是数据常量；而bindParam()只能是变量</li>
+<li>因为bindParam绑定的是变量(引用传值)，所以如果被绑定的变量发生改变，会直接影响后续execute结果</li>
+</ul>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token string">'select * from student where id=:id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindValue</span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token punctuation">,</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token variable">$id</span><span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token variable">$id</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//上述所有结果$row都是id为1的数据</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bindParam</span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token punctuation">,</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token variable">$id</span><span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token variable">$id</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//上述所有结果$row都是id为1-9的数据</span></code></pre>
+<p><code>总结</code></p>
+<p>１．PDO绑定预处理数据的方式有多种：PDOStatement::bindValue()/bindParam()/execute()</p>
+<p>２．如果数据简单且不需要重复，那么使用bindValue()/execute()都可以</p>
+<p>３．如果数据本身是变化的，而且是有规则(数组遍历出来的结果)，那么可以使用bindParam()来节省操作</p>
+<h3 id="PDO封装"><a href="#PDO封装" class="headerlink" title="PDO封装"></a>PDO封装</h3><blockquote>
+<p>定义：封装PDO，即对PDO进行二次封装，从而让原本多出需要使用PDO的地方，能够直接使用二次封装的类，简化数据库操作。该封装并非完整封装，属于实现二次封装</p>
+</blockquote>
+<p>１．明确PDO需要封装的内容</p>
+<ul>
+<li>使用命名空间方便使用</li>
+<li>PDO的实例化：得到PDO对象，而且PDO对象需要在不同的方法中使用，可以考虑将PDO得到的对象保存在属性中</li>
+<li>写操作：包含普通SQL执行返回受影响行和获取自增长ID</li>
+<li>查操作：包含单行查询和多行查询</li>
+<li>隐藏操作：异常处理的封装</li>
+<li>其他操作：根据实际需求增加对应功能即可</li>
+</ul>
+<p>２．开始封装</p>
+<p>&ensp;&ensp;&ensp;2.1增加命名空间</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//命名空间：因为PDO通常属于核心类(项目中几乎每次都会访问数据库)，使用核心关键字core命名</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//有了命名空间，所以PDO的三个类就不再直接使用，需要使用完全限定名称访问，为了方便，可以事先引入元素</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>PDO</span><span class="token punctuation">,</span>\<span class="token package">PDOStatement</span><span class="token punctuation">,</span>\<span class="token package">PDOExcetion</span><span class="token punctuation">;</span></code></pre>
+<p>&ensp;&ensp;&ensp;2.2定义类：增加必要属性(PDO对象)</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//定义类　增加必要属性</span>
+<span class="token keyword">class</span> <span class="token class-name">MyPDO</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//属性</span>
+    <span class="token keyword">private</span> <span class="token variable">$pdo</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$fetch_mode</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>&ensp;&ensp;&ensp;2.3 增加初始化方法：得到PDO对象：考虑参数的外部传入和默认值，数据较多可以采取关联数组</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//构造方法</span>
+<span class="token comment" spellcheck="true">//默认采用PDO异常和获取关联数组设定</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$database_info</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token variable">$drivers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token variable">$type</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'type'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'mysql'</span><span class="token punctuation">;</span>
+    <span class="token variable">$host</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'host'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'localhost'</span><span class="token punctuation">;</span>
+    <span class="token variable">$port</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'port'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'3306'</span><span class="token punctuation">;</span>
+    <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'root'</span><span class="token punctuation">;</span>
+    <span class="token variable">$pass</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'pass'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'root'</span><span class="token punctuation">;</span>
+    <span class="token variable">$dbname</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'dbname'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'playzg'</span><span class="token punctuation">;</span>
+    <span class="token variable">$charset</span> <span class="token operator">=</span> <span class="token variable">$database_info</span><span class="token punctuation">[</span><span class="token string">'charset'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'utf8'</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//fetchmode不能在初始化的时候实现，需要在得到PDOStatement类对象好设置</span>
+    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">fetch_mode</span> <span class="token operator">=</span> <span class="token variable">$drivers</span><span class="token punctuation">[</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_DEFAULT_FETCH_MODE</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">FRTCH_ASSOC</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//控制属性</span>
+    <span class="token variable">$drivers</span><span class="token punctuation">[</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$drivers</span><span class="token punctuation">[</span><span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token constant">PDO</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token constant">ERRMODE_EXCEPTION</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//连接认证</span>
+    <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//增加错误抑制符防止意外</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span> <span class="token operator">=</span> @<span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">.</span><span class="token string">':host='</span><span class="token punctuation">.</span><span class="token variable">$host</span><span class="token punctuation">.</span><span class="token string">';port='</span><span class="token punctuation">.</span><span class="token variable">$port</span><span class="token punctuation">.</span><span class="token string">';dbname='</span><span class="token punctuation">.</span><span class="token variable">$dbname</span><span class="token punctuation">,</span><span class="token variable">$user</span><span class="token punctuation">,</span><span class="token variable">$pass</span><span class="token punctuation">,</span><span class="token variable">$drivers</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (PDOException $e)&amp;#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token comment" spellcheck="true">//设置字符集</span>
+    <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"set names"</span><span class="token punctuation">.</span><span class="token variable">$charset</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (PDOException $e)&amp;#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'代码运行错误'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>&ensp;&ensp;&ensp;2.4发现异常会经常用到，因此可以将异常封装到方法，从而调用(对内调用)</p>
+<pre class=" language-php"><code class="language-php">    <span class="token comment" spellcheck="true">//异常处理方法</span>
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">my_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">echo</span> <span class="token string">'SQL代码运行错误'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误文件为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误行号为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">'错误描述为:'</span><span class="token punctuation">.</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'&lt;br />'</span><span class="token punctuation">;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>&ensp;&ensp;&ensp;2.5 增加写SQL操作方法：对外调用</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//写操作</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">my_exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//调用执行：成功返回，错误捕捉</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch(PDOException $e)&amp;#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">my_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>&ensp;&ensp;&ensp;2.6 完善写操作：增加对外提供自增长id方法</p>
+<pre class=" language-php"><code class="language-php">    <span class="token comment" spellcheck="true">//获取自增长id</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">my_last_insert_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">lastInsertId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>&ensp;&ensp;&ensp;2.7增加读方法：对外调用</p>
+<pre class=" language-php"><code class="language-php">    <span class="token comment" spellcheck="true">//写方法：按条件进行单行或者多行数据返回</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">my_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">,</span><span class="token variable">$only</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token keyword">try</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+            <span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">pdo</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//设置查询模式</span>
+            <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setFetchMode</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">fetch_mode</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//数据解析</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$only</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+                <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$row</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">PDOException</span><span class="token punctuation">(</span><span class="token string">'当前查询没有数据'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token variable">$row</span><span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+                <span class="token variable">$rows</span> <span class="token operator">=</span>  <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$rows</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">PDOException</span><span class="token punctuation">(</span><span class="token string">'当前查询没有数据'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token variable">$rows</span><span class="token punctuation">;</span>                
+            <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;catch (PDOException $e)&amp;#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">my_exception</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p><code>总结</code></p>
+<p>１．PDO的使用是经常性的，所以我们需要将PDO变得更加灵活，更加贴近我们的项目，从而实现更多代码的复用，因此需要对PDO进行二次封装</p>
+<p>２．PDO的封装是要根据项目需求来实现的，如果只是基础功能，那么现实了增删改查即可，如果项目里面要用到更多内容，如预处理、事务之类的，那么就需要进行更多的封装</p>
+<h1 id="MVC思想"><a href="#MVC思想" class="headerlink" title="MVC思想"></a>MVC思想</h1><h2 id="发展历程"><a href="#发展历程" class="headerlink" title="发展历程"></a>发展历程</h2><p>定义：代码发展历程其实也是随着软件工程思想的成熟，并依赖硬件水平的提高而形成的自然过渡。在过渡过程中主要形成了几种开发方式</p>
+<p>１．混编模式：即PHP代码与HTML是互相嵌入的</p>
+<ul>
+<li>优点：服务器解析效率最高</li>
+<li>缺点：代码复用性极地，视觉效果差，可维护性差</li>
+</ul>
+<p>２．模板技术：将PHP代码与HTML代码进行分离，PHP中实现业务逻辑和数据处理，HTML只进行数据的显示</p>
+<ul>
+<li>优点：代码复用性增强，视觉效果增强，前后端分离有助于前后端开发工程师维护</li>
+<li>缺点：小项目开发效率降低、服务器解析效率降低</li>
+</ul>
+<p>３．MVC思想：在模板技术之上，将PHP代码的业务逻辑处理部分和数据操作部分继续分离，独立维护</p>
+<ul>
+<li>优点：分类好管理、视觉效果好、维护性强</li>
+<li>缺点：前期开发效率低、服务器解析效率最低</li>
+</ul>
+<p>４．发展历程</p>
+<ul>
+<li>混编模式是PHP早期设计的模式，当时要完成的内容很简单(个人博客)，硬件效率也不是那么高(网络传输效率不高)</li>
+<li>PHP逐渐被开发人员所喜爱，开始进行一些较大项目，为了方便维护，就进行了前后端分离，出现了模板技术</li>
+<li>面向对象开发作为编辑主流，PHP也朝着这个方向发展，作为大型项目的支撑，需要有更好的代码结构，实现代码的复用和后续维护，因此出现了MVC思想</li>
+</ul>
+<p><code>总结</code></p>
+<p>１．PHP随着时代的发展，经历了三个阶段：混编阶段、模板技术(前后端分离)和MVC思想</p>
+<p>２．每个阶段都有彼此的优缺点</p>
+<p>３．MVC思想符合人类思维模式，缺点是服务器解析成本高，不过随着硬件的发展和网络的发展，这些效率相对开发维护而言，影响不大</p>
+<h2 id="思想介绍"><a href="#思想介绍" class="headerlink" title="思想介绍"></a>思想介绍</h2><p>定义：MVC思想，并非一种特定的技术，而是一种基于面向对象思想形成的有利于代码复用的设计行为，甚于MVC思想开发的代码更加符合人类行为特征，也便于后期项目维护和发展</p>
+<p>１．MVC是一种缩写结构</p>
+<ul>
+<li>M：Model，模型，专门负责数据操作，针对数据库部分的代码，一个模型(类)针对一张数据表</li>
+<li>V：View，视图，专门负责结果数据渲染(HTML+CSS+JavaScript)</li>
+<li>C：Controller，控制器，负责所有的业务处理，一个控制器控制(类)一类业务</li>
+</ul>
+<p>２．MVC思想设计下的代码工作逻辑</p>
+<ul>
+<li><p>用户发起请求：请求控制器C</p>
+</li>
+<li><p>控制器处理业务逻辑</p>
+<ul>
+<li>遇到数据处理需求：请求模型M实现数据库操作</li>
+<li>处理结果展示：调用视图V显示渲染数据</li>
+</ul>
+<pre class=" language-sequence"><code class="language-sequence">浏览器->服务器:发送请求
+服务器->控制器:控制器接收请求
+note right of 控制器:控制器接收请求\n业务处理
+控制器-->模型:数据处理需求
+note right of 模型:数据库操作
+模型-->控制器:返回数据
+控制器-->视图:数据渲染处理
+note right of 视图:渲染数据
+视图-->控制器:返回渲染结果
+控制器->服务器:控制器处理完毕\n交给服务器
+服务器->浏览器:服务器返回执行结果
+note left of 浏览器:解析渲染后\n的数据结果</code></pre>
+</li>
+</ul>
+<p>３．在面向对象的MVC中，因为模型是针对具体数据表，意味着每个模型都需要进行数据库的连接操作，这个时候通常会设计一层专门负责数据库初始化部分的(类似二次封装PDO，没有具体数据业务，只负责数据库底层操作)，我们把这层叫做DAO数据访问对象</p>
+<p><a href="https://sm.ms/image/8ZrRBbcdqP5ysXD" target="_blank"><img src="https://i.loli.net/2020/03/01/8ZrRBbcdqP5ysXD.png" ></a></p>
+<p><code>总结</code></p>
+<p>１．MVC并非一种技术，而是一种代码分离设计的思想</p>
+<p>２．MVC会让代码运行变慢，但是基于现在硬件性能，这个效率影响一般可以忽略</p>
+<p>３．MVC是由控制器、模型、视图三部分组成</p>
+<ul>
+<li>控制器：负责所有事务处理，也包括调用模型和视图</li>
+<li>模型：只负责数据逻辑处理，包括操作数据库</li>
+<li>视图：只负责数据渲染，主要是HTML+CSS+JavaScript</li>
+</ul>
+<p>４．通常情况下，面向对象中还会在模型和数据库之间增加一层DAO来专门负责数据库底层实现</p>
+<h2 id="代码设计"><a href="#代码设计" class="headerlink" title="代码设计"></a>代码设计</h2><p>定义：MVC代码设计，就是当一个系统要实现时，我们如何区分哪里该由控制器处理，哪里该由模型处理，最后如何在视图中渲染</p>
+<p>１．区分业务设计控制器：根据业务相关性和相似性，将对应业务划分到一起，由一个控制器来实现，控制器设计成类，不同方法代表不同业务处理，如后台的注册、登录以及注销，都属于权限功能，可以划分到一起，控制器可以区分前后台(看系统需求是否需要区分)，可以增加相应的命名空间，为了后期代码好维护，可以增加控制器后缀controller</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//后台权限控制器</span>
+<span class="token comment" spellcheck="true">//命名空间</span>
+<span class="token keyword">namespace</span> <span class="token package">admin<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//表明是后台代码，而且是控制器</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PrivilegeController</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//一个方法实现一个小业务：一次请求完成用户一次需求</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//可以是单独的获取登录表单，也可以在里面使用判定方式实现获取表单和完成登录两个功能</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+            <span class="token comment" spellcheck="true">//用户有提交用户名：说明当前是要完成登录功能</span>
+            <span class="token comment" spellcheck="true">//代码实现登录功能：调用模型</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+            <span class="token comment" spellcheck="true">//没有提交表单：说明是用来获取登录表单</span>
+            <span class="token comment" spellcheck="true">//加载登录视图</span>
+        <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token comment" spellcheck="true">//注册功能</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//实现注册功能(注册和加载注册表单)</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>２．区分数据增加模型：模型的设计通常是基于表的，即一张表会有一个对应的模型类，对应表的所有操作(增删改查)都会有当前模型类来实现，所有的SQL指令都是封装到当前模型中，与控制器一样，也应该增加相应的命名空间，以及模型后缀moderl</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//后缀管理员模型</span>
+<span class="token keyword">namespace</span> <span class="token package">admin<span class="token punctuation">\</span>model</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AdminModel</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//模型针对表，所以通常会在模型中增加一个表明：因为所有方法都会涉及到SQL，便于以后维护</span>
+    <span class="token keyword">protected</span> <span class="token variable">$table</span> <span class="token operator">=</span> <span class="token string">'admin'</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//根据用户名获取用户信息</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getUserinfoByUsername</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//组织SQL</span>
+        <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"select * from &amp;#123;$this->table&amp;#125; where username = '&amp;#123;$username&amp;#125;'"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//执行：通常调用DAO执行</span>
+
+        <span class="token comment" spellcheck="true">//返回数据执行结果</span>
+        <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token comment" spellcheck="true">//获取所有用户信息</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"select * from &amp;#123;$this->table&amp;#125;"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//调用DAO执行SQL并返回结果</span>
+        <span class="token keyword">return</span> <span class="token variable">$users</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>３．选择合适视图：视图通常是前端提供好，后端人员要做的就是如何去在视图中增加对应的PHP输出指令，将数据放到合适的位置：假设当前获取的是用户登录信息</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token comment" spellcheck="true">//检测如果存在前台id和标志共存的时候才显示用户名 ，如果不存在则显示登陆注册</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>@<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string">'qt_flag'</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> @<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string">'qt_id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'&lt;b class="dl">'</span><span class="token punctuation">.</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string">'qt_user'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">'&lt;/b> &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a href="./qt_loginOut.php" style="color:red">退出&lt;/a>'</span><span class="token punctuation">;</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#125;else&amp;#123;</span>
+    <span class="token keyword">echo</span> <span class="token string">'&lt;a href="./qt_login.php" class="dl">登录&lt;/a>/&lt;a href="qt_register.php" class="dl">注册&lt;/a>&lt;/p>'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token delimiter">?></span></code></pre>
+<p>４．在实际开发项目中，会有很多控制器，每个控制器本质要做的事情都差不多，只是具体的业务逻辑不一样。此时就会出现很多类似的功能，如操作成功、失败、页面找不到等等，此时如果在所有控制器中都去写对应的方法，那么肯定是有资源浪费的，此时就可以从这些控制器中抽离一部分公共代码出来，形成父类，从而实现代码的复用</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//父类控制器：通常在核心中</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Controller</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//公共代码</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//控制器的初始化操作</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//成功操作</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//失败操作</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//子类控制器继承父类控制器</span>
+<span class="token keyword">namespace</span> <span class="token package">admin<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Core<span class="token punctuation">\</span>Controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">IndexController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//业务方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//调用父类公共方法</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>５．同样的，模型是针对一张表一个模型，而每个模型都需要利用DAO来实现数据库的底层操作，以二次封装的PDO为例，所有的模型类都需要在构造方法中实现PDO的实例化，而DA还会有很多公共的功能，如查询全部、通过ID进行查询等常用方法，此时也可以将模型的公共部分抽离出来，形成父类，而其他模型只需要继承该类即可</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//父类公共模型</span>
+<span class="token keyword">namespace</span> <span class="token package">core</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Model</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//实现DAO类的初始化：通常使用构造方法，因为所有模型子类继承该类都会先调用构造方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token comment" spellcheck="true">//实现DAO类的初始化，完成数据库初始化操作：通常是用　对象保存得到的DAO对象</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">dao</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//假定操作</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+    <span class="token comment" spellcheck="true">//获取所有数据</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+        <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"select * from &amp;#123;$this->table&amp;#125;"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//子类模型中有受保护的属性$table，父类也可以调用(最终是子类调用该方法)</span>
+        <span class="token comment" spellcheck="true">//执行完成，返回结果即可</span>
+        <span class="token keyword">return</span> <span class="token variable">$rows</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//子类模型继承父类</span>
+<span class="token keyword">namespace</span> <span class="token package">admin<span class="token punctuation">\</span>model</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Core<span class="token punctuation">\</span>Model</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">UserModel</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token comment" spellcheck="true">//表名属性</span>
+    <span class="token keyword">protected</span> <span class="token variable">$table</span> <span class="token operator">=</span> <span class="token string">'user'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+
+<span class="token comment" spellcheck="true">//当前类没有自己的构造方法，意味着实例化UserModel的时候会调继承自Model类的构造方法，从而实现DAO的实例化，也就是说实例化的UserModel对象，可以直接调用父类的getAll方法来实现数据库操作</span></code></pre>
+<p><code>总结</code></p>
+<p>１．MVC思想的指导思路</p>
+<ul>
+<li>区分业务：确定是公用还是单独创建控制器</li>
+<li>区分数据：确定是属于控制器还是应该创建模型</li>
+</ul>
+<p>２．MVC思想中，会存在很多重复的内容，此时就需要我们进行抽象化</p>
+<ul>
+<li>公共控制器代码：父类控制器</li>
+<li>公共模型代码：父类模型</li>
+</ul>
+<h2 id="单一入口文件"><a href="#单一入口文件" class="headerlink" title="单一入口文件"></a>单一入口文件</h2><blockquote>
+<p>引入：因为MVC思想的规定，所有的请求都是用控制器来处理，因此用户的任何请求，都会是由控制器来进行处理，而其他的文件，如模型和视图文件，也都是通过控制器来直接或者间接调用的，我们把这种设计思路称之为单一入口，但是其实本质在进入控制器之前，还有好多初始化的操作需要实现，因此我们在MVC实现的基础上，规定其他文件的访问方式，这就是项目单一入口</p>
+</blockquote>
+<p>定义：单一入口，是指一类业务会统一请求一个对应的控制器，所有的请求都是由控制器来处理，项目单一入口是指，所有的请求都之请求一个入口文件，其他的所有代码的调用执行，都是由该入口文件来管理</p>
+<p>１．项目单一入口是指在基于MVC设计情况下，在进入MVC之前，由一个统一的入口文件来进行管理，所有的用户(浏览器)请求都只允许访问入口文件</p>
+<pre class=" language-sequence"><code class="language-sequence">浏览器->服务器:发起请求
+服务器->入口文件\nindex.php:统一由入口文件处理\n通常是index.php
+note right of 入口文件\nindex.php:入口文件开始\n分发控制器
+入口文件\nindex.php-->控制器:
+控制器-->模型:调用
+note right of 模型:完成数据库操作
+模型-->控制器:返回数据
+控制器-->视图:加载
+note right of 视图:完成数据渲染
+视图-->控制器:返回渲染数据
+控制器-->入口文件\nindex.php:返回MVC处理结果
+入口文件\nindex.php->服务器:PHP处理结果交给服务器
+服务器-->浏览器:服务器返回执行结果
+note left of 浏览器:浏览器\n完成解析</code></pre>
+<p>２．在真实项目单一入口中，入口文件通常会很简单，为了入口文件的可操作性，会将不同的内容分散到不同的文件中。一个简单的项目单一入口文件，也会将入口文件中的初始化部分，分离到另一个文件中(初始化类)</p>
+<ul>
+<li>入口文件index.php：加载初始化类，激活初始化类</li>
+<li>初始化类：实现各类初始化(路径常量、系统设置、配置文件加载、路由功能、自动加载、控制器分发)</li>
+</ul>
+<p><code>总结</code></p>
+<p>１．单一入口是基于MVC思想的直接实现，用户的请求就是根据业务不同请求不同控制器</p>
+<p>２．项目单一入口是指用户所有的请求都是请求一个PHP入口文件，其他的事情都是PHP内部处理</p>
+<p>３．项目单一入口能够很好的保护系统内部的文件结构安全</p>
+<p>４．项目单一入口会增加前期开发难度，但是在开发后期就会轻松(基础部分只需要开发一次)</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">PlayZG</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E4%B8%89/">http://example.com/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E4%B8%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">PlayZG</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PHP/">
+                                    <span class="chip bg-color">PHP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E5%9B%9B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="PHP面向对象基础(四)">
+                        
+                        <span class="card-title">PHP面向对象基础(四)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/12/29/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80-%E4%BA%8C/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="PHP面向对象基础(二)">
+                        
+                        <span class="card-title">PHP面向对象基础(二)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: John Doe<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">152.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/playZG" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:playzg@aliyun.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1351802079" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1351802079" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

