@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JavaScript基础(二), PlayZG">
+    <meta name="keywords" content="ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell, PlayZG">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JavaScript基础(二) | PlayZG</title>
+    <title>ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell | PlayZG</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript基础(二)</h1>
+                    <h1 class="description center-align post-title">ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/TP5/">
+                                <span class="chip bg-color">TP5</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-21
+                    2021-05-24
                 </div>
                 
 
@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    646
                 </div>
                 
 
@@ -473,227 +473,64 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Javascript基础笔记"><a href="#Javascript基础笔记" class="headerlink" title="Javascript基础笔记"></a>Javascript基础笔记</h1><h2 id="Javascript-DOM对象"><a href="#Javascript-DOM对象" class="headerlink" title="Javascript DOM对象"></a>Javascript DOM对象</h2><h3 id="DOM简介"><a href="#DOM简介" class="headerlink" title="DOM简介"></a>DOM简介</h3><p>1．HTML DOM:</p>
-<p>&ensp;&ensp;当网页被加载时，浏览器会创建页面的文档对象模型</p>
-<p>&ensp;&ensp;</p>
-<h3 id="DOM操作HTML"><a href="#DOM操作HTML" class="headerlink" title="DOM操作HTML"></a>DOM操作HTML</h3><p>１．Javascript能够改变页面中的所有HTML元素</p>
-<p>２．Javascript能够改变页面中的所有HTML属性</p>
-<p>３．Javascript能够改变页面中的所有CSS样式</p>
-<p>４．Javascript能够改变页面中的所有事情做出反应</p>
-<p>１．改变HTML输出流：</p>
-<p>&ensp;&ensp;注意：绝对不要在文档加载完成之后使用document.write().这会覆盖该文档</p>
-<p>２．寻找元素：</p>
-<p>&ensp;&ensp;通过id找到HTML元素</p>
-<p>&ensp;&ensp;通过标签名找到HTML元素</p>
-
-
-<p>３．改变HTML内容：</p>
-<p>&ensp;&ensp;使用属性：innerHTML</p>
-<p>４．改变HTML属性 </p>
-<p>&ensp;&ensp;使用属性：attribute</p>
-
-
-<p>直接点链接会跳转到百度，当先点击一下按钮再点击链接就会跳ｂ站，效果图就不放了，有兴趣可以自己试一下</p>
-<h3 id="DOM操作CSS"><a href="#DOM操作CSS" class="headerlink" title="DOM操作CSS"></a>DOM操作CSS</h3><p>通过DOM对象改变CSS</p>
-<p>&ensp;&ensp;语法：document.getElementByld(id).style.property=new style</p>
-<p>我们先设计一下，通过CSS得到一个效果</p>
-
-
-<p>然后我们通过JS去控制CSS，让其红色背景变成蓝色，通过按钮调用函数</p>
-
-
-<h3 id="DOMEventListener"><a href="#DOMEventListener" class="headerlink" title="DOMEventListener"></a>DOMEventListener</h3><p>有两个方法：</p>
-<p>&ensp;&ensp;&ensp;addEventListener();&ensp;&ensp;&ensp;用于向指定元素添加事件句柄</p>
-<p>&ensp;&ensp;&ensp;removeEventListener();&ensp;&ensp;&ensp;移除方法添加的事件句柄</p>
-<p>句柄可以减少后期修改代码的工作量和降低应该修改代码而产生错误的概率，并且句柄之间不会覆盖</p>
-<p>可以看到先弹hello再弹world</p>
-
-
-
-
-<p>我们用removeEventListener()移除弹hello的句柄</p>
-
-
-<p>可以看到不弹hello了，直接弹world。如果说是看图效果不明显的话，建议大家自己动手操作一下。</p>
-<h2 id="事件详解"><a href="#事件详解" class="headerlink" title="事件详解"></a>事件详解</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>事件流：描述的是在页面中接受事件的顺序</p>
-<p>事件冒泡：由最具有的元素接收，然后逐级向上传递至最不具体的元素的支点（文档）</p>
-<p>这里先&lt;button&gt;先接收，然后再&lt;div&gt;接收</p>
-
-
-<p>事件捕获：最不具体的节点先接收事件，而最具体的节点应该是最后接收事件</p>
-<p>先&lt;div&gt;接收，再&lt;button&gt;先接收。</p>
-
-
-<h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><p>１．HTML事件处理</p>
-<p>&ensp;&ensp;&ensp;直接添加到HTML结构中</p>
-
-
-<p>２．DOM0级事件处理</p>
-<p>&ensp;&ensp;&ensp;把一个函数赋值给一个事件处理程序属性</p>
-
-
-<p>它也是有缺点的，比如会覆盖</p>
-
-
-<p>３．DOM2级事件处理</p>
-<p>&ensp;&ensp;&ensp;addEventListener(“事件名”，”事件处理函数”，”布尔值”)；</p>
-
-
-<p>&ensp;&ensp;&ensp;&ensp;DOM2级事件并不会像DOM0级事件一样覆盖</p>
-<p>&ensp;&ensp;&ensp;true：事件捕获</p>
-<p>&ensp;&ensp;&ensp;false：事件冒泡</p>
-<p>&ensp;&ensp;&ensp;removeEventListener();</p>
-
-
-<p>４．IE事件处理程序</p>
-<p>&ensp;&ensp;&ensp;&ensp;attachEvent：添加一个事件</p>
-<p>&ensp;&ensp;&ensp;&ensp;detachEvent：移除一个事件</p>
-<p>这个的使用方法跟addEventListener、removeEventListener差不多</p>
-<p>一般情况下我们会用DOM2级事件，因为DOM0级事件会被覆盖掉，但是DOM0级事件写法可能会比DOM2级事件简单</p>
-<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>１．事件对象：</p>
-<p>&ensp;&ensp;&ensp;&ensp;再触发DOM事件的时候都会产生一个对象</p>
-<p>２．事件对象event：</p>
-<p>&ensp;&ensp;&ensp;&ensp;1）type:获取事件类型</p>
-
-
-<p>&ensp;&ensp;&ensp;&ensp;2）target:获取事件类型</p>
-
-
-<p>&ensp;&ensp;&ensp;&ensp;3）stopPropagation():阻止事件冒泡</p>
-<p>先用代码解释一下事件冒泡，我们点击的是button但是包含button的div也执行了并且弹出了对话框，这就属于事件冒泡</p>
-
-
-<p>有时我们并不需要事件的冒泡，这就需要阻止事件冒泡</p>
-
-
-<p>&ensp;&ensp;&ensp;&ensp;4）preventDefault():组织事件默认行为</p>
-
-
-<p>正常情况下，我们点击a链接会跳转到哔哩哔哩，我们用preventDefault()处理，即使我们点击a链接也不会跳转</p>
-<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><h3 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h3><p>JavaScript中的所有事物都是对象：字符串、数值、数组、函数</p>
-<p>每个对象带有属性和方法</p>
-<p>JavaScript允许自定义对象</p>
-<h3 id="自定义对象"><a href="#自定义对象" class="headerlink" title="自定义对象"></a>自定义对象</h3><p>定义并创建对象实例</p>
-
-
-<p>使用函数来定义对象，然后创建新的对象实现</p>
-
-
-<h3 id="String字符串对象"><a href="#String字符串对象" class="headerlink" title="String字符串对象"></a>String字符串对象</h3><h4 id="String对象："><a href="#String对象：" class="headerlink" title="String对象："></a>String对象：</h4><p>&ensp;&ensp;&ensp;String对象用于处理已有的字符串，字符串可以使用单引号或双引号</p>
-<h4 id="在字符串中查找字符串：indexOf"><a href="#在字符串中查找字符串：indexOf" class="headerlink" title="在字符串中查找字符串：indexOf()"></a>在字符串中查找字符串：indexOf()</h4><p>存在返回位置，不存在返回-1;</p>
-
-
-<h4 id="内容匹配：match"><a href="#内容匹配：match" class="headerlink" title="内容匹配：match()"></a>内容匹配：match()</h4>
-
-<h4 id="替换内容：replace"><a href="#替换内容：replace" class="headerlink" title="替换内容：replace()"></a>替换内容：replace()</h4>
-
-<h4 id="字符串大小写转换：toUpperCase-toLowerCase"><a href="#字符串大小写转换：toUpperCase-toLowerCase" class="headerlink" title="字符串大小写转换：toUpperCase()/toLowerCase()"></a>字符串大小写转换：toUpperCase()/toLowerCase()</h4>
-
-<h4 id="字符串转为数组：strong-gt-split"><a href="#字符串转为数组：strong-gt-split" class="headerlink" title="字符串转为数组：strong&gt;split()"></a>字符串转为数组：strong&gt;split()</h4>
-
-<p>这里只介绍常用的一部分，还有一部分需要大家自己多多练习</p>
-
-
-<h3 id="Date日期对象"><a href="#Date日期对象" class="headerlink" title="Date日期对象"></a>Date日期对象</h3><h4 id="Date对象：日期对象用于处理日期和时间"><a href="#Date对象：日期对象用于处理日期和时间" class="headerlink" title="Date对象：日期对象用于处理日期和时间"></a>Date对象：日期对象用于处理日期和时间</h4><h4 id="获得当日的日期"><a href="#获得当日的日期" class="headerlink" title="获得当日的日期"></a>获得当日的日期</h4><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>getFullYear()  获取年份</p>
-<p>getTime() 获取毫秒</p>
-<p>setFullYear()设置具体的日期</p>
-<p>getDay()获取星期</p>
-<p>我们用代码写一个时钟，具体了解</p>
-
-
-<h3 id="Array数组对象"><a href="#Array数组对象" class="headerlink" title="Array数组对象"></a>Array数组对象</h3><h4 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h4><p>&ensp;&ensp;&ensp;使用单独的变量名来存储一系列的值</p>
-<h4 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h4><p>&ensp;&ensp;&ensp;例：var myArray＝[“hello”,”zg”,”blog”]</p>
-<h4 id="数组的访问"><a href="#数组的访问" class="headerlink" title="数组的访问"></a>数组的访问</h4><p>&ensp;&ensp;&ensp;通过指定数组名及索引号码，你可以访问某个特定的元素</p>
-<p>&ensp;&ensp;&ensp;注意：[0]是数组的第一个元素</p>
-<h4 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h4><p>&ensp;&ensp;&ensp;concat()：合并数组</p>
-<p>&ensp;&ensp;&ensp;sort()：排序</p>
-<p>&ensp;&ensp;&ensp;push()：末尾追加元素</p>
-<p>&ensp;&ensp;&ensp;reverse()：数组元素翻转</p>
-
-
-<p>只挑选了一部分方法，有兴趣的话自己了解吧</p>
-<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p>Math对象：执行常见的算数任务</p>
-<p>常用方法：</p>
-<p>方法有很多，这里介绍常用的</p>
-<p>&ensp;&ensp;&ensp;round()：四舍五入</p>
-<p>&ensp;&ensp;&ensp;random()：返回０~1之间的随机数</p>
-<p>&ensp;&ensp;&ensp;max()：返回最高值</p>
-<p>&ensp;&ensp;&ensp;min()：返回中的最低值</p>
-<p>&ensp;&ensp;&ensp;abs()：返回绝对值</p>
-
-
-<h2 id="JSDOM对象控制HTML"><a href="#JSDOM对象控制HTML" class="headerlink" title="JSDOM对象控制HTML"></a>JSDOM对象控制HTML</h2><p>DOM对象控制HTML</p>
-<p>方法：</p>
-<p>getElementsByName()：获取name</p>
-<p>getElementsByTayName()：获取元素</p>
-<p>getAttribute()：获取元素属性</p>
-<p>setAttribute()：设置元素属性</p>
-<p>childNodes()：访问子节点</p>
-<p>parentNode()：访问父节点</p>
-<p>createElement()：创建元素节点</p>
-<p>createTextNode()：创建文本节点</p>
-<p>insertBefore()：插入节点</p>
-<p>removeChild()：删除节点</p>
-<p>offsetHeight()：网页尺寸，不包含滚动条</p>
-<p>scrollHeight()：网页尺寸</p>
-
-
-
-
-
-
-
-
-<h2 id="JavaScript浏览器对象"><a href="#JavaScript浏览器对象" class="headerlink" title="JavaScript浏览器对象"></a>JavaScript浏览器对象</h2><h3 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h3><h4 id="Window对象："><a href="#Window对象：" class="headerlink" title="Window对象："></a>Window对象：</h4><p>&ensp;&ensp;&ensp;window对象是BOM的核心，window对象指当前的浏览器窗口</p>
-<p>&ensp;&ensp;&ensp;所有JavaScript全局对象、函数以及变量均自动成为window对象成员</p>
-<p>&ensp;&ensp;&ensp;全局变量是window对象的属性</p>
-<p>&ensp;&ensp;&ensp;全局函数是window对象的方法</p>
-<p>&ensp;&ensp;&ensp;甚至HTML DOM的document也是window对象的属性之一</p>
-<h4 id="window尺寸"><a href="#window尺寸" class="headerlink" title="window尺寸"></a>window尺寸</h4><p>&ensp;&ensp;&ensp;window.innerHeight - 浏览器窗口的内部高度</p>
-<p>&ensp;&ensp;&ensp;window.innerWidth - 浏览器窗口的内部宽度</p>
-<h4 id="window方法"><a href="#window方法" class="headerlink" title="window方法"></a>window方法</h4><p>&ensp;&ensp;&ensp;window.open() - 打开新窗口</p>
-<p>&ensp;&ensp;&ensp;window.close() - 关闭当前窗口</p>
-
-
-<h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><h4 id="计时事件："><a href="#计时事件：" class="headerlink" title="计时事件："></a>计时事件：</h4><p>&ensp;&ensp;&ensp;通过使用JavaScript，我们有能力作到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行，我们称之为计时事件</p>
-<h4 id="计时方法："><a href="#计时方法：" class="headerlink" title="计时方法："></a>计时方法：</h4><p>用时钟来具体操作，点击按钮时钟就停止，区别：setlnterval() 是延时执行，setTimeout()是自己调自己</p>
-<p>&ensp;&ensp;&ensp;１．setlnterval() -间隔指定的毫秒数不停地执行指定的代码</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;clearlnterval() -方法用于停止setlnterval()方法执行的函数代码</p>
-
-
-<p>&ensp;&ensp;&ensp;２．setTimeout() -暂停指定的毫秒数后执行指定的代码</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;clearTimeout() -方法用于停止执行setTimeout()方法的函数代码</p>
-
-
-
-
-<h3 id="History对象"><a href="#History对象" class="headerlink" title="History对象"></a>History对象</h3><h4 id="History对象-1"><a href="#History对象-1" class="headerlink" title="History对象"></a>History对象</h4><p>&ensp;&ensp;&ensp;window.history对象包含浏览器的历史(url)的集合</p>
-<h4 id="History方法"><a href="#History方法" class="headerlink" title="History方法"></a>History方法</h4><p>&ensp;&ensp;&ensp;history.back() - 与在浏览器点击后退按钮相同</p>
-
-
-<p>&ensp;&ensp;&ensp;通过a.html页面的超链接进入llq.html页面，当点击llq.html中的按钮时，就会回到a.html</p>
-<p>&ensp;&ensp;&ensp;history.forward() - 与在浏览器中点击按钮向前相同</p>
-
-
-<p>&ensp;&ensp;&ensp;通过a.html页面的超链接进入llq.html页面，当点击llq.html中的按钮时，就会回到a.html,再点击按钮又会回到llq.html</p>
-<p>&ensp;&ensp;&ensp;history.go() - 进入历史中的某个页面</p>
-
-
-<p>&ensp;&ensp;&ensp;通过a.html页面的超链接进入llq.html页面，如果输入的是name则跳回上个页面，如果输入的不是name则弹出输入不正确</p>
-<h3 id="Location对象"><a href="#Location对象" class="headerlink" title="Location对象"></a>Location对象</h3><h4 id="Location对象-1"><a href="#Location对象-1" class="headerlink" title="Location对象"></a>Location对象</h4><p>window.location对象用于获得当前页面的地址(url)，并把浏览器重定向到新的页面</p>
-<h4 id="Location对象的属性"><a href="#Location对象的属性" class="headerlink" title="Location对象的属性"></a>Location对象的属性</h4><p>&ensp;&ensp;&ensp;location.hostname返回web主机的域名</p>
-<p>&ensp;&ensp;&ensp;location.pathname返回当前页面的路径和文件名</p>
-<p>&ensp;&ensp;&ensp;location.port返回web主机的端口</p>
-<p>&ensp;&ensp;&ensp;location.href属性返回当前页面的url</p>
-<p>&ensp;&ensp;&ensp;location.assign()方法加载新的文档</p>
-
-
-<p>这里就不一一列举了，有兴趣大家可以操作一下</p>
-<h3 id="Screen对象"><a href="#Screen对象" class="headerlink" title="Screen对象"></a>Screen对象</h3><h4 id="Screen对象-1"><a href="#Screen对象-1" class="headerlink" title="Screen对象"></a>Screen对象</h4><p>window.screen对象包含有关用户屏幕的信息</p>
-<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>&ensp;&ensp;&ensp;screen.availWidth -可用的屏幕宽度</p>
-<p>&ensp;&ensp;&ensp;screen.availHeight - 可用的屏幕高度</p>
-<p>&ensp;&ensp;&ensp;screen.Height - 当前屏幕的整体高度</p>
-<p>&ensp;&ensp;&ensp;screen.Width - 当前屏幕的整体宽度</p>
+                <h1 id="ThinkPHP-3-2-3-5-0-10-缓存函数设计缺陷可导致代码执行"><a href="#ThinkPHP-3-2-3-5-0-10-缓存函数设计缺陷可导致代码执行" class="headerlink" title="ThinkPHP 3.2.3-5.0.10 缓存函数设计缺陷可导致代码执行"></a>ThinkPHP 3.2.3-5.0.10 缓存函数设计缺陷可导致代码执行</h1><p><code>tp版本：ThinkPHP 5.0.10</code></p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p><strong>看一下开发手册对于缓存的介绍</strong></p>
+<p><img src="https://ae01.alicdn.com/kf/Ud701595ac06642c5adc9fd99c7102c48V.jpg"></p>
+<p><strong>设置缓存的方法</strong></p>
+<p><img src="https://ae01.alicdn.com/kf/Uc7e8eb58b54a43cf8dea7e016efc04467.jpg"></p>
+<p>在<strong>application/index/controller/Index.php</strong>中index方法中利用缓存，添加如下代码：</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//use think\Cache; 已经引入</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    Cache<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token function">input</span><span class="token punctuation">(</span><span class="token string">"get.username"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">'Cache saveSuccess'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>能成功访问，然后写入数据</p>
+<p><img src="https://ae01.alicdn.com/kf/U6e9b22637fb2427e84f4f62f86d22e59j.jpg"></p>
+<p><img src="https://ae01.alicdn.com/kf/U845ab1c16b3b47178899a9ddaca7f2b8c.jpg"></p>
+<p>然后去访问这个缓存文件，对漏洞分析的时候可以知道缓存文件的路径(下面会提到)。</p>
+<p><img src="https://ae01.alicdn.com/kf/U4f3185749caf409c96432ee899ede49be.jpg"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><strong>找到写入缓存的<code>set()</code>方法</strong></p>
+<p><img src="https://ae01.alicdn.com/kf/Ucb99df05b7a845fca48f472a85528773S.jpg"></p>
+<p><strong>set()**方法调用了</strong>init()**方法,跟进这个方法</p>
+<p>一个配置数组作为参数传入到了这个方法，根据数组中的参数动态调用，执行不同的缓存操作</p>
+<p><img src="https://ae01.alicdn.com/kf/Ufde389f9126644d79d7d6c726ec6d22cY.jpg"></p>
+<p>跟进**connect()**方法，根据我们传入的<code>cache.type</code>进行实例化</p>
+<p><img src="https://ae01.alicdn.com/kf/U4b0279925d4f4163a08fa6fbe30feba5E.jpg"></p>
+<p>关键代码</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$class</span> <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token operator">!==</span> <span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">,</span> <span class="token string">'\\'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$type</span> <span class="token punctuation">:</span> <span class="token string">'\\think\\cache\\driver\\'</span> <span class="token punctuation">.</span> <span class="token function">ucwords</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//之后进行了new</span>
+<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token variable">$class</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>把传入的<code>cache.type</code>加在后面进行了实例化，因为<code>cache.type</code>默认值是<code>File</code>，所以路径应该是<code>\think\cache\driver\File</code>，可以打印看一下是不是跟分析的一样，顺便打印一下传入的参数<code>option</code></p>
+<p><img src="https://ae01.alicdn.com/kf/U1eb89caef91847d097e888c8b0d8a233L.jpg"></p>
+<p>跟分析的一样，**cache.type == File  $class = \think\cache\driver\File **，所以这个地方<code>self::init()-&gt;set($name, $value, $expire)</code>就是<code>self::\think\cache\driver\File()-&gt;set($name, $value, $expire)</code></p>
+<p>跟进这个类，看一下它下面的**set()**方法</p>
+<p><img src="https://ae01.alicdn.com/kf/U331d7ec434da4b618e5d0ea92b155b14e.jpg"></p>
+<p>传入的名称经过**getCacheKey()**函数处理</p>
+<p><img src="https://ae01.alicdn.com/kf/U59bed96e53344249bbca40b8abf9c7779.jpg"></p>
+<p>主要代码</p>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$name</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 使用子目录</span>
+<span class="token variable">$name</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token constant">DS</span> <span class="token punctuation">.</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//将参数进行md5()加密，并取加密后的前两位作为文件夹名称，其余的作为文件的名称，这也就是前面为什么缓存路径我们知道</span>
+<span class="token variable">$dir</span>  <span class="token operator">=</span> <span class="token function">dirname</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_dir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+   <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">,</span> <span class="token number">0755</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
+<p>传入的参数是<code>name</code>，验证一下，跟分析的是一样的</p>
+<p><img src="https://ae01.alicdn.com/kf/U4c24de1a2dca4efc84ff8fde404d66b0h.jpg"></p>
+<p><img src="https://ae01.alicdn.com/kf/U115926044e894f23b5d2192721ea3210X.jpg"></p>
+<p>此时再回到**set()**函数</p>
+<p><img src="https://ae01.alicdn.com/kf/Uffd9637cc1484c88882b835531ddffa3L.jpg"></p>
+<p>会把我们的内容先进行反序列化，<code>data_compress</code>代码中默认给的是<code>false</code>，所以不会进行压缩，内容写入时先换行，然后采用单行注释的方式写入，这样写入是有问题的，我们写入一个回车键就可以绕过单行注释了，可以写入我们的恶意代码。</p>
+<p><strong>注意：</strong>此时我们想要利用就需要满足条件了</p>
+<ul>
+<li>是否开启缓存</li>
+<li>参数是否可控</li>
+</ul>
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>正则匹配写入的内容，把换行符替换成空。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><code>https://blog.csdn.net/fly_hps/article/details/84952890</code></p>
 
                 
             </div>
@@ -720,7 +557,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2020/12/21/JavaScript%E5%9F%BA%E7%A1%80-%E4%BA%8C/">http://example.com/2020/12/21/JavaScript%E5%9F%BA%E7%A1%80-%E4%BA%8C/</a>
+                    <a href="http://example.com/2021/05/24/ThinkPHP3-2-3-5-0-10%E7%BC%93%E5%AD%98%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7%E5%8F%AF%E5%AF%BC%E8%87%B4Getshell/">http://example.com/2021/05/24/ThinkPHP3-2-3-5-0-10%E7%BC%93%E5%AD%98%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7%E5%8F%AF%E5%AF%BC%E8%87%B4Getshell/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -758,8 +595,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/TP5/">
+                                    <span class="chip bg-color">TP5</span>
                                 </a>
                             
                         </div>
@@ -929,17 +766,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/21/PHP%E5%9F%BA%E7%A1%80-%E4%B8%80/">
+                <a href="/2021/05/24/ThinkPHP3-2-3-5-0-10%E7%BC%93%E5%AD%98%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7%E5%8F%AF%E5%AF%BC%E8%87%B4Getshell/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="PHP基础(一)">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell">
                         
-                        <span class="card-title">PHP基础(一)</span>
+                        <span class="card-title">ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -949,9 +787,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -960,11 +798,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PHP/">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/TP5/">
+                        <span class="chip bg-color">TP5</span>
                     </a>
                     
                 </div>
@@ -978,13 +817,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/20/JavaScript%E5%9F%BA%E7%A1%80-%E4%B8%80/">
+                <a href="/2021/05/17/SSH%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JavaScript基础(一)">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SSH学习笔记">
                         
-                        <span class="card-title">JavaScript基础(一)</span>
+                        <span class="card-title">SSH学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -995,7 +834,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
                             </span>
                         <span class="publish-author">
                             
@@ -1008,8 +847,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/SSH%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">SSH学习</span>
                     </a>
                     
                 </div>
