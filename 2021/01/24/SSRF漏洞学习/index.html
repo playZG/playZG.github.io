@@ -567,14 +567,14 @@ ssrf<span class="token punctuation">.</span>php<span class="token operator">?</s
 <p>看到参数带https可以想到是不是SSRF，读一下文件看看行不行</p>
 <p><img src="https://i.loli.net/2021/01/24/PMFvhkU51wX6BRp.png" alt="19.png"></p>
 <p>文件是读不到的，试一下跳百度,百度是可以跳转的存在SSRF</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/CtMBi1Ql2WRhXbq.png" alt="18.png"></p>
+<p><img src="https://i.loli.net/2021/05/24/1FLEMV3flwvQoui.png" alt="18.png"></p>
 <p>回过头去看提示：由于出现权限问题，取消了mysql密码，端口还原为3306，意思就是没有密码，端口号也没有改，应该就是SSRF打Mysql</p>
 <p>用Gopherus生成payload(工具下载链接<code>https://github.com/tarunkant/Gopherus</code>)这种工具挺多的还有<code>mysql_gopher_attack</code>,<code>common-gopher-tcp-stream</code>,还有就是自己抓流量，放到wireshark查看流量，复制出来</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/KQTDZO5WgE12XCs.png" alt="21.png"></p>
+<p><img src="https://i.loli.net/2021/05/24/DgOU8GehcsBYI2f.png" alt="21.png"></p>
 <p>把生成的payload方法burp里面，但是还有进行URL编码(_后面的就可以)</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/DPk93Z5VSKYTC4u.png" alt="22.png"></p>
+<p><img src="https://i.loli.net/2021/05/24/UdTI5P9BMGOJY3w.png" alt="22.png"></p>
 <p>访问一下我们zg.php看一下有没有这个文件，也就是我们的命令是否执行，可以看到是有这个文件的</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/DAosxiX85LfylFT.png" alt="20.png"></p>
+<p><img src="https://i.loli.net/2021/05/24/3rbYpof5B7PMa6q.png" alt="20.png"></p>
 <p>用蚁剑连接，查看flag</p>
 <p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/jeDfMgwBn9JuoNX.png" alt="23.png"></p>
 <p><img src="https://i.loli.net/2020/09/01/UTCjdP9sH5gqWLe.png" alt="24.png"></p>
@@ -1133,7 +1133,7 @@ ssrf<span class="token punctuation">.</span>php<span class="token operator">?</s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">156k</span>&nbsp;字
+                class="white-color">158.3k</span>&nbsp;字
             
             
             
