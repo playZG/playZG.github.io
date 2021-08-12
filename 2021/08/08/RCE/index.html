@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.4k
                 </div>
                 
 
@@ -754,7 +754,7 @@ App<span class="token punctuation">:</span><span class="token punctuation">:</sp
 <p><img src="https://i.loli.net/2021/08/09/DJ6ISM7h8YAy4CE.png" alt="18.png"></p>
 <p>在利用方式二中可以看到有个参数<strong>server[REQUEST_METHOD]=id</strong>，这种利用方式跟上面的区别就在于<strong>param()</strong>函数调用<strong>method()</strong>函数时候传递了参数为<code>true</code></p>
 <p><img src="https://i.loli.net/2021/08/09/OUHgQzhqy3c9iJ1.png" alt="19.png"></p>
-<p>当<strong>method()</strong>的形参为<code>true</code>时，调用<strong>server()</strong>方法，<strong>$_SERVER[‘REQUEST_METHOD’]</strong>获取值</p>
+<p>当<strong>method()</strong>的形参为<code>true</code>时，调用<strong>server()</strong>方法，该方法中调用了<strong>inpout()</strong>函数，<strong>input()</strong>方法中调用<strong>getFilter()</strong>函数的处理，然后又调用了<code>filterValue()</code>，在<code>filterValue()</code>中调用<code>call_user_func()</code>函数完成命令执行。</p>
 <p><img src="https://i.loli.net/2021/08/09/3AP9ZR7EBsTbOol.png" alt="20.png"></p>
 <p><img src="https://i.loli.net/2021/08/09/ryLWjYZd3aA6XHQ.png" alt="21.png"></p>
 <h4 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://i.loli.net/2021/08/11/tPNnQgC1MRva9cy.png" alt="23.png"></p>
