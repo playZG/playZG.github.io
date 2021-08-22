@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell, PlayZG">
+    <meta name="keywords" content="TP5变量覆盖导致文件包含, PlayZG">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell | PlayZG</title>
+    <title>TP5变量覆盖导致文件包含 | PlayZG</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,7 +315,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ThinkPHP3.2.3~5.0.10缓存函数设计缺陷可导致Getshell</h1>
+                    <h1 class="description center-align post-title">TP5变量覆盖导致文件包含</h1>
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-24
+                    2021-08-22
                 </div>
                 
 
@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    646
+                    505
                 </div>
                 
 
@@ -473,64 +473,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ThinkPHP-3-2-3-5-0-10-缓存函数设计缺陷可导致代码执行"><a href="#ThinkPHP-3-2-3-5-0-10-缓存函数设计缺陷可导致代码执行" class="headerlink" title="ThinkPHP 3.2.3-5.0.10 缓存函数设计缺陷可导致代码执行"></a>ThinkPHP 3.2.3-5.0.10 缓存函数设计缺陷可导致代码执行</h1><p><code>tp版本：ThinkPHP 5.0.10</code></p>
-<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p><strong>看一下开发手册对于缓存的介绍</strong></p>
-<p><img src="https://ae01.alicdn.com/kf/Ud701595ac06642c5adc9fd99c7102c48V.jpg"></p>
-<p><strong>设置缓存的方法</strong></p>
-<p><img src="https://ae01.alicdn.com/kf/Uc7e8eb58b54a43cf8dea7e016efc04467.jpg"></p>
-<p>在<strong>application/index/controller/Index.php</strong>中index方法中利用缓存，添加如下代码：</p>
-<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//use think\Cache; 已经引入</span>
-<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
-    Cache<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token function">input</span><span class="token punctuation">(</span><span class="token string">"get.username"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token string">'Cache saveSuccess'</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
-<p>能成功访问，然后写入数据</p>
-<p><img src="https://ae01.alicdn.com/kf/U6e9b22637fb2427e84f4f62f86d22e59j.jpg"></p>
-<p><img src="https://ae01.alicdn.com/kf/U845ab1c16b3b47178899a9ddaca7f2b8c.jpg"></p>
-<p>然后去访问这个缓存文件，对漏洞分析的时候可以知道缓存文件的路径(下面会提到)。</p>
-<p><img src="https://ae01.alicdn.com/kf/U4f3185749caf409c96432ee899ede49be.jpg"></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><strong>找到写入缓存的<code>set()</code>方法</strong></p>
-<p><img src="https://ae01.alicdn.com/kf/Ucb99df05b7a845fca48f472a85528773S.jpg"></p>
-<p><strong>set()**方法调用了</strong>init()**方法,跟进这个方法</p>
-<p>一个配置数组作为参数传入到了这个方法，根据数组中的参数动态调用，执行不同的缓存操作</p>
-<p><img src="https://ae01.alicdn.com/kf/Ufde389f9126644d79d7d6c726ec6d22cY.jpg"></p>
-<p>跟进**connect()**方法，根据我们传入的<code>cache.type</code>进行实例化</p>
-<p><img src="https://ae01.alicdn.com/kf/U4b0279925d4f4163a08fa6fbe30feba5E.jpg"></p>
-<p>关键代码</p>
-<pre class=" language-php"><code class="language-php"><span class="token variable">$class</span> <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token operator">!==</span> <span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">,</span> <span class="token string">'\\'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$type</span> <span class="token punctuation">:</span> <span class="token string">'\\think\\cache\\driver\\'</span> <span class="token punctuation">.</span> <span class="token function">ucwords</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//之后进行了new</span>
-<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token variable">$class</span><span class="token punctuation">(</span><span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>把传入的<code>cache.type</code>加在后面进行了实例化，因为<code>cache.type</code>默认值是<code>File</code>，所以路径应该是<code>\think\cache\driver\File</code>，可以打印看一下是不是跟分析的一样，顺便打印一下传入的参数<code>option</code></p>
-<p><img src="https://ae01.alicdn.com/kf/U1eb89caef91847d097e888c8b0d8a233L.jpg"></p>
-<p>跟分析的一样，**cache.type == File  $class = \think\cache\driver\File **，所以这个地方<code>self::init()-&gt;set($name, $value, $expire)</code>就是<code>self::\think\cache\driver\File()-&gt;set($name, $value, $expire)</code></p>
-<p>跟进这个类，看一下它下面的**set()**方法</p>
-<p><img src="https://ae01.alicdn.com/kf/U331d7ec434da4b618e5d0ea92b155b14e.jpg"></p>
-<p>传入的名称经过**getCacheKey()**函数处理</p>
-<p><img src="https://ae01.alicdn.com/kf/U59bed96e53344249bbca40b8abf9c7779.jpg"></p>
-<p>主要代码</p>
-<pre class=" language-php"><code class="language-php"><span class="token variable">$name</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 使用子目录</span>
-<span class="token variable">$name</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token constant">DS</span> <span class="token punctuation">.</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//将参数进行md5()加密，并取加密后的前两位作为文件夹名称，其余的作为文件的名称，这也就是前面为什么缓存路径我们知道</span>
-<span class="token variable">$dir</span>  <span class="token operator">=</span> <span class="token function">dirname</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_dir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
-   <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">,</span> <span class="token number">0755</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
-<p>传入的参数是<code>name</code>，验证一下，跟分析的是一样的</p>
-<p><img src="https://ae01.alicdn.com/kf/U4c24de1a2dca4efc84ff8fde404d66b0h.jpg"></p>
-<p><img src="https://ae01.alicdn.com/kf/U115926044e894f23b5d2192721ea3210X.jpg"></p>
-<p>此时再回到**set()**函数</p>
-<p><img src="https://ae01.alicdn.com/kf/Uffd9637cc1484c88882b835531ddffa3L.jpg"></p>
-<p>会把我们的内容先进行反序列化，<code>data_compress</code>代码中默认给的是<code>false</code>，所以不会进行压缩，内容写入时先换行，然后采用单行注释的方式写入，这样写入是有问题的，我们写入一个回车键就可以绕过单行注释了，可以写入我们的恶意代码。</p>
-<p><strong>注意：</strong>此时我们想要利用就需要满足条件了</p>
-<ul>
-<li>是否开启缓存</li>
-<li>参数是否可控</li>
-</ul>
-<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>正则匹配写入的内容，把换行符替换成空。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><code>https://blog.csdn.net/fly_hps/article/details/84952890</code></p>
+                <h1 id="ThinkPHP-5-x-变量覆盖导致的文件包含"><a href="#ThinkPHP-5-x-变量覆盖导致的文件包含" class="headerlink" title="ThinkPHP 5.x 变量覆盖导致的文件包含"></a>ThinkPHP 5.x 变量覆盖导致的文件包含</h1><h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><p>影响版本：5.0.0&lt;=ThinkPHP5&lt;=5.0.18 、5.1.0&lt;=ThinkPHP&lt;=5.1.10。</p>
+<p>ThinkPHP在加载模版解析变量时存在变量覆盖的问题，且没有对 $cacheFile 进行相应的消毒处理，导致模板文件的路径可以被覆盖，从而导致任意文件包含漏洞的发生。</p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>首先在<strong>public</strong>文件中放上图片马，然后通过URL<code>http://localhost/ThinkPHP/tp5.0.10/public/index.php/index/index/index?cacheFile=3.jpg</code>链接，触发包含漏洞</p>
+<p><img src="https://i.loli.net/2021/08/22/YLQZNmn5uhAR47c.png" alt="1.png"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在index控制器中创建代码</p>
+<p><img src="https://i.loli.net/2021/08/22/zWqNPYdUHJ1u2kb.png" alt="2.png"></p>
+<p>通过<strong>assign</strong>方法进行模板的赋值，跟进<strong>assign</strong>方法</p>
+<p><img src="https://i.loli.net/2021/08/22/SNVeCQY7rl5F8X9.png" alt="3.png"></p>
+<p>发现调用的是<strong>view</strong>下面的<strong>assign</strong>方法，继续跟进</p>
+<p><img src="https://i.loli.net/2021/08/22/SndDuIRMirqlWpa.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/08/22/xdAlq4r2L3aDtWB.png" alt="5.png"></p>
+<p>通过<strong>array_merge</strong>函数对传入的数据<code>name</code>合并成一个数组<code>$this-&gt;data</code></p>
+<p>再跟进分析<strong>fetch</strong>方法</p>
+<p><img src="https://i.loli.net/2021/08/22/wqpNlfK2ILm6AUo.png" alt="6.png"></p>
+<p>也是调用的是<strong>view</strong>下面的<strong>fetch</strong>方法，继续跟进</p>
+<p><img src="https://i.loli.net/2021/08/22/NYuHQ715E4DMgaF.png" alt="7.png"></p>
+<p>这里需要知道调用的类，如果任何参数都不加的话，默认是<strong>当前模块/默认视图目录/当前控制器（小写）/当前操作（小写）.html</strong></p>
+<p>默认**$renderContent=false<strong>，因此</strong>$method=fetch**，打印看一下是调用的那个类下面的<code>fetch</code>方法</p>
+<p><img src="https://i.loli.net/2021/08/22/ukxMoaq5vyNjGih.png" alt="8.png"></p>
+<p>跟进到<code>thinkphp\library\think\Template</code> 类的 <code>fetch</code> 方法，主要的点是程序调用的<code>read</code>方法</p>
+<p><img src="https://i.loli.net/2021/08/22/CsutFL197AyMmv4.png" alt="9.png"></p>
+<p>跟进<code>read</code>方法看一下，看一下调用的那个类的<code>read</code>方法</p>
+<p><img src="https://i.loli.net/2021/08/22/hf9BoLkXUrdzCm5.png" alt="10.png"></p>
+<p>再跟进一下<code>think\template\driver\File</code>这个类，找到<code>read</code>方法</p>
+<p><img src="https://i.loli.net/2021/08/22/HNtwOEoMm5aTqFZ.png" alt="11.png"></p>
+<p>问题就出现在<code>extract</code>函数，<code>extract</code>函数的作用是变量覆盖，<code>EXTR_OVERWRITE</code>参数的意思是，如果有冲突就覆盖，也就是如果这个变量之前存在，那么就覆盖</p>
+<p>之后就<code>include</code>包含了**$cacheFile**，所以当传入<code>cacheFile=3.jpg</code>，经过处理之后就会包含<code>3.jpg</code></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>官方的修复方法是：先将$cacheFile变量存储在$this-&gt;cacheFile中，在使用 extract 函数后，最终 include 的变量是 $this-&gt;cacheFile，这样也就避免了 include 被覆盖后的变量值。</p>
 
                 
             </div>
@@ -557,7 +527,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/05/24/ThinkPHP3-2-3-5-0-10%E7%BC%93%E5%AD%98%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7%E5%8F%AF%E5%AF%BC%E8%87%B4Getshell/">http://example.com/2021/05/24/ThinkPHP3-2-3-5-0-10%E7%BC%93%E5%AD%98%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7%E5%8F%AF%E5%AF%BC%E8%87%B4Getshell/</a>
+                    <a href="http://example.com/2021/08/22/TP5%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E5%AF%BC%E8%87%B4%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">http://example.com/2021/08/22/TP5%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E5%AF%BC%E8%87%B4%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -766,17 +736,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/08/08/RCE/">
+                <a href="/2021/08/22/TP5%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E5%AF%BC%E8%87%B4%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="ThinkPHP5.0.x~5.0.23 RCE">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="TP5变量覆盖导致文件包含">
                         
-                        <span class="card-title">ThinkPHP5.0.x~5.0.23 RCE</span>
+                        <span class="card-title">TP5变量覆盖导致文件包含</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -786,9 +757,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -797,6 +768,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -815,13 +787,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/17/SSH%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <a href="/2021/08/08/RCE/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SSH学习笔记">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="ThinkPHP5.0.x~5.0.23 RCE">
                         
-                        <span class="card-title">SSH学习笔记</span>
+                        <span class="card-title">ThinkPHP5.0.x~5.0.23 RCE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -832,7 +804,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-08
                             </span>
                         <span class="publish-author">
                             
@@ -845,8 +817,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SSH%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">SSH学习</span>
+                    <a href="/tags/TP5/">
+                        <span class="chip bg-color">TP5</span>
                     </a>
                     
                 </div>
