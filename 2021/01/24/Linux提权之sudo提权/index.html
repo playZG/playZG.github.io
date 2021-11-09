@@ -531,9 +531,8 @@ root    <span class="token constant">ALL</span><span class="token operator">=</s
 <span class="token shell-comment comment"># %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom</span></code></pre>
 <p>很多时候一些人为了工作方便，会给一些普通用户在常用的命令上面加上类似root权限，这样来说运维人员可能平时工作中方便，但是却会产生非常大的安全隐患</p>
 <p>我们首先创建一个用户试一下</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/Linux%E6%8F%90%E6%9D%83%E4%B9%8Bsudo%E6%8F%90%E6%9D%83/AOTgSui68BlWEvo.png" alt="1.png"></p>
-<p>当我们用这个用户执行一些命令的时候，它会提示我们需要root权限</p>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/Linux%E6%8F%90%E6%9D%83%E4%B9%8Bsudo%E6%8F%90%E6%9D%83/7nFeL5Yd8mOtMcX.png" alt="3.png"></p>
+<p><img src="https://i.loli.net/2021/10/23/64G39bImWdnDVgo.png" alt="1.png"></p>
+<p><img src="https://i.loli.net/2021/10/23/avYO4iw7LFMGcWQ.png" alt="3.png"></p>
 <p>所以我们在<code>/etc/sudoers</code>加入</p>
 <pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//创建命令别名</span>
 Cmnd_Alias <span class="token constant">SERVICES</span> <span class="token operator">=</span> <span class="token operator">/</span>usr<span class="token operator">/</span>sbin<span class="token operator">/</span>service<span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>sbin<span class="token operator">/</span>chkconfig<span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl start <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl stop <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl reload <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl restart <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl status <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl enable <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>systemctl disable <span class="token operator">*</span>
@@ -552,7 +551,7 @@ Cmnd_Alias <span class="token constant">FILE</span> <span class="token operator"
 
 <span class="token comment" spellcheck="true">//创建sudo规则</span>
 <span class="token constant">USERS</span> <span class="token constant">ALL</span> <span class="token operator">=</span> <span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token constant">NOPASSWD</span><span class="token punctuation">:</span> <span class="token constant">SERVICES</span><span class="token punctuation">,</span> <span class="token constant">PROCESS</span><span class="token punctuation">,</span> <span class="token constant">NETWORKING</span><span class="token punctuation">,</span> <span class="token constant">STORAGE</span><span class="token punctuation">,</span> <span class="token constant">SHUTDOWN</span><span class="token punctuation">,</span> <span class="token constant">SOFTWARE</span><span class="token punctuation">,</span> <span class="token constant">FILE</span></code></pre>
-<p><img src="/media/play-zg/ABDEF9E6CCF021C8/hexo/source/images/Linux%E6%8F%90%E6%9D%83%E4%B9%8Bsudo%E6%8F%90%E6%9D%83/CEfKXgUYD95VhMp.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/10/23/OuNXmdR2SbTqGZr.png" alt="4.png"></p>
 <p>这个时候我们就可以直接用<code>sudo</code>去执行这些命令</p>
 <h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><p><img src="https://i.loli.net/2020/11/25/r3JOWwfMX8VkBgd.png" alt="10.png"></p>
 <h3 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h3><p><img src="https://i.loli.net/2020/11/25/sP6hEC4LnxgHV3X.png" alt="11.png"></p>
@@ -1143,7 +1142,7 @@ Cmnd_Alias <span class="token constant">FILE</span> <span class="token operator"
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">173.3k</span>&nbsp;字
             
             
             
