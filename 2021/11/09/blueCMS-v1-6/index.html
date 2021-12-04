@@ -663,7 +663,7 @@ X<span class="token operator">-</span>Forwarded<span class="token operator">-</s
 <h3 id="comment-php"><a href="#comment-php" class="headerlink" title="comment.php"></a>comment.php</h3><p>在这个文件里面也是调用了<code>getip()</code>，最后执行的<strong>SQL</strong>语句：</p>
 <pre class=" language-php"><code class="language-php">     <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string">"INSERT INTO "</span><span class="token punctuation">.</span><span class="token function">table</span><span class="token punctuation">(</span><span class="token string">'comment'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>" <span class="token punctuation">(</span>com_id<span class="token punctuation">,</span> post_id<span class="token punctuation">,</span> user_id<span class="token punctuation">,</span> type<span class="token punctuation">,</span> mood<span class="token punctuation">,</span> content<span class="token punctuation">,</span> pub_date<span class="token punctuation">,</span> ip<span class="token punctuation">,</span> is_check<span class="token punctuation">)</span> 
              <span class="token function">VALUES</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'$id'</span><span class="token punctuation">,</span> <span class="token string">'$user_id'</span><span class="token punctuation">,</span> <span class="token string">'$type'</span><span class="token punctuation">,</span> <span class="token string">'$mood'</span><span class="token punctuation">,</span> <span class="token string">'$content'</span><span class="token punctuation">,</span> <span class="token string">'$timestamp'</span><span class="token punctuation">,</span> <span class="token string">'".getip()."'</span><span class="token punctuation">,</span> <span class="token string">'$is_check'</span><span class="token punctuation">)</span>"<span class="token punctuation">;</span></code></pre>
-<p> 如果再用上面的<code>paylaod</code>，但是这个地方**$is_check**字段数据库中字段类型是<code>tinyint</code>，所以没法利用</p>
+<p> 如果再用上面的<code>paylaod</code>，但是这个地方<code>$is_check</code>字段数据库中字段类型是<code>tinyint</code>，所以没法利用</p>
 <h3 id="admin-login-php"><a href="#admin-login-php" class="headerlink" title="admin/login.php"></a>admin/login.php</h3><p>后台登录找到最终执行的语句</p>
 <pre class=" language-php"><code class="language-php"><span class="token variable">$row</span> <span class="token operator">=</span> <span class="token variable">$db</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getone</span><span class="token punctuation">(</span><span class="token string">"SELECT COUNT(*) AS num FROM "</span><span class="token punctuation">.</span><span class="token function">table</span><span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">" WHERE admin_name='$name' and pwd = md5('$pwd')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><img src="https://i.loli.net/2021/11/08/oC49FqQXwZhMAie.png" alt="21.png"></p>
@@ -681,7 +681,7 @@ X<span class="token operator">-</span>Forwarded<span class="token operator">-</s
  <span class="token operator">&amp;</span><span class="token shell-comment comment">#125;</span></code></pre>
 <p>可以看到文件包含的时候直接<code>$_POST[&#39;pay&#39;]</code>，在购买页面抓包，然后传入<code>pay</code>参数进行文件包含，个人资料的地方可以上传图片并且返回了路径，上传图片马把返回的路径传入</p>
 <p>包含路径后面拼接了<strong>index.php</strong>，这里利用路径截断<strong>Windows 259个字节</strong>、<strong>Linux 4096个字节</strong>，后面加256个**.**</p>
-<p><img src="https://i.loli.net/2021/11/09/DNzWiqkX7HC4VdI.png" alt="c"></p>
+<p><img src="https://i.loli.net/2021/11/09/DNzWiqkX7HC4VdI.png" alt="22"></p>
 
                 
             </div>
@@ -917,18 +917,17 @@ X<span class="token operator">-</span>Forwarded<span class="token operator">-</s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/09/blueCMS-v1-6/">
+                <a href="/2021/11/14/Vulnhub-DC-4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="blueCMS v1.6">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Vulnhub DC-4">
                         
-                        <span class="card-title">blueCMS v1.6</span>
+                        <span class="card-title">Vulnhub DC-4</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -938,9 +937,9 @@ X<span class="token operator">-</span>Forwarded<span class="token operator">-</s
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -949,12 +948,11 @@ X<span class="token operator">-</span>Forwarded<span class="token operator">-</s
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
-                        <span class="chip bg-color">代码审计</span>
+                    <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                        <span class="chip bg-color">靶机</span>
                     </a>
                     
                 </div>
@@ -1239,7 +1237,7 @@ X<span class="token operator">-</span>Forwarded<span class="token operator">-</s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">173.3k</span>&nbsp;字
+                class="white-color">176.4k</span>&nbsp;字
             
             
             

